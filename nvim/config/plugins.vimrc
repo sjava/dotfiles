@@ -11,7 +11,7 @@ if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 " deoplete jedi
-let g:deoplete#sources#jedi#extra_path='~/.pyenv/versions/myapp/lib/python3.6/site-packages'
+" let g:deoplete#sources#jedi#extra_path='~/.pyenv/versions/myapp/lib/python3.6/site-packages'
 
 " echodoc
 let g:echodoc_enable_at_startup = 1
@@ -157,17 +157,17 @@ let g:ale_linters = {
       \}
 
 " language client
-set hidden
+" set hidden
 " set completefunc=LanguageClient#complete
 " set omnifunc=LanguageClient#complete
-autocmd FileType python setlocal omnifunc=LanguageClient#complete
+" autocmd FileType python setlocal omnifunc=LanguageClient#complete
 " autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-let g:LanguageClient_diagnosticsEnable=0
-let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-      \ 'python': ['pyls'],
-      \ }
-let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_diagnosticsEnable=0
+" let g:LanguageClient_serverCommands = {
+"       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+"       \ 'python': ['pyls'],
+"       \ }
+" let g:LanguageClient_autoStart = 1
 
 " choosewin{
 " invoke with '-'

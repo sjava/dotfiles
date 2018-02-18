@@ -18,7 +18,7 @@ Plug 'mhinz/vim-sayonara'
 Plug 'mhinz/vim-grepper'
 Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kassio/neoterm'
 Plug 'Shougo/context_filetype.vim'
 " editing
