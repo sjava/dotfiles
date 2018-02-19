@@ -7,13 +7,14 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set completeopt-=preview
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+" if !exists('g:deoplete#omni#input_patterns')
+"   let g:deoplete#omni#input_patterns = {}
+" endif
 " deoplete jedi
 " let g:deoplete#sources#jedi#extra_path='~/.pyenv/versions/myapp/lib/python3.6/site-packages'
 
 " echodoc
+set noshowmode
 let g:echodoc_enable_at_startup = 1
 
 set background=dark
@@ -175,3 +176,10 @@ nmap  -  <Plug>(choosewin)
 " if you want to use overlay feature
 let g:choosewin_overlay_enable = 1
 " choosewin}
+let g:neoterm_position='vertical'
+function g:Multiple_cursors_before()
+  let g:deoplete#disable_auto_complete = 1
+endfunction
+function g:Multiple_cursors_after()
+  let g:deoplete#disable_auto_complete = 0
+endfunction

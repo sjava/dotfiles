@@ -8,6 +8,7 @@ Plug 'morhetz/gruvbox'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc'
+Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -87,6 +88,7 @@ Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-fold'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-function'
+Plug 'andyl/vim-textobj-elixir'
 
 " python
 Plug 'zchee/deoplete-jedi'
