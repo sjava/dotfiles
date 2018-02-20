@@ -9,7 +9,6 @@ Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
-Plug 'rinx/deoplete-auto-programming'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

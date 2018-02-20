@@ -156,6 +156,17 @@ let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
       \}
+augroup AleGroup
+  autocmd!
+  autocmd User ALELint call TouchOpenFile()
+augroup END
+
+func! TouchOpenFile()
+  let g:ale_enabled = 0
+  sleep 500m
+  w
+  let g:ale_enabled = 1
+endfunc
 
 " language client
 " set hidden
