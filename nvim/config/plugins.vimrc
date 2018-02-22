@@ -128,7 +128,7 @@ let g:neoformat_enabled_html = ['prettydiff']
 "             \ }
 " let g:neoformat_enabled_vue = ['prettydiff']
 
-let g:neoformat_enabled_javascript = ['eslint_d']
+let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
