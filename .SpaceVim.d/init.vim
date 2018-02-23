@@ -50,6 +50,19 @@ let g:spacevim_snippet_engine = 'ultisnips'
 let g:spacevim_enable_neomake = 0
 let g:spacevim_enable_ale = 1
 
+let g:neoformat_eelixir_htmlbeautify = {
+      \ 'exe': 'html-beautify',
+      \ 'args': ['--indent-size 2'],
+      \ 'stdin': 1,
+      \ }
+let g:neoformat_enabled_eelixir = ['htmlbeautify']
+
+let g:ale_linters = {
+      \   'python': ['flake8','isort'],
+      \   'javascript': ['eslint'],
+      \   'elixir': ['credo'],
+      \}
+
 set ignorecase
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
