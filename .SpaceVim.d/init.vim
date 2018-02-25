@@ -27,6 +27,7 @@ let g:spacevim_enable_statusline_display_mode = 0
 let g:spacevim_enable_os_fileformat_icon = 1
 let g:spacevim_buffer_index_type = 1
 let g:neomake_vim_enabled_makers = []
+let g:spacevim_filemanager = 'nerdtree'
 if executable('vimlint')
     call add(g:neomake_vim_enabled_makers, 'vimlint') 
 endif
@@ -43,12 +44,19 @@ let g:clang2_placeholder_prev = ''
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_strings=1
 
-" let g:spacevim_guifont = 'DejaVu\ Sans\ Mono\ for\ Powerline\ 11'
-let g:spacevim_guifont = 'IBMPlexMono\ Nerd\ Font\ Mono\ 13'
+" let g:spacevim_guifont = 'IBMPlexMono\ Nerd\ Font\ Mono\ 13'
 let g:python3_host_prog = '/home/zyb/.pyenv/versions/myapp/bin/python'
 let g:spacevim_snippet_engine = 'ultisnips'
 let g:spacevim_enable_neomake = 0
+
 let g:spacevim_enable_ale = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_linters = {
+      \   'python': ['flake8','isort'],
+      \   'javascript': ['eslint'],
+      \   'elixir': ['credo'],
+      \}
 
 let g:neoformat_eelixir_htmlbeautify = {
       \ 'exe': 'html-beautify',
@@ -56,12 +64,6 @@ let g:neoformat_eelixir_htmlbeautify = {
       \ 'stdin': 1,
       \ }
 let g:neoformat_enabled_eelixir = ['htmlbeautify']
-
-let g:ale_linters = {
-      \   'python': ['flake8','isort'],
-      \   'javascript': ['eslint'],
-      \   'elixir': ['credo'],
-      \}
 
 set ignorecase
 inoremap <C-e> <Esc>A
