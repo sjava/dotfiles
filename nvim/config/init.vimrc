@@ -20,7 +20,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kassio/neoterm'
+" Plug 'kassio/neoterm'
+Plug 'mtikekar/nvim-send-to-term'
 Plug 'Shougo/context_filetype.vim'
 " editing
 Plug 'junegunn/vim-easy-align'

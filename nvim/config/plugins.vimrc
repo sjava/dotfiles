@@ -15,7 +15,7 @@ set completeopt-=preview
 
 " echodoc
 set noshowmode
-let g:echodoc_enable_at_startup = 1
+let g:echodoc#enable_at_startup=1
 
 set background=dark
 let g:gruvbox_italic=1
@@ -105,16 +105,17 @@ let g:rainbow_conf = {
     \   }
     \}
 let g:neoformat_html_prettydiff = {
-        \ 'exe': 'prettydiff',
-        \ 'args': ['mode:"beautify"',
-                 \ 'lang:"html"',
-                 \ 'insize:2',
-                 \ 'readmethod:"filescreen"',
-                 \ 'endquietly:"quiet"',
-                 \ 'source:"%:p"'],
-        \ 'no_append': 1
-            \ }
+      \ 'exe': 'prettydiff',
+      \ 'args': ['mode:"beautify"',
+      \ 'lang:"html"',
+      \ 'insize:2',
+      \ 'readmethod:"filescreen"',
+      \ 'endquietly:"quiet"',
+      \ 'source:"%:p"'],
+      \ 'no_append': 1
+      \ }
 let g:neoformat_enabled_html = ['prettydiff']
+
 
 " let g:neoformat_vue_prettydiff = {
 "         \ 'exe': 'prettydiff',
@@ -142,10 +143,6 @@ augroup END
 
 " ale plugin
 let g:ale_sign_column_always = 1
-" let g:ale_sign_error = '✗'
-" let g:ale_sign_warning = '⚡'
-" let g:ale_echo_msg_error_str = 'E'
-" let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " Write this in your vimrc file
 let g:ale_lint_on_text_changed = 'never'
@@ -157,17 +154,6 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'elixir': ['credo'],
       \}
-" augroup AleGroup
-"   autocmd!
-"   autocmd User ALELint call TouchOpenFile()
-" augroup END
-
-" func! TouchOpenFile()
-"   let g:ale_enabled = 0
-"   sleep 500m
-"   w
-"   let g:ale_enabled = 1
-" endfunc
 
 " language client
 " set hidden

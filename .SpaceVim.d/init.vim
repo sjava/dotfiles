@@ -17,7 +17,7 @@ call SpaceVim#layers#load('lang#python')
 call SpaceVim#layers#load('lang#tmux')
 call SpaceVim#layers#load('lang#vim')
 call SpaceVim#layers#load('lang#xml')
-call SpaceVim#layers#load('shell')   
+call SpaceVim#layers#load('shell')
 call SpaceVim#layers#load('tools#screensaver')
 let g:spacevim_enable_vimfiler_welcome = 1
 let g:spacevim_enable_debug = 1
@@ -29,10 +29,10 @@ let g:spacevim_buffer_index_type = 1
 let g:neomake_vim_enabled_makers = []
 let g:spacevim_filemanager = 'nerdtree'
 if executable('vimlint')
-    call add(g:neomake_vim_enabled_makers, 'vimlint') 
+    call add(g:neomake_vim_enabled_makers, 'vimlint')
 endif
 if executable('vint')
-    call add(g:neomake_vim_enabled_makers, 'vint') 
+    call add(g:neomake_vim_enabled_makers, 'vint')
 endif
 if has('python3')
     let g:ctrlp_map = ''
@@ -69,3 +69,7 @@ set ignorecase
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
 imap jj <Esc>
+
+" let g:spacevim_custom_plugins = [
+" \ ['kassio/neoterm'],
+" \ ]
