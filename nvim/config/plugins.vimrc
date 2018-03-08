@@ -2,16 +2,9 @@ filetype plugin indent on
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-"call deoplete#util#set_default('g:deoplete#sources', {})
-"let g:deoplete#sources._ = []
 let g:deoplete#disable_auto_complete = 0
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-set completeopt-=preview
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-" deoplete jedi
-" let g:deoplete#sources#jedi#extra_path='~/.pyenv/versions/myapp/lib/python3.6/site-packages'
+" set completeopt-=preview
 
 " echodoc
 set noshowmode
