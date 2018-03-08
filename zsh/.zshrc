@@ -58,7 +58,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(pip git pyenv npm sudo asdf yarn mix archlinux)
+plugins=(pip git pyenv npm sudo asdf yarn archlinux mix)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias nvim="TERM=xterm-256color nvim"
+# alias nvim="TERM=xterm-256color nvim"
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 . $HOME/.asdf/asdf.sh

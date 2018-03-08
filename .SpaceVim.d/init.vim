@@ -45,13 +45,13 @@ let g:gruvbox_italic=1
 let g:gruvbox_italicize_strings=1
 
 " let g:spacevim_guifont = 'IBMPlexMono\ Nerd\ Font\ Mono\ 13'
-let g:python3_host_prog = '/home/zyb/.pyenv/versions/myapp/bin/python'
+let g:python3_host_prog = '/home/zyb/.pyenv/versions/neovim3/bin/python'
 let g:spacevim_snippet_engine = 'ultisnips'
 let g:spacevim_enable_neomake = 0
 
 let g:spacevim_enable_ale = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:spacevim_warning_symbol='__'
+let g:spacevim_error_symbol='>>'
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
