@@ -51,13 +51,6 @@ nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <F8> :TagbarToggle<CR>
 " indent whole file according to syntax rules
 " noremap <F9> gg=G
-" neoterm keymap{
-let g:neoterm_position = 'horizontal'
-let g:neoterm_automap_keys = ',tt'
-
-nnoremap <silent> <f10> :TREPLSendFile<cr>
-nnoremap <silent> <f9> :TREPLSendLine<cr>
-vnoremap <silent> <f9> :TREPLSendSelection<cr>
 
 " Useful maps
 " hide/close terminal

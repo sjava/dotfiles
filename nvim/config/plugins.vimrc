@@ -3,25 +3,22 @@ filetype plugin indent on
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" set completeopt-=preview
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set completeopt-=preview
 let g:tmuxcomplete#trigger = ''
 " echodoc
 set noshowmode
-let g:echodoc#enable_at_startup=1
+let g:echodoc_enable_at_startup=1
 
 set background=dark
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_strings=1
 colorscheme gruvbox
-" let g:onedark_terminal_italics=1
-" colorscheme onedark
-
 
 " make background transparent
-hi Normal ctermbg=NONE
-hi EndOfBuffer ctermbg=NONE
-hi LineNr ctermbg=234
+" hi Normal ctermbg=NONE
+" hi EndOfBuffer ctermbg=NONE
+" hi LineNr ctermbg=234
 
 " CtrlP
 let g:ctrlp_prompt_mappings={'PrtClearCache()':['<Leader><F5>']}
