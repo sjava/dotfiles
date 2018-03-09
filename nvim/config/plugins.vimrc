@@ -5,7 +5,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " set completeopt-=preview
-
+let g:tmuxcomplete#trigger = ''
 " echodoc
 set noshowmode
 let g:echodoc#enable_at_startup=1
@@ -35,7 +35,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,
 let delimitMate_expand_cr=1
 
 " enable matchit (for matching tags with %)
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
 
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818

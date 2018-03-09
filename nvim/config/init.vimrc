@@ -35,6 +35,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'justinmk/vim-sneak'
+Plug 'andymass/vim-matchup'
 Plug 'bkad/CamelCaseMotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
@@ -64,7 +65,7 @@ Plug 'carlitux/deoplete-ternjs'
 Plug 'ternjs/tern_for_vim'
 "Plug 'digitaltoad/vim-jade'
 "Plug 'elzr/vim-json'
-Plug 'ryym/vim-riot'
+" Plug 'ryym/vim-riot'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 
@@ -81,6 +82,8 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/csscomplete.vim'
 Plug 'groenewege/vim-less'
 Plug 't9md/vim-choosewin'
+Plug 'chrisbra/unicode.vim'
+Plug 'mhinz/vim-startify'
 
 " text objects
 Plug 'wellle/targets.vim'
@@ -94,5 +97,6 @@ Plug 'andyl/vim-textobj-elixir'
 " python
 Plug 'zchee/deoplete-jedi'
 Plug 'ujihisa/neco-look'
+Plug 'wellle/tmux-complete.vim'
 
 call plug#end()
