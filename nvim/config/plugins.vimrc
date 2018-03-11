@@ -3,12 +3,13 @@ filetype plugin indent on
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set shortmess+=c
 set completeopt-=preview
 let g:tmuxcomplete#trigger = ''
 " echodoc
 set noshowmode
-let g:echodoc_enable_at_startup=1
+let g:echodoc#enable_at_startup=1
 
 set background=dark
 let g:gruvbox_italic=1
@@ -173,3 +174,6 @@ endfunction
 function g:Multiple_cursors_after()
   let g:deoplete#disable_auto_complete = 0
 endfunction
+
+let g:alchemist#elixir_erlang_src="/home/zyb/elixir_erlang_src"
+let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/UltiSnips"
