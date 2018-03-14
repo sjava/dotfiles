@@ -55,17 +55,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
 
 " javascript
-Plug 'guileen/vim-node-dict'
 Plug 'moll/vim-node'
-Plug 'othree/yajs.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug '1995eaton/vim-better-javascript-completion'
-" Plug 'gavocanov/vim-js-indent'
 Plug 'carlitux/deoplete-ternjs'
-Plug 'ternjs/tern_for_vim'
-"Plug 'digitaltoad/vim-jade'
-"Plug 'elzr/vim-json'
-" Plug 'ryym/vim-riot'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 

@@ -7,6 +7,21 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
 let g:tmuxcomplete#trigger = ''
+
+" deoplete-tern
+let g:deoplete#sources#ternjs#tern_bin = 'ternjs'
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#depths = 1
+let g:deoplete#sources#ternjs#docs = 1
+let g:deoplete#sources#ternjs#filter = 0
+let g:deoplete#sources#ternjs#case_insensitive = 1
+let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#filetypes = [
+      \ 'jsx',
+      \ 'javascript.jsx',
+      \ 'vue'
+      \ ]
+
 " echodoc
 set noshowmode
 let g:echodoc#enable_at_startup=1
@@ -44,34 +59,9 @@ let g:sneak#label = 1
 nmap f <Plug>SneakLabel_s
 nmap F <Plug>SneakLabel_S
 
-" javascript libraries syntax
-let g:used_javascript_libs = 'jquery,underscore,react,flux,chai'
-
-" completion
-" augroup omnifuncs
-"   autocmd!
-"   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" augroup end
-
-" tern
-let g:tern_request_timeout = 1
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-
 " disable colorizer at startup
 let g:colorizer_startup = 0
 let g:colorizer_nomap = 1
-
 
 " rainbow
 let g:rainbow_active = 1

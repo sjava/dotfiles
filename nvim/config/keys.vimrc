@@ -115,8 +115,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-" tern
-" autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 " colorizer
 nmap <Leader>tc :ColorToggle<CR>
