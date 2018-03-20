@@ -102,18 +102,14 @@ let g:neoformat_html_prettydiff = {
       \ }
 let g:neoformat_enabled_html = ['prettydiff']
 
-
-" let g:neoformat_vue_prettydiff = {
-"         \ 'exe': 'prettydiff',
-"         \ 'args': ['mode:"beautify"',
-"                  \ 'lang:"html"',
-"                  \ 'insize:2',
-"                  \ 'readmethod:"filescreen"',
-"                  \ 'endquietly:"quiet"',
-"                  \ 'source:"%:p"'],
-"         \ 'no_append': 1
-"             \ }
-" let g:neoformat_enabled_vue = ['prettydiff']
+ let g:neoformat_enabled_vue = ['prettydiff']
+ let g:neoformat_vue_prettier = {
+       \ 'exe': 'prettier',
+       \ 'args': ['--parser vue',
+       \ '--single-quote',
+       \ '--trailing-comma es5']
+       \ }
+let g:neoformat_enabled_vue = ['prettier']
 
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
@@ -124,7 +120,7 @@ augroup fmt
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
   autocmd BufWritePre *.css,*.less,*scss Neoformat
   autocmd BufWritePost *.vue,*.html Neoformat
-  autocmd BufWritePost *.css,*.js,*.py,*.vue,*.html,*scss IndentLinesReset
+  " autocmd BufWritePost *.css,*.js,*.py,*.vue,*.html,*scss IndentLinesReset
 augroup END
 
 " ale plugin
@@ -145,7 +141,7 @@ let g:ale_linters = {
 " set hidden
 " set completefunc=LanguageClient#complete
 " set omnifunc=LanguageClient#complete
-" autocmd FileType python setlocal omnifunc=LanguageClient#complete
+" autocmd FileType elixir setlocal omnifunc=LanguageClient#complete
 " autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
 " let g:LanguageClient_diagnosticsEnable=0
 " let g:LanguageClient_serverCommands = {
@@ -153,6 +149,13 @@ let g:ale_linters = {
 "       \ 'python': ['pyls'],
 "       \ }
 " let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_serverCommands = {
+"     \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
+"     \ }
+
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " choosewin{
 " invoke with '-'
@@ -169,5 +172,5 @@ function g:Multiple_cursors_after()
   let g:deoplete#disable_auto_complete = 0
 endfunction
 
-let g:alchemist#elixir_erlang_src="/home/zyb/elixir_erlang_src"
+let g:alchemist#elixir_erlang_src="/home/zyb/elixir_tools/elixir_erlang_src"
 let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/UltiSnips"
