@@ -102,12 +102,13 @@ let g:neoformat_html_prettydiff = {
       \ }
 let g:neoformat_enabled_html = ['prettydiff']
 
- let g:neoformat_enabled_vue = ['prettydiff']
  let g:neoformat_vue_prettier = {
        \ 'exe': 'prettier',
-       \ 'args': ['--parser vue',
+       \ 'args': ['--stdin',
+       \ '--parser vue',
        \ '--single-quote',
-       \ '--trailing-comma es5']
+       \ '--trailing-comma es5'],
+       \ 'stdin': 1
        \ }
 let g:neoformat_enabled_vue = ['prettier']
 
