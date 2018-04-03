@@ -11,7 +11,10 @@ set noshowmode " hide default mode text (e.g. INSERT) as airline already display
 " airline config
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1  " buffers at the top as tabs
-let g:airline#extensions#tabline#show_tabs=0
+let g:airline#extensions#tabline#show_tabs=1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#show_tab_type=1
 let g:airline#extensions#tmuxline#enabled=0
 " let g:airline_theme = 'gruvbox'
@@ -19,6 +22,7 @@ let g:airline_theme='onedark'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
