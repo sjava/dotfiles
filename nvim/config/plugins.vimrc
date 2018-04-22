@@ -119,8 +119,8 @@ let g:neoformat_enabled_scss = ['prettier']
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
-  autocmd BufWritePre *.css,*.less,*scss Neoformat
-  autocmd BufWritePost *.vue,*.html Neoformat
+  autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
+  " autocmd BufWritePost *.vue,*.html Neoformat
   " autocmd BufWritePost *.css,*.js,*.py,*.vue,*.html,*scss IndentLinesReset
 augroup END
 
