@@ -112,16 +112,13 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " deoplete tab-complete
 " inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
+" inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 
 " colorizer
 nmap <Leader>tc :ColorToggle<CR>
 
-inoremap <C-e> <Esc>A
-inoremap <C-a> <Esc>I
-imap jj <Esc>
 
 " 0:up, 1:down, 2:pgup, 3:pgdown, 4:top, 5:bottom
 function! Tools_PreviousCursor(mode)
@@ -160,3 +157,7 @@ inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 
 " terminal return normal mode
 :tnoremap <Esc> <C-\><C-n>
+
+inoremap <C-e> <Esc>A
+inoremap <C-a> <Esc>I
+imap jj <Esc>
