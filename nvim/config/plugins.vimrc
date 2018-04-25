@@ -102,15 +102,17 @@ let g:neoformat_html_prettydiff = {
       \ }
 let g:neoformat_enabled_html = ['prettydiff']
 
- let g:neoformat_vue_prettier = {
-       \ 'exe': 'prettier',
-       \ 'args': ['--stdin',
-       \ '--parser vue',
-       \ '--single-quote',
-       \ '--trailing-comma es5'],
-       \ 'stdin': 1
-       \ }
-let g:neoformat_enabled_vue = ['prettier']
+" let g:neoformat_vue_prettydiff = {
+"       \ 'exe': 'prettydiff',
+"       \ 'args': ['mode:"beautify"',
+"       \ 'lang:"html"',
+"       \ 'insize:2',
+"       \ 'readmethod:"filescreen"',
+"       \ 'endquietly:"quiet"',
+"       \ 'source:"%:p"'],
+"       \ 'no_append': 1
+"       \ }
+" let g:neoformat_enabled_vue = ['prettier','prettydiff']
 
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
@@ -120,8 +122,7 @@ augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
   autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
-  " autocmd BufWritePost *.vue,*.html Neoformat
-  " autocmd BufWritePost *.css,*.js,*.py,*.vue,*.html,*scss IndentLinesReset
+  autocmd BufWritePre *.vue silent! :/<template>/+1,/<\/template>/-1 !html-beautify --stdin -s 2 -A force-aligned
 augroup END
 
 " ale plugin
