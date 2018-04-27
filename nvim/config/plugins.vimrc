@@ -120,7 +120,7 @@ let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.vue silent! :/<template>/+1,/<\/template>/-1 !html-beautify --stdin -s 2 -A force
+  autocmd BufWritePre *.vue silent! :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
   autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
 augroup END
@@ -138,6 +138,11 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'elixir': ['credo'],
       \}
+let g:ale_fixers = {
+      \ 'javascript': ['eslint'],
+      \ 'vue':['eslint'],
+      \}
+let g:ale_fix_on_save = 1
 
 " language client
 " set hidden
