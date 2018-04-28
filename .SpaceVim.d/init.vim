@@ -2,9 +2,10 @@
 let g:spacevim_enable_debug = 1
 let g:spacevim_realtime_leader_guide = 1
 call SpaceVim#layers#load('incsearch')
+call SpaceVim#layers#load('denite')
 " call SpaceVim#layers#load('lang#c')
 call SpaceVim#layers#load('lang#elixir')
-call SpaceVim#layers#load('lang#go')
+" call SpaceVim#layers#load('lang#go')
 call SpaceVim#layers#load('lang#haskell')
 " call SpaceVim#layers#load('lang#java')
 call SpaceVim#layers#load('lang#javascript')
@@ -45,10 +46,12 @@ let g:gruvbox_italic=1
 let g:gruvbox_italicize_strings=1
 
 " let g:spacevim_guifont = 'IBMPlexMono\ Nerd\ Font\ Mono\ 13'
-let g:python3_host_prog = '/home/zyb/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = "/home/zyb/.pyenv/versions/myapp/bin/python"
+let g:python2_host_prog = "/home/zyb/.pyenv/versions/2.7.11/bin/python"
+let g:alchemist#elixir_erlang_src="/home/zyb/elixir_tools/elixir_erlang_src"
 let g:spacevim_snippet_engine = 'ultisnips'
-let g:spacevim_enable_neomake = 0
 
+let g:spacevim_enable_neomake = 0
 let g:spacevim_enable_ale = 1
 let g:spacevim_warning_symbol='__'
 let g:spacevim_error_symbol='>>'
@@ -70,6 +73,6 @@ inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
 imap jj <Esc>
 
-" let g:spacevim_custom_plugins = [
-" \ ['kassio/neoterm'],
-" \ ]
+let g:spacevim_custom_plugins = [
+\ ['posva/vim-vue'],
+\ ]

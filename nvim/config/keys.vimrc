@@ -161,3 +161,5 @@ inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
 imap jj <Esc>
+nmap \p "+p
+vmap \y "+y

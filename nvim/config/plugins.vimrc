@@ -138,11 +138,6 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'elixir': ['credo'],
       \}
-let g:ale_fixers = {
-      \ 'javascript': ['eslint'],
-      \ 'vue':['eslint'],
-      \}
-let g:ale_fix_on_save = 1
 
 " language client
 " set hidden
