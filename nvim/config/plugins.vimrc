@@ -120,7 +120,6 @@ let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.vue silent! :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
   autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
 augroup END
@@ -200,3 +199,4 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
 autocmd FileType vue syntax sync fromstart
+

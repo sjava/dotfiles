@@ -26,6 +26,8 @@ Plug 'Shougo/context_filetype.vim'
 " editing
 Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
+Plug 'janko-m/vim-test'
+
 " Plug 'tpope/vim-commentary'
 Plug 'tyru/caw.vim'
 Plug 'airblade/vim-gitgutter'
@@ -53,7 +55,6 @@ Plug 'lilydjwg/fcitx.vim'
 Plug 'myusuf3/numbers.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
 
 " javascript
 Plug 'moll/vim-node'

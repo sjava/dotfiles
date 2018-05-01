@@ -1,11 +1,12 @@
 " map Leader
-let mapleader = ","
+let mapleader = "\<Space>"
+" let mapleader = ","
 " keep backward f search, remapping it to ,;
 nnoremap <Leader>; ,
 
 " in-line scrolling
-nmap <Leader>j gj
-nmap <Leader>k gk
+" nmap <Leader>j gj
+" nmap <Leader>k gk
 
 " buffer keys
 nnoremap <Leader>bb :b#<CR>
@@ -36,10 +37,10 @@ nnoremap <Leader>wx :close<CR>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " CtrlP keys
-nnoremap <Leader>pp :CtrlP<CR>
 nnoremap <Leader>pf :CtrlP<CR>
-nnoremap <Leader>pm :CtrlPMRUFiles<CR>
-nnoremap <Leader>pr :CtrlPMRUFiles<CR>
+" nnoremap <Leader>pf :CtrlP<CR>
+" nnoremap <Leader>pm :CtrlPMRUFiles<CR>
+" nnoremap <Leader>pr :CtrlPMRUFiles<CR>
 nnoremap <Leader>pb :CtrlPBuffer<CR>
 
 " Function keys
@@ -54,11 +55,11 @@ nnoremap <F8> :TagbarToggle<CR>
 
 " Useful maps
 " hide/close terminal
-nnoremap <silent> ,th :call neoterm#close()<cr>
-" clear terminal
-nnoremap <silent> ,tl :call neoterm#clear()<cr>
-" kills the current job (send a <c-c>)
-nnoremap <silent> ,tc :call neoterm#kill()<cr>
+" nnoremap <silent> ,th :call neoterm#close()<cr>
+" " clear terminal
+" nnoremap <silent> ,tl :call neoterm#clear()<cr>
+" " kills the current job (send a <c-c>)
+" nnoremap <silent> ,tc :call neoterm#kill()<cr>
 " neoterm keymap}
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
@@ -73,9 +74,6 @@ nnoremap <Leader>3 :NumbersToggle<CR>
 
 " remap number increment to C-s (C-a is already in use by tmux)
 nmap <C-s> <C-a>
-
-" Word count selection
-vnoremap <Leader>w :w !wc -w<CR>
 
 " vim paste mode toggle (for fixing indentation issues when pasting text)
 nnoremap <F2> :set invpaste paste?<CR>
@@ -101,24 +99,28 @@ nmap ga <Plug>(EasyAlign)
 " folding
 nmap <Leader>f zf%
 
-" ,<tab> for regular tab
-inoremap <Leader><Tab> <Space><Space>
-
 " snippets
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:UltiSnipsExpandTrigger='<leader>e'
+let g:UltiSnipsJumpForwardTrigger='<leader>r'
+let g:UltiSnipsJumpBackwardTrigger='<leader>w'
 
 " deoplete tab-complete
-" inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
-" inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-
-" colorizer
-nmap <Leader>tc :ColorToggle<CR>
-
+nmap <silent> <Leader>ff :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"<CR>
+" janko-m/vim-test
+nmap <silent> <Leader>tn :TestNearest<CR> " t Ctrl+n
+nmap <silent> <Leader>tf :TestFile<CR>    " t Ctrl+f
+nmap <silent> <Leader>ts :TestSuite<CR>   " t Ctrl+s
+nmap <silent> <Leader>tl :TestLast<CR>    " t Ctrl+l
+nmap <silent> <Leader>tg :TestVisit<CR>   " t Ctrl+g
 
 " 0:up, 1:down, 2:pgup, 3:pgdown, 4:top, 5:bottom
 function! Tools_PreviousCursor(mode)
@@ -158,8 +160,16 @@ inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 " terminal return normal mode
 :tnoremap <Esc> <C-\><C-n>
 
-inoremap <C-e> <Esc>A
+inoremap <C-l> <Esc>A
 inoremap <C-a> <Esc>I
 imap jj <Esc>
-nmap \p "+p
-vmap \y "+y
+nmap <Leader>p "+p
+vmap <Leader>y "+y
+imap <S-Del> <Esc>"+p
+
+" nvim-send-to-term key bind
+let g:send_disable_mapping=1
+nmap <Leader>sl <Plug>SendLine
+nmap <Leader>ss <Plug>Send
+vmap <Leader>ss <Plug>Send
+nmap <leader>se s$
