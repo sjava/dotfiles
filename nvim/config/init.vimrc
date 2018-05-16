@@ -15,7 +15,6 @@ Plug 'honza/vim-snippets'
 Plug 'haya14busa/incsearch.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'mhinz/vim-sayonara'
 Plug 'mhinz/vim-grepper'
 Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
@@ -27,6 +26,7 @@ Plug 'Shougo/context_filetype.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
 Plug 'janko-m/vim-test'
+Plug 'moll/vim-bbye'
 
 " Plug 'tpope/vim-commentary'
 Plug 'tyru/caw.vim'
@@ -99,5 +99,8 @@ Plug 'wellle/tmux-complete.vim'
 " markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.vim'
+
+" wxapp
+Plug 'chemzqm/wxapp.vim'
 
 call plug#end()

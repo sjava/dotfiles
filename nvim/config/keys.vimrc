@@ -15,7 +15,7 @@ nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bf :bf<CR>
 nnoremap <Leader>bl :bl<CR>
 nnoremap <Leader>bw :w<CR>:bd<CR>
-nnoremap <Leader>bd :Sayonara!<CR>
+nnoremap <Leader>bd :Bwipeout<CR>
 " new buffer/tab
 nnoremap <Leader>e :enew<CR>
 
@@ -113,8 +113,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
-
-nmap <silent> <Leader>ff :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"<CR>
+autocmd FileType vue nmap <buffer> <silent> <Leader>ff :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"<CR>
 " janko-m/vim-test
 nmap <silent> <Leader>tn :TestNearest<CR> " t Ctrl+n
 nmap <silent> <Leader>tf :TestFile<CR>    " t Ctrl+f
@@ -165,7 +164,10 @@ inoremap <C-a> <Esc>I
 imap jj <Esc>
 nmap <Leader>p "+p
 vmap <Leader>y "+y
-imap <S-Del> <Esc>"+p
+nmap j gj
+nmap k gk
+vmap j gj
+vmap k gk
 
 " nvim-send-to-term key bind
 let g:send_disable_mapping=1

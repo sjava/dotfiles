@@ -9,7 +9,6 @@ set completeopt-=preview
 let g:tmuxcomplete#trigger = ''
 
 " deoplete-tern
-let g:deoplete#sources#ternjs#tern_bin = 'ternjs'
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#depths = 1
 let g:deoplete#sources#ternjs#docs = 1
@@ -44,7 +43,7 @@ let g:ctrlp_prompt_mappings={'PrtClearCache()':['<Leader><F5>']}
 let g:ctrlp_prompt_mappings={'PrtdeleteEnt()':['<Leader><F7>']}
 let g:ctrlp_match_window='bottom,order:btt,min:2,max:25'
 set wildmenu " enhanced autocomplete
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,*.woff,*.woff3,*.eot,*deps*
+set wildignore+=*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,*.woff,*.woff3,*.eot,*deps*
 ",*public/css/*,*public/js*
 
 " delimitMate options
@@ -121,7 +120,7 @@ let g:neoformat_enabled_scss = ['prettier']
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
-  autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
+  autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html,*.wpy Neoformat
 augroup END
 
 " ale plugin
@@ -200,3 +199,42 @@ let g:vim_markdown_conceal = 0
 
 autocmd FileType vue syntax sync fromstart
 
+" emmet support wxapp
+let g:user_emmet_settings = {
+      \ 'wxss': {
+      \   'extends': 'css',
+      \ },
+      \ 'wxml': {
+      \   'extends': 'html',
+      \   'aliases': {
+      \     'div': 'view',
+      \     'span': 'text',
+      \   },
+      \  'default_attributes': {
+      \     'block': [{'wx:for-items': '{{list}}','wx:for-item': '{{item}}'}],
+      \     'navigator': [{'url': '', 'redirect': 'false'}],
+      \     'scroll-view': [{'bindscroll': ''}],
+      \     'swiper': [{'autoplay': 'false', 'current': '0'}],
+      \     'icon': [{'type': 'success', 'size': '23'}],
+      \     'progress': [{'precent': '0'}],
+      \     'button': [{'size': 'default'}],
+      \     'checkbox-group': [{'bindchange': ''}],
+      \     'checkbox': [{'value': '', 'checked': ''}],
+      \     'form': [{'bindsubmit': ''}],
+      \     'input': [{'type': 'text'}],
+      \     'label': [{'for': ''}],
+      \     'picker': [{'bindchange': ''}],
+      \     'radio-group': [{'bindchange': ''}],
+      \     'radio': [{'checked': ''}],
+      \     'switch': [{'checked': ''}],
+      \     'slider': [{'value': ''}],
+      \     'action-sheet': [{'bindchange': ''}],
+      \     'modal': [{'title': ''}],
+      \     'loading': [{'bindchange': ''}],
+      \     'toast': [{'duration': '1500'}],
+      \     'audio': [{'src': ''}],
+      \     'video': [{'src': ''}],
+      \     'image': [{'src': '', 'mode': 'scaleToFill'}],
+      \   }
+      \ },
+      \}

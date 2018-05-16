@@ -125,6 +125,9 @@ set hid " buffer becomes hidden when abandoned
 
 " stop highlighting of underscores in markdown files
 autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown :syntax match markdownIgnore "_"
+
+" highlighting wpy files
+ au BufRead,BufNewFile *.wpy setlocal filetype=vue
 " clipboard
 set clipboard+=unnamed
 
