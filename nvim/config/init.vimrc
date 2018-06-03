@@ -103,4 +103,7 @@ Plug 'iamcco/markdown-preview.vim'
 " wxapp
 Plug 'chemzqm/wxapp.vim'
 
+" xml
+Plug 'othree/xml.vim'
+
 call plug#end()

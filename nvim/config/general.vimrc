@@ -81,9 +81,6 @@ set ttimeoutlen=100
 " detect .md as markdown instead of modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" vue as vue
-" autocmd BufNewFile,BufRead *.vue set filetype=html
-
 " Unix as standard file type
 set ffs=unix,dos,mac
 
@@ -127,7 +124,8 @@ set hid " buffer becomes hidden when abandoned
 autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown :syntax match markdownIgnore "_"
 
 " highlighting wpy files
- au BufRead,BufNewFile *.wpy setlocal filetype=vue
+ " au BufRead,BufNewFile *.wx setlocal filetype=vue
+ " au BufRead,BufNewFile *.wxa setlocal filetype=vue
 " clipboard
 set clipboard+=unnamed
 

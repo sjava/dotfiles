@@ -101,6 +101,17 @@ let g:neoformat_html_prettydiff = {
       \ }
 let g:neoformat_enabled_html = ['prettydiff']
 
+let g:neoformat_wxml_prettydiff = {
+      \ 'exe': 'prettydiff',
+      \ 'args': ['mode:"beautify"',
+      \ 'lang:"xml"',
+      \ 'insize:2',
+      \ 'readmethod:"filescreen"',
+      \ 'endquietly:"quiet"',
+      \ 'source:"%:p"'],
+      \ 'no_append': 1
+      \ }
+let g:neoformat_enabled_wxml = ['prettydiff']
 " let g:neoformat_vue_prettydiff = {
 "       \ 'exe': 'prettydiff',
 "       \ 'args': ['mode:"beautify"',
