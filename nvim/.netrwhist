@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/zyb/.terminfo/x'
 let g:netrw_dirhist_2='/home/zyb/.tmux'
 let g:netrw_dirhist_3='/home/zyb/.dotfiles/nvim/plugged/echodoc/autoload/echodoc'
+let g:netrw_dirhist_4='/home/zyb/drppp2/wxappf.bak'
