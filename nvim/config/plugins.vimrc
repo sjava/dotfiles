@@ -7,6 +7,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
 let g:tmuxcomplete#trigger = ''
+call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 
 " deoplete-tern
 let g:deoplete#sources#ternjs#types = 1
@@ -131,7 +132,7 @@ let g:neoformat_enabled_scss = ['prettier']
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
-  autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html,*.wpy Neoformat
+  autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
 augroup END
 
 " ale plugin

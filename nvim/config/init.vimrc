@@ -43,7 +43,8 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
 Plug 'majutsushi/tagbar'
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-easytags'
+Plug 'jsfaint/gen_tags.vim'
 Plug 'xolox/vim-misc'
 Plug 'MaicoTimmerman/Vim-Jinja2-Syntax'
 Plug 'fisadev/vim-isort'
@@ -93,7 +94,7 @@ Plug 'andyl/vim-textobj-elixir'
 
 " python
 Plug 'zchee/deoplete-jedi'
-Plug 'ujihisa/neco-look'
+" Plug 'ujihisa/neco-look'
 Plug 'wellle/tmux-complete.vim'
 
 " markdown
