@@ -95,7 +95,7 @@ Plug 'andyl/vim-textobj-elixir'
 " python
 Plug 'zchee/deoplete-jedi'
 " Plug 'ujihisa/neco-look'
-Plug 'wellle/tmux-complete.vim'
+" Plug 'wellle/tmux-complete.vim'
 
 " markdown
 Plug 'plasticboy/vim-markdown'

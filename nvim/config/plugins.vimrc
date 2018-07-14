@@ -6,7 +6,7 @@ let g:deoplete#disable_auto_complete = 0
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
-let g:tmuxcomplete#trigger = ''
+" let g:tmuxcomplete#trigger = ''
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 
 " deoplete-tern
