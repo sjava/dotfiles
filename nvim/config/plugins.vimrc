@@ -105,7 +105,7 @@ let g:neoformat_enabled_html = ['prettydiff']
 let g:neoformat_wxml_prettydiff = {
       \ 'exe': 'prettydiff',
       \ 'args': ['mode:"beautify"',
-      \ 'lang:"xml"',
+      \ 'lang:"html"',
       \ 'insize:2',
       \ 'readmethod:"filescreen"',
       \ 'endquietly:"quiet"',
@@ -132,7 +132,8 @@ let g:neoformat_enabled_scss = ['prettier']
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
-  autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
+  autocmd BufWritePre *.css,*.less,*scss,*.vue Neoformat
+  autocmd BufWritePost *.html,*.wxml Neoformat
 augroup END
 
 " ale plugin
@@ -148,7 +149,9 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'elixir': ['credo'],
       \}
-
+let g:ale_fixers = {
+  \   'scss': ['stylelint'],
+  \}
 " language client
 " set hidden
 " set completefunc=LanguageClient#complete
