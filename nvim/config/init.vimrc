@@ -20,7 +20,6 @@ Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'kassio/neoterm'
-Plug 'mtikekar/nvim-send-to-term'
 Plug 'Shougo/context_filetype.vim'
 " editing
 Plug 'junegunn/vim-easy-align'
@@ -94,6 +93,7 @@ Plug 'andyl/vim-textobj-elixir'
 
 " python
 Plug 'zchee/deoplete-jedi'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " Plug 'ujihisa/neco-look'
 " Plug 'wellle/tmux-complete.vim'
 
@@ -106,5 +106,4 @@ Plug 'chemzqm/wxapp.vim'
 
 " xml
 Plug 'othree/xml.vim'
-
 call plug#end()

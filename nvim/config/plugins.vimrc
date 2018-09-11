@@ -91,7 +91,7 @@ let g:rainbow_conf = {
       \   }
       \}
 let g:neoformat_html_prettydiff = {
-      \ 'exe': 'prettydiff',
+      \ 'exe': 'prettydiff2',
       \ 'args': ['mode:"beautify"',
       \ 'lang:"html"',
       \ 'insize:2',
@@ -103,7 +103,7 @@ let g:neoformat_html_prettydiff = {
 let g:neoformat_enabled_html = ['prettydiff']
 
 let g:neoformat_wxml_prettydiff = {
-      \ 'exe': 'prettydiff',
+      \ 'exe': 'prettydiff2',
       \ 'args': ['mode:"beautify"',
       \ 'lang:"xml"',
       \ 'insize:2',
@@ -132,7 +132,8 @@ let g:neoformat_enabled_scss = ['prettier']
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
-  autocmd BufWritePre *.css,*.less,*scss,*.vue,*.html Neoformat
+  autocmd BufWritePre *.css,*.less,*scss,*.vue Neoformat
+  autocmd BufWritePost *.html Neoformat
 augroup END
 
 " ale plugin
