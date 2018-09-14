@@ -8,6 +8,7 @@ set shortmess+=c
 set completeopt-=preview
 " let g:tmuxcomplete#trigger = ''
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
+call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 
 " deoplete-tern
 let g:deoplete#sources#ternjs#types = 1
@@ -153,24 +154,49 @@ let g:ale_fixers = {
   \   'scss': ['stylelint'],
   \}
 " language client
-" set hidden
-" set completefunc=LanguageClient#complete
-" set omnifunc=LanguageClient#complete
-" autocmd FileType elixir setlocal omnifunc=LanguageClient#complete
-" autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-" let g:LanguageClient_diagnosticsEnable=0
-" let g:LanguageClient_serverCommands = {
-"       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-"       \ 'python': ['pyls'],
-"       \ }
-" let g:LanguageClient_autoStart = 1
-" let g:LanguageClient_serverCommands = {
-"     \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
-"     \ }
+set hidden
+let g:LanguageClient_diagnosticsEnable=0
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
+    \ }
 
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+function! ExpandLspSnippet()
+    call UltiSnips#ExpandSnippetOrJump()
+    if !pumvisible() || empty(v:completed_item)
+        return ''
+    endif
+
+    " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
+    let l:value = v:completed_item['word']
+    let l:matched = len(l:value)
+    if l:matched <= 0
+        return ''
+    endif
+
+    " remove inserted chars before expand snippet
+    if col('.') == col('$')
+        let l:matched -= 1
+        exec 'normal! ' . l:matched . 'Xx'
+    else
+        exec 'normal! ' . l:matched . 'X'
+    endif
+
+    if col('.') == col('$') - 1
+        " move to $ if at the end of line.
+        call cursor(line('.'), col('$'))
+    endif
+
+    " expand snippet now.
+    call UltiSnips#Anon(l:value)
+    return ''
+endfunction
+
+imap <C-k> <C-R>=ExpandLspSnippet()<CR>
 
 " choosewin{
 " invoke with '-'
@@ -187,7 +213,6 @@ function g:Multiple_cursors_after()
   let g:deoplete#disable_auto_complete = 0
 endfunction
 
-let g:alchemist#elixir_erlang_src="/home/zyb/elixir_tools/elixir_erlang_src"
 let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/UltiSnips"
 
 let g:tagbar_type_elixir = {

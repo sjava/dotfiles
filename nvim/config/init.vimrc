@@ -43,7 +43,6 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
 Plug 'majutsushi/tagbar'
-" Plug 'xolox/vim-easytags'
 Plug 'jsfaint/gen_tags.vim'
 Plug 'xolox/vim-misc'
 Plug 'MaicoTimmerman/Vim-Jinja2-Syntax'
@@ -67,11 +66,12 @@ Plug 'pangloss/vim-javascript'
 " elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
-Plug 'slashmili/alchemist.vim'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
+" Plug 'slashmili/alchemist.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
 
 " other
 Plug 'mattn/emmet-vim'
