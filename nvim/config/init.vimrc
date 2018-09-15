@@ -58,7 +58,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " javascript
 Plug 'moll/vim-node'
-Plug 'carlitux/deoplete-ternjs'
+" Plug 'carlitux/deoplete-ternjs'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 
