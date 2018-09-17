@@ -153,24 +153,26 @@ let g:ale_fixers = {
   \   'scss': ['stylelint'],
   \}
 " language client
-" set hidden
+set hidden
+set signcolumn=yes
 " set completefunc=LanguageClient#complete
 " set omnifunc=LanguageClient#complete
 " autocmd FileType elixir setlocal omnifunc=LanguageClient#complete
 " autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-" let g:LanguageClient_diagnosticsEnable=0
+let g:LanguageClient_diagnosticsEnable=0
+let g:LanguageClient_hasSnippetSupport=0
 " let g:LanguageClient_serverCommands = {
 "       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 "       \ 'python': ['pyls'],
 "       \ }
-" let g:LanguageClient_autoStart = 1
-" let g:LanguageClient_serverCommands = {
-"     \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
-"     \ }
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'elixir': ['~/tools/elixir-ls/language_server.sh'],
+    \ }
 
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " choosewin{
 " invoke with '-'

@@ -66,11 +66,12 @@ Plug 'pangloss/vim-javascript'
 " elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
-Plug 'slashmili/alchemist.vim'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
+" Plug 'slashmili/alchemist.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
 
 " other
 Plug 'mattn/emmet-vim'
