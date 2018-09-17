@@ -42,7 +42,6 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
 Plug 'majutsushi/tagbar'
-" Plug 'xolox/vim-easytags'
 Plug 'jsfaint/gen_tags.vim'
 Plug 'xolox/vim-misc'
 Plug 'MaicoTimmerman/Vim-Jinja2-Syntax'
@@ -58,7 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " javascript
 Plug 'moll/vim-node'
-Plug 'carlitux/deoplete-ternjs'
+" Plug 'carlitux/deoplete-ternjs'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 
