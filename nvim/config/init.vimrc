@@ -6,7 +6,7 @@ Plug 'morhetz/gruvbox'
 
 " general
 Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -64,7 +64,7 @@ Plug 'pangloss/vim-javascript'
 
 
 " elixir
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'thinca/vim-ref'
 " Plug 'slashmili/alchemist.vim'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -90,12 +90,19 @@ Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-fold'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-function'
-Plug 'andyl/vim-textobj-elixir'
 
 " python
-Plug 'zchee/deoplete-jedi'
-" Plug 'ujihisa/neco-look'
-" Plug 'wellle/tmux-complete.vim'
+" Plug 'zchee/deoplete-jedi'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-tern'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-html-subscope'
 
 " markdown
 Plug 'plasticboy/vim-markdown'

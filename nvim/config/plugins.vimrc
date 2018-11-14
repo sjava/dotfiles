@@ -1,44 +1,50 @@
 filetype plugin indent on
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Basic stuff
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
+let g:UltiSnipsEditSplit="vertical"
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+"
+" " c-j c-k for moving in snippet
+" let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 0
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-set shortmess+=c
-set completeopt-=preview
-" let g:tmuxcomplete#trigger = ''
-call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
-call deoplete#custom#option('ignore_sources', {'_': ['tag']})
-
-" deoplete-tern
-" let g:deoplete#sources#ternjs#types = 1
-" let g:deoplete#sources#ternjs#depths = 1
-" let g:deoplete#sources#ternjs#docs = 1
-" let g:deoplete#sources#ternjs#filter = 0
-" let g:deoplete#sources#ternjs#case_insensitive = 1
-" let g:deoplete#sources#ternjs#include_keywords = 1
-" let g:deoplete#sources#ternjs#filetypes = [
-"      \ 'jsx',
-"      \ 'javascript.jsx',
-"      \ 'vue'
-"      \ ]
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#disable_auto_complete = 0
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" set shortmess+=c
+" set completeopt-=preview
+" call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
+" call deoplete#custom#option('ignore_sources', {'_': ['tag']})
+" call deoplete#custom#source('LanguageClient',
+"            \ 'min_pattern_length',
+"            \ 2)
 
 " echodoc
 set noshowmode
 let g:echodoc#enable_at_startup=1
 
 set background=dark
-" let g:gruvbox_italic=1
-" let g:gruvbox_italicize_strings=1
-" colorscheme gruvbox
 
 let g:onedark_terminal_italics=1
 colorscheme onedark
-
-" make background transparent
-" hi Normal ctermbg=NONE
-" hi EndOfBuffer ctermbg=NONE
-" hi LineNr ctermbg=234
 
 " CtrlP
 let g:ctrlp_prompt_mappings={'PrtClearCache()':['<Leader><F5>']}
@@ -158,7 +164,7 @@ let g:ale_fixers = {
 set hidden
 let g:LanguageClient_diagnosticsEnable=1
 let g:LanguageClient_autoStart = 1
-let g:LanguageClient_hasSnippetSupport=0
+let g:LanguageClient_hasSnippetSupport=1
 let g:LanguageClient_serverCommands = {
     \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
@@ -210,12 +216,6 @@ let g:choosewin_overlay_enable = 1
 " choosewin}
 
 let g:neoterm_position='vertical'
-function g:Multiple_cursors_before()
-  let g:deoplete#disable_auto_complete = 1
-endfunction
-function g:Multiple_cursors_after()
-  let g:deoplete#disable_auto_complete = 0
-endfunction
 
 let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/UltiSnips"
 
