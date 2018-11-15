@@ -93,6 +93,7 @@ Plug 'kana/vim-textobj-function'
 
 " python
 Plug 'zchee/deoplete-jedi'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
 " Plug 'ncm2/ncm2-bufword'

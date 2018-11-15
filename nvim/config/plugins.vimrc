@@ -8,6 +8,7 @@ set shortmess+=c
 set completeopt-=preview
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 call deoplete#custom#option('ignore_sources', {'_': ['tag']})
+call deoplete#custom#source('tabnine', 'rank', 50)
 call deoplete#custom#source('LanguageClient',
            \ 'min_pattern_length',
            \ 2)
