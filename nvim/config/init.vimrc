@@ -6,7 +6,7 @@ Plug 'morhetz/gruvbox'
 
 " general
 Plug 'w0rp/ale'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -58,7 +58,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " javascript
 Plug 'moll/vim-node'
-" Plug 'carlitux/deoplete-ternjs'
+Plug 'carlitux/deoplete-ternjs'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 
@@ -92,17 +92,17 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-function'
 
 " python
-" Plug 'zchee/deoplete-jedi'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-tern'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-html-subscope'
+Plug 'zchee/deoplete-jedi'
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-ultisnips'
+" Plug 'ncm2/ncm2-cssomni'
+" Plug 'ncm2/ncm2-tern'
+" Plug 'ncm2/ncm2-jedi'
+" Plug 'ncm2/ncm2-html-subscope'
 
 " markdown
 Plug 'plasticboy/vim-markdown'

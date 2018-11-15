@@ -50,17 +50,6 @@ nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <F8> :TagbarToggle<CR>
-" indent whole file according to syntax rules
-" noremap <F9> gg=G
-
-" Useful maps
-" hide/close terminal
-" nnoremap <silent> ,th :call neoterm#close()<cr>
-" " clear terminal
-" nnoremap <silent> ,tl :call neoterm#clear()<cr>
-" " kills the current job (send a <c-c>)
-" nnoremap <silent> ,tc :call neoterm#kill()<cr>
-" neoterm keymap}
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -109,32 +98,32 @@ nmap <silent> <Leader>tg :TestVisit<CR>   " t Ctrl+g
 
 " 0:up, 1:down, 2:pgup, 3:pgdown, 4:top, 5:bottom
 function! Tools_PreviousCursor(mode)
-	if winnr('$') <= 1
-		return
-	endif
-	noautocmd silent! wincmd p
-	if a:mode == 0
-		exec "normal! \<c-y>"
-	elseif a:mode == 1
-		exec "normal! \<c-e>"
-	elseif a:mode == 2
-		exec "normal! ".winheight('.')."\<c-y>"
-	elseif a:mode == 3
-		exec "normal! ".winheight('.')."\<c-e>"
-	elseif a:mode == 4
-		normal! gg
-	elseif a:mode == 5
-		normal! G
-	elseif a:mode == 6
-		exec "normal! \<c-u>"
-	elseif a:mode == 7
-		exec "normal! \<c-d>"
-	elseif a:mode == 8
-		exec "normal! k"
-	elseif a:mode == 9
-		exec "normal! j"
-	endif
-	noautocmd silent! wincmd p
+  if winnr('$') <= 1
+    return
+  endif
+  noautocmd silent! wincmd p
+  if a:mode == 0
+    exec "normal! \<c-y>"
+  elseif a:mode == 1
+    exec "normal! \<c-e>"
+  elseif a:mode == 2
+    exec "normal! ".winheight('.')."\<c-y>"
+  elseif a:mode == 3
+    exec "normal! ".winheight('.')."\<c-e>"
+  elseif a:mode == 4
+    normal! gg
+  elseif a:mode == 5
+    normal! G
+  elseif a:mode == 6
+    exec "normal! \<c-u>"
+  elseif a:mode == 7
+    exec "normal! \<c-d>"
+  elseif a:mode == 8
+    exec "normal! k"
+  elseif a:mode == 9
+    exec "normal! j"
+  endif
+  noautocmd silent! wincmd p
 endfunc
 
 noremap <silent><M-u> :call Tools_PreviousCursor(6)<cr>
@@ -161,3 +150,100 @@ nmap <Leader>sl <Plug>SendLine
 nmap <Leader>ss <Plug>Send
 vmap <Leader>ss <Plug>Send
 nmap <leader>se s$
+
+" NOTE: The settings below will make Ultisnips and Deoplete play nice
+" together. Wich means that Deoplete is configured here too. If you'll
+" modify anything here, you'll may loose ability to use deoplete <Tab>
+" mapping wich is also done here
+
+" Basic stuff
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
+let g:UltiSnipsEditSplit="vertical"
+
+" For sake of manual expanding
+let g:UltiSnipsExpandTrigger="<c-k>"
+" Undefine all jump triggers, because FUNCTIONS
+let g:UltiSnipsJumpForwardTrigger = "<NUL>"
+let g:UltiSnipsJumpBackwardTrigger = "<NUL>"
+
+" Now onto buiseness
+" If deoplete popup is visible <Cr> will expand or jump. If not it will
+" close deoplete popup and leave everything as is. If used while editing an
+" expanded snippet it will complete the word and jump to next placeholder.
+" Magic!
+let g:ulti_expand_or_jump_res = 0
+function! <SID>ExpandOrClosePopup()
+  let snippet = UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res > 0
+    return snippet
+  else
+    let close_popup = deoplete#close_popup()
+    return close_popup
+  endif
+endfunction
+
+" When deoplete popup visible <Tab> acts like <C-n> wich selects next
+" completion item from the list. If there is no popup then <Tab> acts as
+" jump to next snippet placeholder, if we actually editing a snippet. If
+" no popup and no snippet <Tab> acts like <Tab>
+function! SmartTab()
+  if pumvisible() == 1
+    return "\<C-n>"
+  else
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+      return snippet
+    else
+      return "\<Tab>"
+    endif
+  endif
+endfunction
+
+" The same as previous, but selects previous item and jumps backwards. Or
+" acts like <S-Tab>
+function! SmartSTab()
+  if pumvisible() == 1
+    return "\<C-p>"
+  else
+    let snippet = UltiSnips#JumpBackwards()
+    if g:ulti_expand_or_jump_res > 0
+      return snippet
+    else
+      return "\<S-Tab>"
+    endif
+  endfunction
+
+  " Ultisnips + Deoplete mappings
+  inoremap <silent><expr><CR> pumvisible() ? "<C-R>=<SID>ExpandOrClosePopup()<CR>" : delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<Cr>"
+  inoremap <silent><Tab>      <C-R>=SmartTab()<CR>
+  snoremap <silent><Tab>      <Esc>:call UltiSnips#JumpForwards()<CR>
+  inoremap <silent><S-Tab>    <C-R>=SmartSTab()<CR>
+  snoremap <silent><S-Tab>    <Esc>:call UltiSnips#JumpBackwards()<CR>
+
+  let g:ulti_expand_res = 0 "default value, just set once
+  function! CompleteSnippet()
+    if empty(v:completed_item)
+      return
+    endif
+
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res > 0
+      return
+    endif
+
+    let l:complete = type(v:completed_item) == v:t_dict ? v:completed_item.word : v:completed_item
+    let l:comp_len = len(l:complete)
+
+    let l:cur_col = mode() == 'i' ? col('.') - 2 : col('.') - 1
+    let l:cur_line = getline('.')
+
+    let l:start = l:comp_len <= l:cur_col ? l:cur_line[:l:cur_col - l:comp_len] : ''
+    let l:end = l:cur_col < len(l:cur_line) ? l:cur_line[l:cur_col + 1 :] : ''
+
+    call setline('.', l:start . l:end)
+    call cursor('.', l:cur_col - l:comp_len + 2)
+
+    call UltiSnips#Anon(l:complete)
+  endfunction
+
+  autocmd CompleteDone * call CompleteSnippet()

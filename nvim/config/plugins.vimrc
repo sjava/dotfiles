@@ -1,41 +1,16 @@
 filetype plugin indent on
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANTE: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-set shortmess+=c
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Basic stuff
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
-let g:UltiSnipsEditSplit="vertical"
-" Press enter key to trigger snippet expansion
-" The parameters are the same as `:help feedkeys()`
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-"
-" " c-j c-k for moving in snippet
-" let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
-
 
 " deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#disable_auto_complete = 0
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" set shortmess+=c
-" set completeopt-=preview
-" call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
-" call deoplete#custom#option('ignore_sources', {'_': ['tag']})
-" call deoplete#custom#source('LanguageClient',
-"            \ 'min_pattern_length',
-"            \ 2)
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#disable_auto_complete = 0
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set shortmess+=c
+set completeopt-=preview
+call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
+call deoplete#custom#option('ignore_sources', {'_': ['tag']})
+call deoplete#custom#source('LanguageClient',
+           \ 'min_pattern_length',
+           \ 2)
 
 " echodoc
 set noshowmode
@@ -51,14 +26,10 @@ let g:ctrlp_prompt_mappings={'PrtClearCache()':['<Leader><F5>']}
 let g:ctrlp_prompt_mappings={'PrtdeleteEnt()':['<Leader><F7>']}
 let g:ctrlp_match_window='bottom,order:btt,min:2,max:25'
 set wildmenu " enhanced autocomplete
-set wildignore+=*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,*.woff,*.woff3,*.eot,*deps*
-",*public/css/*,*public/js*
+set wildignore+=*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,*.woff,*.woff3,*.eot,*deps*,*public/css/*,*public/js*
 
 " delimitMate options
 let delimitMate_expand_cr=1
-
-" enable matchit (for matching tags with %)
-" runtime macros/matchit.vim
 
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818
@@ -175,38 +146,6 @@ nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F9> :call LanguageClient_textDocument_rename()<CR>
 
-" function! ExpandLspSnippet()
-"     call UltiSnips#ExpandSnippetOrJump()
-"     if !pumvisible() || empty(v:completed_item)
-"         return ''
-"     endif
-"
-"     " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
-"     let l:value = v:completed_item['word']
-"     let l:matched = len(l:value)
-"     if l:matched <= 0
-"         return ''
-"     endif
-"
-"     " remove inserted chars before expand snippet
-"     if col('.') == col('$')
-"         let l:matched -= 1
-"         exec 'normal! ' . l:matched . 'Xx'
-"     else
-"         exec 'normal! ' . l:matched . 'X'
-"     endif
-"
-"     if col('.') == col('$') - 1
-"         " move to $ if at the end of line.
-"         call cursor(line('.'), col('$'))
-"     endif
-"
-"     " expand snippet now.
-"     call UltiSnips#Anon(l:value)
-"     return ''
-" endfunction
-"
-" imap <C-k> <C-R>=ExpandLspSnippet()<CR>
 
 " choosewin{
 " invoke with '-'
