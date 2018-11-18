@@ -161,89 +161,38 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
 let g:UltiSnipsEditSplit="vertical"
 
 " For sake of manual expanding
-let g:UltiSnipsExpandTrigger="<c-k>"
-" Undefine all jump triggers, because FUNCTIONS
-let g:UltiSnipsJumpForwardTrigger = "<NUL>"
-let g:UltiSnipsJumpBackwardTrigger = "<NUL>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
-" Now onto buiseness
-" If deoplete popup is visible <Cr> will expand or jump. If not it will
-" close deoplete popup and leave everything as is. If used while editing an
-" expanded snippet it will complete the word and jump to next placeholder.
-" Magic!
-let g:ulti_expand_or_jump_res = 0
-function! <SID>ExpandOrClosePopup()
-  let snippet = UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res > 0
-    return snippet
-  else
-    let close_popup = deoplete#close_popup()
-    return close_popup
+
+let g:ulti_expand_res = 0 "default value, just set once
+function! CompleteSnippet()
+  if empty(v:completed_item)
+    return
   endif
+
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res > 0
+    return
+  endif
+
+  let l:complete = type(v:completed_item) == v:t_dict ? v:completed_item.word : v:completed_item
+  let l:comp_len = len(l:complete)
+
+  let l:cur_col = mode() == 'i' ? col('.') - 2 : col('.') - 1
+  let l:cur_line = getline('.')
+
+  let l:start = l:comp_len <= l:cur_col ? l:cur_line[:l:cur_col - l:comp_len] : ''
+  let l:end = l:cur_col < len(l:cur_line) ? l:cur_line[l:cur_col + 1 :] : ''
+
+  call setline('.', l:start . l:end)
+  call cursor('.', l:cur_col - l:comp_len + 2)
+
+  call UltiSnips#Anon(l:complete)
 endfunction
 
-" When deoplete popup visible <Tab> acts like <C-n> wich selects next
-" completion item from the list. If there is no popup then <Tab> acts as
-" jump to next snippet placeholder, if we actually editing a snippet. If
-" no popup and no snippet <Tab> acts like <Tab>
-function! SmartTab()
-  if pumvisible() == 1
-    return "\<C-n>"
-  else
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-      return snippet
-    else
-      return "\<Tab>"
-    endif
-  endif
-endfunction
+autocmd CompleteDone * call CompleteSnippet()
 
-" The same as previous, but selects previous item and jumps backwards. Or
-" acts like <S-Tab>
-function! SmartSTab()
-  if pumvisible() == 1
-    return "\<C-p>"
-  else
-    let snippet = UltiSnips#JumpBackwards()
-    if g:ulti_expand_or_jump_res > 0
-      return snippet
-    else
-      return "\<S-Tab>"
-    endif
-  endfunction
 
-  " Ultisnips + Deoplete mappings
-  inoremap <silent><expr><CR> pumvisible() ? "<C-R>=<SID>ExpandOrClosePopup()<CR>" : delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<Cr>"
-  inoremap <silent><Tab>      <C-R>=SmartTab()<CR>
-  snoremap <silent><Tab>      <Esc>:call UltiSnips#JumpForwards()<CR>
-  inoremap <silent><S-Tab>    <C-R>=SmartSTab()<CR>
-  snoremap <silent><S-Tab>    <Esc>:call UltiSnips#JumpBackwards()<CR>
-
-  let g:ulti_expand_res = 0 "default value, just set once
-  function! CompleteSnippet()
-    if empty(v:completed_item)
-      return
-    endif
-
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res > 0
-      return
-    endif
-
-    let l:complete = type(v:completed_item) == v:t_dict ? v:completed_item.word : v:completed_item
-    let l:comp_len = len(l:complete)
-
-    let l:cur_col = mode() == 'i' ? col('.') - 2 : col('.') - 1
-    let l:cur_line = getline('.')
-
-    let l:start = l:comp_len <= l:cur_col ? l:cur_line[:l:cur_col - l:comp_len] : ''
-    let l:end = l:cur_col < len(l:cur_line) ? l:cur_line[l:cur_col + 1 :] : ''
-
-    call setline('.', l:start . l:end)
-    call cursor('.', l:cur_col - l:comp_len + 2)
-
-    call UltiSnips#Anon(l:complete)
-  endfunction
-
-  autocmd CompleteDone * call CompleteSnippet()

@@ -98,3 +98,5 @@ alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_PREFER_DARK_THEME=1 NVIM_GTK_NO_WIN
 
 . $HOME/.asdf/completions/asdf.bash
 DEFAULT_USER="zyb"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

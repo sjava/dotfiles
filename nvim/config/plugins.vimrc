@@ -10,8 +10,8 @@ call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 call deoplete#custom#source('tabnine', 'rank', 50)
 call deoplete#custom#source('LanguageClient',
-           \ 'min_pattern_length',
-           \ 2)
+          \ 'min_pattern_length',
+          \ 2)
 
 " echodoc
 set noshowmode
@@ -138,10 +138,11 @@ let g:LanguageClient_diagnosticsEnable=1
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_hasSnippetSupport=1
 let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio']
-    \ }
+   \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
+   \ 'javascript': ['javascript-typescript-stdio'],
+   \ 'javascript.jsx': ['javascript-typescript-stdio']
+   \ }
+
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -222,3 +223,10 @@ let g:user_emmet_settings = {
       \   }
       \ },
       \}
+
+function g:Multiple_cursors_before()
+  call deoplete#custom#buffer_option('auto_complete', v:false)
+endfunction
+function g:Multiple_cursors_after()
+  call deoplete#custom#buffer_option('auto_complete', v:true)
+endfunction
