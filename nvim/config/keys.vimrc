@@ -83,7 +83,6 @@ nmap ga <Plug>(EasyAlign)
 " folding
 nmap <Leader>f zf%
 
-" autocmd FileType vue nmap <buffer> <silent> <Leader>ff :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"<CR>
 " janko-m/vim-test
 nmap <silent> <Leader>tn :TestNearest<CR> " t Ctrl+n
 nmap <silent> <Leader>tf :TestFile<CR>    " t Ctrl+f

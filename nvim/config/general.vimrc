@@ -123,9 +123,6 @@ set signcolumn=yes
 " stop highlighting of underscores in markdown files
 autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown :syntax match markdownIgnore "_"
 
-" highlighting wpy files
- " au BufRead,BufNewFile *.wx setlocal filetype=vue
- " au BufRead,BufNewFile *.wxa setlocal filetype=vue
 " clipboard
 set clipboard+=unnamed
 
