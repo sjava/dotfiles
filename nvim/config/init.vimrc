@@ -71,6 +71,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'junegunn/fzf'
+Plug 'nixprime/cpsm'
 
 " other
 Plug 'mattn/emmet-vim'
@@ -93,6 +94,7 @@ Plug 'andyl/vim-textobj-elixir'
 
 " python
 Plug 'zchee/deoplete-jedi'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " Plug 'ujihisa/neco-look'
 " Plug 'wellle/tmux-complete.vim'

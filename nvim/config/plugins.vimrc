@@ -6,22 +6,10 @@ let g:deoplete#disable_auto_complete = 0
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
-" let g:tmuxcomplete#trigger = ''
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 call deoplete#custom#option('ignore_sources', {'_': ['tag']})
+call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
 
-" deoplete-tern
-" let g:deoplete#sources#ternjs#types = 1
-" let g:deoplete#sources#ternjs#depths = 1
-" let g:deoplete#sources#ternjs#docs = 1
-" let g:deoplete#sources#ternjs#filter = 0
-" let g:deoplete#sources#ternjs#case_insensitive = 1
-" let g:deoplete#sources#ternjs#include_keywords = 1
-" let g:deoplete#sources#ternjs#filetypes = [
-"      \ 'jsx',
-"      \ 'javascript.jsx',
-"      \ 'vue'
-"      \ ]
 
 " echodoc
 set noshowmode
@@ -159,7 +147,7 @@ set hidden
 set signcolumn=yes
 let g:LanguageClient_diagnosticsEnable=1
 let g:LanguageClient_autoStart = 1
-let g:LanguageClient_hasSnippetSupport=0
+let g:LanguageClient_hasSnippetSupport=1
 let g:LanguageClient_serverCommands = {
     \ 'elixir': ['~/tools/elixir-ls/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
