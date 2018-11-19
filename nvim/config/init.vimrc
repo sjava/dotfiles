@@ -63,7 +63,7 @@ Plug 'pangloss/vim-javascript'
 
 
 " elixir
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'thinca/vim-ref'
 " Plug 'slashmili/alchemist.vim'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -90,11 +90,9 @@ Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-fold'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-function'
-Plug 'andyl/vim-textobj-elixir'
 
 " python
 Plug 'zchee/deoplete-jedi'
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " Plug 'ujihisa/neco-look'
 " Plug 'wellle/tmux-complete.vim'

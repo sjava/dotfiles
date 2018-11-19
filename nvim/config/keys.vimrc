@@ -50,17 +50,6 @@ nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <F8> :TagbarToggle<CR>
-" indent whole file according to syntax rules
-" noremap <F9> gg=G
-
-" Useful maps
-" hide/close terminal
-" nnoremap <silent> ,th :call neoterm#close()<cr>
-" " clear terminal
-" nnoremap <silent> ,tl :call neoterm#clear()<cr>
-" " kills the current job (send a <c-c>)
-" nnoremap <silent> ,tc :call neoterm#kill()<cr>
-" neoterm keymap}
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -99,87 +88,7 @@ nmap ga <Plug>(EasyAlign)
 " folding
 nmap <Leader>f zf%
 
-
-" let g:UltiSnipsExpandTrigger='<leader>e'
-" let g:UltiSnipsJumpForwardTrigger='<leader>r'
-" let g:UltiSnipsJumpBackwardTrigger='<leader>w'
-
-" deoplete tab-complete
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-
-" Ultisnips
-" NOTE: The settings below will make Ultisnips and Deoplete play nice
-" together. Wich means that Deoplete is configured here too. If you'll
-" modify anything here, you'll may loose ability to use deoplete <Tab>
-" mapping wich is also done here
-
-" Basic stuff
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
-let g:UltiSnipsEditSplit="vertical"
-
-" For sake of manual expanding
-let g:UltiSnipsExpandTrigger="<c-k>"
-" Undefine all jump triggers, because FUNCTIONS
-let g:UltiSnipsJumpForwardTrigger = "<NUL>"
-let g:UltiSnipsJumpBackwardTrigger = "<NUL>"
-
-" Now onto buiseness
-" If deoplete popup is visible <Cr> will expand or jump. If not it will
-" close deoplete popup and leave everything as is. If used while editing an
-" expanded snippet it will complete the word and jump to next placeholder.
-" Magic!
-let g:ulti_expand_or_jump_res = 0
-function! <SID>ExpandOrClosePopup()
-  let snippet = UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res > 0
-    return snippet
-  else
-    let close_popup = deoplete#close_popup()
-    return close_popup
-  endif
-endfunction
-
-" When deoplete popup visible <Tab> acts like <C-n> wich selects next
-" completion item from the list. If there is no popup then <Tab> acts as
-" jump to next snippet placeholder, if we actually editing a snippet. If
-" no popup and no snippet <Tab> acts like <Tab>
-function! SmartTab()
-  if pumvisible() == 1
-    return "\<C-n>"
-  else
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-      return snippet
-    else
-      return "\<Tab>"
-    endif
-  endif
-endfunction
-
-" The same as previous, but selects previous item and jumps backwards. Or
-" acts like <S-Tab>
-function! SmartSTab()
-  if pumvisible() == 1
-    return "\<C-p>"
-  else
-    let snippet = UltiSnips#JumpBackwards()
-    if g:ulti_expand_or_jump_res > 0
-      return snippet
-    else
-      return "\<S-Tab>"
-    endif
-  endfunction
-
-  " Ultisnips + Deoplete mappings
-  inoremap <silent><expr><CR> pumvisible() ? "<C-R>=<SID>ExpandOrClosePopup()<CR>" : delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<Cr>"
-  inoremap <silent><Tab>      <C-R>=SmartTab()<CR>
-  snoremap <silent><Tab>      <Esc>:call UltiSnips#JumpForwards()<CR>
-  inoremap <silent><S-Tab>    <C-R>=SmartSTab()<CR>
-  snoremap <silent><S-Tab>    <Esc>:call UltiSnips#JumpBackwards()<CR>
-
-autocmd FileType vue nmap <buffer> <silent> <Leader>ff :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"<CR>
+" autocmd FileType vue nmap <buffer> <silent> <Leader>ff :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"<CR>
 " janko-m/vim-test
 nmap <silent> <Leader>tn :TestNearest<CR> " t Ctrl+n
 nmap <silent> <Leader>tf :TestFile<CR>    " t Ctrl+f
@@ -189,32 +98,32 @@ nmap <silent> <Leader>tg :TestVisit<CR>   " t Ctrl+g
 
 " 0:up, 1:down, 2:pgup, 3:pgdown, 4:top, 5:bottom
 function! Tools_PreviousCursor(mode)
-	if winnr('$') <= 1
-		return
-	endif
-	noautocmd silent! wincmd p
-	if a:mode == 0
-		exec "normal! \<c-y>"
-	elseif a:mode == 1
-		exec "normal! \<c-e>"
-	elseif a:mode == 2
-		exec "normal! ".winheight('.')."\<c-y>"
-	elseif a:mode == 3
-		exec "normal! ".winheight('.')."\<c-e>"
-	elseif a:mode == 4
-		normal! gg
-	elseif a:mode == 5
-		normal! G
-	elseif a:mode == 6
-		exec "normal! \<c-u>"
-	elseif a:mode == 7
-		exec "normal! \<c-d>"
-	elseif a:mode == 8
-		exec "normal! k"
-	elseif a:mode == 9
-		exec "normal! j"
-	endif
-	noautocmd silent! wincmd p
+  if winnr('$') <= 1
+    return
+  endif
+  noautocmd silent! wincmd p
+  if a:mode == 0
+    exec "normal! \<c-y>"
+  elseif a:mode == 1
+    exec "normal! \<c-e>"
+  elseif a:mode == 2
+    exec "normal! ".winheight('.')."\<c-y>"
+  elseif a:mode == 3
+    exec "normal! ".winheight('.')."\<c-e>"
+  elseif a:mode == 4
+    normal! gg
+  elseif a:mode == 5
+    normal! G
+  elseif a:mode == 6
+    exec "normal! \<c-u>"
+  elseif a:mode == 7
+    exec "normal! \<c-d>"
+  elseif a:mode == 8
+    exec "normal! k"
+  elseif a:mode == 9
+    exec "normal! j"
+  endif
+  noautocmd silent! wincmd p
 endfunc
 
 noremap <silent><M-u> :call Tools_PreviousCursor(6)<cr>
@@ -241,6 +150,17 @@ nmap <Leader>sl <Plug>SendLine
 nmap <Leader>ss <Plug>Send
 vmap <Leader>ss <Plug>Send
 nmap <leader>se s$
+
+" Basic stuff
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
+let g:UltiSnipsEditSplit="vertical"
+
+" For sake of manual expanding
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
 
 let g:ulti_expand_res = 0 "default value, just set once
 function! CompleteSnippet()

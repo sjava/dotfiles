@@ -91,7 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias nvim="TERM=xterm-256color nvim"
-alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_PREFER_DARK_THEME=1 NVIM_GTK_DOUBLE_BUFFER=1 nvim-gtk"
+alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_PREFER_DARK_THEME=1 NVIM_GTK_NO_WINDOW_DECORATION=1 nvim-gtk"
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 . $HOME/.asdf/asdf.sh
