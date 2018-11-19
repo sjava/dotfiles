@@ -51,11 +51,6 @@ nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <F8> :TagbarToggle<CR>
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-" Don't use Ex mode, use Q for formatting
-map Q gq
 
 " relative line numbers
 nnoremap <Leader>3 :NumbersToggle<CR>
