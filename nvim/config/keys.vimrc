@@ -1,12 +1,14 @@
 " map Leader
-let mapleader = "\<Space>"
-" let mapleader = ","
-" keep backward f search, remapping it to ,;
-nnoremap <Leader>; ,
+" let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
 
-" in-line scrolling
-" nmap <Leader>j gj
-" nmap <Leader>k gk
+" vim-which-key
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " buffer keys
 nnoremap <Leader>bb :b#<CR>
@@ -36,12 +38,6 @@ nnoremap <Leader>wx :close<CR>
 " %% to expand active buffer location on cmdline
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" CtrlP keys
-nnoremap <Leader>pf :CtrlP<CR>
-" nnoremap <Leader>pf :CtrlP<CR>
-" nnoremap <Leader>pm :CtrlPMRUFiles<CR>
-" nnoremap <Leader>pr :CtrlPMRUFiles<CR>
-nnoremap <Leader>pb :CtrlPBuffer<CR>
 
 " Function keys
 nnoremap <silent> <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -49,7 +45,6 @@ nnoremap <F3> :set hlsearch!<CR>
 nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
-nnoremap <F8> :TagbarToggle<CR>
 
 
 " relative line numbers
@@ -70,8 +65,6 @@ cmap w!! %!sudo tee > /dev/null %
 " allow ,, for vimsneak
 nmap <Leader>, <Plug>SneakPrevious
 
-" camelCase motion settings
-call camelcasemotion#CreateMotionMappings('<leader>')
 
 " start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -80,8 +73,6 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
-" folding
-nmap <Leader>f zf%
 
 " janko-m/vim-test
 nmap <silent> <Leader>tn :TestNearest<CR> " t Ctrl+n
