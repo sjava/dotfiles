@@ -137,10 +137,10 @@ vmap <Leader>ss <Plug>Send
 nmap <leader>se s$
 
 " Basic stuff
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
+let g:UltiSnipiSnippetDirectories=[$HOME.'/.vim/UltiSnips/']
 let g:UltiSnipsEditSplit="vertical"
 
-" For sake of manual expanding
+" For sake of nanual expanding
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
