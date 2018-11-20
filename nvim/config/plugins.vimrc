@@ -68,17 +68,17 @@ let g:rainbow_conf = {
       \       'css': 0,
       \   }
       \}
-let g:neoformat_html_prettydiff = {
-      \ 'exe': 'prettydiff2',
-      \ 'args': ['mode:"beautify"',
-      \ 'lang:"html"',
-      \ 'insize:2',
-      \ 'readmethod:"filescreen"',
-      \ 'endquietly:"quiet"',
-      \ 'source:"%:p"'],
-      \ 'no_append': 1
-      \ }
-let g:neoformat_enabled_html = ['prettydiff']
+" let g:neoformat_html_prettydiff = {
+"      \ 'exe': 'prettydiff',
+"      \ 'args': ['mode:"beautify"',
+"      \ 'lang:"html"',
+"      \ 'insize:2',
+"      \ 'readmethod:"filescreen"',
+"      \ 'endquietly:"quiet"',
+"      \ 'source:"%:p"'],
+"      \ 'no_append': 1
+"      \ }
+" let g:neoformat_enabled_html = ['prettydiff']
 
 let g:neoformat_wxml_prettydiff = {
       \ 'exe': 'prettydiff2',
@@ -91,17 +91,6 @@ let g:neoformat_wxml_prettydiff = {
       \ 'no_append': 1
       \ }
 let g:neoformat_enabled_wxml = ['prettydiff']
-" let g:neoformat_vue_prettydiff = {
-"       \ 'exe': 'prettydiff',
-"       \ 'args': ['mode:"beautify"',
-"       \ 'lang:"html"',
-"       \ 'insize:2',
-"       \ 'readmethod:"filescreen"',
-"       \ 'endquietly:"quiet"',
-"       \ 'source:"%:p"'],
-"       \ 'no_append': 1
-"       \ }
-" let g:neoformat_enabled_vue = ['prettier','prettydiff']
 
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
@@ -140,8 +129,10 @@ let g:LanguageClient_hasSnippetSupport=1
 let g:LanguageClient_serverCommands = {
     \ 'elixir': ['~/tools/elixir-ls/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio']
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'vue': ['vls']
     \ }
+
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -182,6 +173,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
 autocmd FileType vue syntax sync fromstart
+let g:vue_disable_pre_processors=1
 
 " emmet support wxapp
 let g:user_emmet_settings = {

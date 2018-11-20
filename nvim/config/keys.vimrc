@@ -51,11 +51,6 @@ nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <F8> :TagbarToggle<CR>
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-" Don't use Ex mode, use Q for formatting
-map Q gq
 
 " relative line numbers
 nnoremap <Leader>3 :NumbersToggle<CR>
@@ -88,7 +83,6 @@ nmap ga <Plug>(EasyAlign)
 " folding
 nmap <Leader>f zf%
 
-" autocmd FileType vue nmap <buffer> <silent> <Leader>ff :/<template>/,/<\/template>/ !html-beautify --stdin -s 2 -A force-aligned -U "a"<CR>
 " janko-m/vim-test
 nmap <silent> <Leader>tn :TestNearest<CR> " t Ctrl+n
 nmap <silent> <Leader>tf :TestFile<CR>    " t Ctrl+f
