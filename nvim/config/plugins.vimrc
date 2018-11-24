@@ -127,7 +127,7 @@ let g:LanguageClient_diagnosticsEnable=1
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_hasSnippetSupport=1
 let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['~/tools/elixir-ls/language_server.sh'],
+    \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'vue': ['vls']

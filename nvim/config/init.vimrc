@@ -39,7 +39,7 @@ Plug 'tpope/vim-speeddating'
 " Plug 'tpope/vim-surround'
 Plug 'othree/eregex.vim'
 Plug 'machakann/vim-sandwich'
-Plug 'tpope/vim-unimpaired'
+Plug 'jiangmiao/auto-pairs'
 Plug 'justinmk/vim-sneak'
 Plug 'andymass/vim-matchup'
 Plug 'terryma/vim-multiple-cursors'
@@ -59,7 +59,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 " javascript
 Plug 'moll/vim-node'
-" Plug 'carlitux/deoplete-ternjs'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 
