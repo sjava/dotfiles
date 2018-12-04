@@ -21,15 +21,6 @@ set background=dark
 let g:onedark_terminal_italics=1
 colorscheme onedark
 
-" CtrlP
-let g:ctrlp_prompt_mappings={'PrtClearCache()':['<Leader><F5>']}
-let g:ctrlp_prompt_mappings={'PrtdeleteEnt()':['<Leader><F7>']}
-let g:ctrlp_match_window='bottom,order:btt,min:2,max:25'
-set wildmenu " enhanced autocomplete
-set wildignore+=*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,*.woff,*.woff3,*.eot,*deps*,*public/css/*,*public/js*
-
-" delimitMate options
-let delimitMate_expand_cr=1
 
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818
@@ -68,17 +59,6 @@ let g:rainbow_conf = {
       \       'css': 0,
       \   }
       \}
-" let g:neoformat_html_prettydiff = {
-"      \ 'exe': 'prettydiff',
-"      \ 'args': ['mode:"beautify"',
-"      \ 'lang:"html"',
-"      \ 'insize:2',
-"      \ 'readmethod:"filescreen"',
-"      \ 'endquietly:"quiet"',
-"      \ 'source:"%:p"'],
-"      \ 'no_append': 1
-"      \ }
-" let g:neoformat_enabled_html = ['prettydiff']
 
 let g:neoformat_wxml_prettydiff = {
       \ 'exe': 'prettydiff2',
@@ -96,14 +76,20 @@ let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
+
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
+"   autocmd BufWritePre *.css,*.less,*scss,*.vue Neoformat
+"   autocmd BufWritePost *.html,*.wxml Neoformat
+" augroup END
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
-  autocmd BufWritePre *.css,*.less,*scss,*.vue Neoformat
-  autocmd BufWritePost *.html,*.wxml Neoformat
+  autocmd BufWritePre * undojoin | Neoformat
 augroup END
 
 " ale plugin
+let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " Write this in your vimrc file
@@ -111,13 +97,15 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
+let g:ale_elixir_elixir_ls_release = '~/elixir_tools/elixir-ls/language_server.sh'
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
-      \   'elixir': ['credo'],
+      \   'elixir': ['credo','elixir-ls'],
       \}
 let g:ale_fixers = {
   \   'scss': ['stylelint'],
+  \   'javascript': ['eslint'],
   \}
 
 " language client
@@ -132,7 +120,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'vue': ['vls']
     \ }
-
+let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -150,24 +138,6 @@ let g:neoterm_position='vertical'
 
 let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/UltiSnips"
 
-let g:tagbar_type_elixir = {
-      \ 'ctagstype' : 'elixir',
-      \ 'kinds' : [
-      \ 'f:functions',
-      \ 'functions:functions',
-      \ 'c:callbacks',
-      \ 'd:delegates',
-      \ 'e:exceptions',
-      \ 'i:implementations',
-      \ 'a:macros',
-      \ 'o:operators',
-      \ 'm:modules',
-      \ 'p:protocols',
-      \ 'r:records',
-      \ 't:tests'
-      \ ]
-      \ }
-
 " markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
@@ -175,45 +145,6 @@ let g:vim_markdown_conceal = 0
 autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
-" emmet support wxapp
-let g:user_emmet_settings = {
-      \ 'wxss': {
-      \   'extends': 'css',
-      \ },
-      \ 'wxml': {
-      \   'extends': 'html',
-      \   'aliases': {
-      \     'div': 'view',
-      \     'span': 'text',
-      \   },
-      \  'default_attributes': {
-      \     'block': [{'wx:for-items': '{{list}}','wx:for-item': '{{item}}'}],
-      \     'navigator': [{'url': '', 'redirect': 'false'}],
-      \     'scroll-view': [{'bindscroll': ''}],
-      \     'swiper': [{'autoplay': 'false', 'current': '0'}],
-      \     'icon': [{'type': 'success', 'size': '23'}],
-      \     'progress': [{'precent': '0'}],
-      \     'button': [{'size': 'default'}],
-      \     'checkbox-group': [{'bindchange': ''}],
-      \     'checkbox': [{'value': '', 'checked': ''}],
-      \     'form': [{'bindsubmit': ''}],
-      \     'input': [{'type': 'text'}],
-      \     'label': [{'for': ''}],
-      \     'picker': [{'bindchange': ''}],
-      \     'radio-group': [{'bindchange': ''}],
-      \     'radio': [{'checked': ''}],
-      \     'switch': [{'checked': ''}],
-      \     'slider': [{'value': ''}],
-      \     'action-sheet': [{'bindchange': ''}],
-      \     'modal': [{'title': ''}],
-      \     'loading': [{'bindchange': ''}],
-      \     'toast': [{'duration': '1500'}],
-      \     'audio': [{'src': ''}],
-      \     'video': [{'src': ''}],
-      \     'image': [{'src': '', 'mode': 'scaleToFill'}],
-      \   }
-      \ },
-      \}
 
 function g:Multiple_cursors_before()
   call deoplete#custom#buffer_option('auto_complete', v:false)

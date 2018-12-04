@@ -13,30 +13,24 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'haya14busa/incsearch.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'mhinz/vim-grepper'
 Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
-" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'kassio/neoterm'
 Plug 'Shougo/context_filetype.vim'
 " editing
 Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
-Plug 'janko-m/vim-test'
 Plug 'moll/vim-bbye'
 
 " Plug 'tpope/vim-commentary'
 Plug 'tyru/caw.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
-" Plug 'tpope/vim-surround'
 Plug 'othree/eregex.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'

@@ -57,7 +57,6 @@ nmap <C-s> <C-a>
 " vim paste mode toggle (for fixing indentation issues when pasting text)
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-set showmode
 
 " override read-only permissions
 cmap w!! %!sudo tee > /dev/null %
@@ -71,15 +70,6 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-
-
-" janko-m/vim-test
-nmap <silent> <Leader>tn :TestNearest<CR> " t Ctrl+n
-nmap <silent> <Leader>tf :TestFile<CR>    " t Ctrl+f
-nmap <silent> <Leader>ts :TestSuite<CR>   " t Ctrl+s
-nmap <silent> <Leader>tl :TestLast<CR>    " t Ctrl+l
-nmap <silent> <Leader>tg :TestVisit<CR>   " t Ctrl+g
 
 " 0:up, 1:down, 2:pgup, 3:pgdown, 4:top, 5:bottom
 function! Tools_PreviousCursor(mode)
