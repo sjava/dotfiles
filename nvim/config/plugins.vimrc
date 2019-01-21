@@ -25,8 +25,8 @@ colorscheme onedark
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818
 let g:sneak#label = 1
-nmap f <Plug>SneakLabel_s
-nmap F <Plug>SneakLabel_S
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
 
 " disable colorizer at startup
 let g:colorizer_startup = 0
@@ -61,15 +61,15 @@ let g:rainbow_conf = {
       \}
 
 let g:neoformat_wxml_prettydiff = {
-      \ 'exe': 'prettydiff2',
-      \ 'args': ['mode:"beautify"',
-      \ 'lang:"html"',
-      \ 'insize:2',
-      \ 'readmethod:"filescreen"',
-      \ 'endquietly:"quiet"',
-      \ 'source:"%:p"'],
-      \ 'no_append': 1
-      \ }
+     \ 'exe': 'prettydiff',
+     \ 'args': ['mode:"beautify"',
+     \ 'lang:"html"',
+     \ 'insize:2',
+     \ 'readmethod:"filescreen"',
+     \ 'endquietly:"quiet"',
+     \ 'source:"%:p"'],
+     \ 'no_append': 1
+     \ }
 let g:neoformat_enabled_wxml = ['prettydiff']
 
 let g:neoformat_enabled_javascript = ['prettier']
@@ -79,14 +79,8 @@ let g:neoformat_enabled_scss = ['prettier']
 
 " augroup fmt
 "   autocmd!
-"   autocmd BufWritePre *.js,*.py,*.ex,*.exs Neoformat
-"   autocmd BufWritePre *.css,*.less,*scss,*.vue Neoformat
-"   autocmd BufWritePost *.html,*.wxml Neoformat
+"   autocmd BufWritePre * undojoin | Neoformat
 " augroup END
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
 
 " ale plugin
 let g:ale_completion_enabled = 0

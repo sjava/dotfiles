@@ -35,6 +35,7 @@ Plug 'othree/eregex.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
 Plug 'justinmk/vim-sneak'
+" Plug 'rhysd/clever-f.vim'
 Plug 'andymass/vim-matchup'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
@@ -96,6 +97,8 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.vim'
+
+Plug 'chr4/nginx.vim'
 
 " wxapp
 Plug 'chemzqm/wxapp.vim'

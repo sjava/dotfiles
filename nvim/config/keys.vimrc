@@ -61,9 +61,6 @@ set pastetoggle=<F2>
 " override read-only permissions
 cmap w!! %!sudo tee > /dev/null %
 
-" allow ,, for vimsneak
-nmap <Leader>, <Plug>SneakPrevious
-
 
 " start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
