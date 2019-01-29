@@ -3,7 +3,7 @@ filetype plugin indent on
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
@@ -11,10 +11,14 @@ call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 call deoplete#custom#source('LanguageClient',
           \ 'min_pattern_length',
           \ 2)
+let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#enable_complete_done = 1
 
 " echodoc
 set noshowmode
-let g:echodoc#enable_at_startup=1
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
+set signcolumn=yes
 
 set background=dark
 
@@ -91,7 +95,12 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '~/elixir_tools/elixir-ls/language_server.sh'
+let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls/language_server.sh'
+let g:ale_elixir_elixir_ls_config={
+      \   'elixirLS': {
+      \     'dialyzerEnabled': v:false,
+      \   },
+      \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
@@ -116,9 +125,23 @@ let g:LanguageClient_serverCommands = {
     \ }
 let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F9> :call LanguageClient_textDocument_rename()<CR>
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F9> :call LanguageClient_textDocument_rename()<CR>
+
+function SetLSPShortcuts()
+  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+  nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+endfunction()
+
 
 
 " choosewin{
