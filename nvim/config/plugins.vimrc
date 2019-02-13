@@ -114,7 +114,7 @@ let g:ale_fixers = {
 " language client
 set hidden
 set signcolumn=yes
-let g:LanguageClient_diagnosticsEnable=1
+let g:LanguageClient_diagnosticsEnable=0
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_hasSnippetSupport=1
 let g:LanguageClient_serverCommands = {
@@ -152,8 +152,6 @@ let g:choosewin_overlay_enable = 1
 " choosewin}
 
 let g:neoterm_position='vertical'
-
-let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/UltiSnips"
 
 " markdown
 let g:vim_markdown_folding_disabled = 1
