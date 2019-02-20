@@ -29,6 +29,10 @@ nnoremap <Leader>w+ <C-w>+
 nnoremap <Leader>ws :split<CR>
 nnoremap <Leader>wv :vsplit<CR>
 nnoremap <Leader>wx :close<CR>
+nnoremap <Leader>wh <C-w>h
+nnoremap <Leader>wl <C-w>l
+nnoremap <Leader>wj <C-w>j
+nnoremap <Leader>wk <C-w>k
 
 " command mode maps
 " better command-line window scrolling with <C-P> & <C-N>
