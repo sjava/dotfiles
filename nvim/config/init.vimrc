@@ -19,7 +19,7 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'mhinz/vim-grepper'
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'Shougo/context_filetype.vim'
 " editing

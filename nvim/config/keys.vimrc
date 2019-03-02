@@ -49,6 +49,7 @@ nnoremap <F3> :set hlsearch!<CR>
 nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
+nnoremap <C-k> :call LanguageClient_contextMenu()<CR>
 
 
 " relative line numbers
