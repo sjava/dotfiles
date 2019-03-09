@@ -51,7 +51,8 @@ nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <Leader>cf :Neoformat<CR>
 nnoremap <Leader>ls :call LanguageClient_contextMenu()<CR>
-nnoremap <Leader>bt :Leaderf bufTag<CR>
+nnoremap <Leader>tb :Leaderf bufTag<CR>
+nnoremap <Leader>tt :Leaderf bufTag<CR>
 
 
 " relative line numbers
