@@ -49,15 +49,13 @@ nnoremap <F3> :set hlsearch!<CR>
 nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
-nnoremap <C-k> :call LanguageClient_contextMenu()<CR>
+nnoremap <Leader>cf :Neoformat<CR>
+nnoremap <Leader>ls :call LanguageClient_contextMenu()<CR>
+nnoremap <Leader>bt :Leaderf bufTag<CR>
 
 
 " relative line numbers
 nnoremap <Leader>3 :NumbersToggle<CR>
-
-
-" remap number increment to C-s (C-a is already in use by tmux)
-nmap <C-s> <C-a>
 
 " vim paste mode toggle (for fixing indentation issues when pasting text)
 nnoremap <F2> :set invpaste paste?<CR>
@@ -65,7 +63,6 @@ set pastetoggle=<F2>
 
 " override read-only permissions
 cmap w!! %!sudo tee > /dev/null %
-
 
 " start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
