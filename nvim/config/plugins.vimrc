@@ -80,6 +80,7 @@ let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
+let g:neoformat_enabled_python = ['black']
 
 " augroup fmt
 "   autocmd!
@@ -122,7 +123,8 @@ let g:LanguageClient_serverCommands = {
     \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'vue': ['vls']
+    \ 'vue': ['vls'],
+    \ 'python': ['~/.local/bin/pyls']
     \ }
 let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 

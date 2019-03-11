@@ -1,5 +1,16 @@
 {
-    "elixirLS": {
-      "dialyzerEnabled": true
-    }
+  "elixirLS": {
+    "dialyzerEnabled": true
+  },
+  "pyls": {
+    "plugins": {
+      "pycodestyle": {
+        "enabled": true
+      }
+    },
+    "configurationSources": [
+      "pycodestyle",
+      "flake8"
+    ]
+  }
 }
