@@ -90,21 +90,22 @@ let g:neoformat_enabled_scss = ['prettier']
 let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" Write this in your vimrc file
+
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls/language_server.sh'
-let g:ale_elixir_elixir_ls_config={
-      \   'elixirLS': {
-      \     'dialyzerEnabled': v:false,
-      \   },
-      \ }
+let g:ale_elixir_elixir_ls_release = '~/elixir_tools/elixir-ls/language_server.sh'
+" let g:ale_elixir_elixir_ls_config={
+"     \   'elixirLS': {
+"     \     'dialyzerEnabled': v:false,
+"     \   },
+"     \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
-      \   'elixir': ['credo','elixir-ls'],
+      \   'elixir': ['elixir-ls','credo'],
       \}
 let g:ale_fixers = {
   \   'scss': ['stylelint'],
