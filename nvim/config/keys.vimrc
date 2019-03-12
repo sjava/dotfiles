@@ -8,7 +8,7 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode noruler
 
 " buffer keys
 nnoremap <Leader>bb :b#<CR>
@@ -50,6 +50,7 @@ nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <Leader>cf :Neoformat<CR>
+nnoremap <Leader>cs :sign unplace *<CR>
 nnoremap <Leader>ls :call LanguageClient_contextMenu()<CR>
 nnoremap <Leader>tb :Leaderf bufTag<CR>
 nnoremap <Leader>tf :Leaderf function<CR>
@@ -110,7 +111,7 @@ inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 :tnoremap <Esc> <C-\><C-n>
 
 inoremap <C-l> <Esc>A
-inoremap <C-a> <Esc>I
+inoremap <C-f> <Esc>I
 imap jj <Esc>
 nmap <Leader>p "+p
 vmap <Leader>y "+y

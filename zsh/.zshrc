@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias nvim="TERM=xterm-256color nvim"
+# alias nvim="MIX_ENV=editor nvim"
 alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_PREFER_DARK_THEME=1 NVIM_GTK_NO_WINDOW_DECORATION=1 nvim-gtk"
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 

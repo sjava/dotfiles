@@ -98,10 +98,10 @@ nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
 let g:ale_elixir_elixir_ls_release = '~/elixir_tools/elixir-ls/language_server.sh'
 " let g:ale_elixir_elixir_ls_config={
-"     \   'elixirLS': {
-"     \     'dialyzerEnabled': v:false,
-"     \   },
-"     \ }
+"    \   'elixirLS': {
+"    \     'dialyzerEnabled': v:false,
+"    \   },
+"    \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
