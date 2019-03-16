@@ -36,12 +36,11 @@ nnoremap <Leader>wk <C-w>k
 
 " command mode maps
 " better command-line window scrolling with <C-P> & <C-N>
-" cnoremap <C-p> <Up>
-" cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " %% to expand active buffer location on cmdline
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
 
 " Function keys
 nnoremap <silent> <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -49,15 +48,6 @@ nnoremap <F3> :set hlsearch!<CR>
 nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
-nnoremap <Leader>cf :Neoformat<CR>
-nnoremap <Leader>cs :sign unplace *<CR>
-nnoremap <Leader>ls :call LanguageClient_contextMenu()<CR>
-nnoremap <Leader>tb :Leaderf bufTag<CR>
-nnoremap <Leader>tf :Leaderf function<CR>
-
-
-" relative line numbers
-nnoremap <Leader>3 :NumbersToggle<CR>
 
 " vim paste mode toggle (for fixing indentation issues when pasting text)
 nnoremap <F2> :set invpaste paste?<CR>
@@ -66,87 +56,91 @@ set pastetoggle=<F2>
 " override read-only permissions
 cmap w!! %!sudo tee > /dev/null %
 
-" start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" 0:up, 1:down, 2:pgup, 3:pgdown, 4:top, 5:bottom
-function! Tools_PreviousCursor(mode)
-  if winnr('$') <= 1
-    return
-  endif
-  noautocmd silent! wincmd p
-  if a:mode == 0
-    exec "normal! \<c-y>"
-  elseif a:mode == 1
-    exec "normal! \<c-e>"
-  elseif a:mode == 2
-    exec "normal! ".winheight('.')."\<c-y>"
-  elseif a:mode == 3
-    exec "normal! ".winheight('.')."\<c-e>"
-  elseif a:mode == 4
-    normal! gg
-  elseif a:mode == 5
-    normal! G
-  elseif a:mode == 6
-    exec "normal! \<c-u>"
-  elseif a:mode == 7
-    exec "normal! \<c-d>"
-  elseif a:mode == 8
-    exec "normal! k"
-  elseif a:mode == 9
-    exec "normal! j"
-  endif
-  noautocmd silent! wincmd p
-endfunc
-
-noremap <silent><M-u> :call Tools_PreviousCursor(6)<cr>
-noremap <silent><M-d> :call Tools_PreviousCursor(7)<cr>
-inoremap <silent><M-u> <c-\><c-o>:call Tools_PreviousCursor(6)<cr>
-inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
-
 " terminal return normal mode
-:tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 
 inoremap <C-l> <Esc>A
 inoremap <C-f> <Esc>I
 imap jj <Esc>
 nmap <Leader>p "+p
 vmap <Leader>y "+y
-nmap j gj
-nmap k gk
-vmap j gj
-vmap k gk
 
-" nvim-send-to-term key bind
-let g:send_disable_mapping=1
-nmap <Leader>sl <Plug>SendLine
-nmap <Leader>ss <Plug>Send
-vmap <Leader>ss <Plug>Send
-nmap <leader>se s$
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-y>" : "\<CR>")
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-j>     <Plug>(neosnippet_expand_target)
+" Use <c-space> for trigger completion.
+" inoremap <silent><expr> <c-space> coc#refresh()
 
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
-\ pumvisible() ? "\<C-n>" :
-\ neosnippet#expandable_or_jumpable() ?
-\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-xmap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Show all buffers
+nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show files
+nnoremap <silent> <space>f  :<C-u>CocList files<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+" choosewin{
+" invoke with '-'
+nmap  -  <Plug>(choosewin)
+" if you want to use overlay feature
+let g:choosewin_overlay_enable = 1
+" choosewin}

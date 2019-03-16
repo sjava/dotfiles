@@ -1,0 +1,67 @@
+priority -40
+
+extends html
+
+snippet # "<%# %>" w
+<%# $0 %>
+endsnippet
+
+snippet rnd "render" w
+<%= render "${1:partial}.html", ${0:local_var: @local} %>
+endsnippet
+
+snippet if
+<%= if $1 do %>
+	$0
+<% end %>
+endsnippet
+
+snippet ife "if else" w
+<%= if $1 do %>
+	$2
+<% else %>
+	$0
+<% end %>
+endsnippet
+
+snippet unless
+<%= unless $1 do %>
+	$0
+<% end %>
+endsnippet
+
+snippet cond
+<%= cond do %>
+	$0
+<% end %>
+endsnippet
+
+snippet ff "form_for" w
+<%= form_for @${1:changeset}, ${2:url}, ${3:[]}, fn f -> %>
+	$0
+<% end %>
+endsnippet
+
+snippet et "error_tag" w
+<%= error_tag ${1:f}, :${2:field} %>
+endsnippet
+
+snippet la "label" w
+<%= label ${1:f}, :${2:field}, ${3:"Text"} %>
+endsnippet
+
+snippet ti "text_input" w
+<%= text_input ${1:f}, :${2:field} %>
+endsnippet
+
+snippet ni "number_input" w
+<%= number_input ${1:f}, :${2:field} %>
+endsnippet
+
+snippet pi "password_input" w
+<%= password_input ${1:f}, :${2:field} %>
+endsnippet
+
+snippet sbt "submit" w
+<%= submit ${1:Text} %>
+endsnippet
