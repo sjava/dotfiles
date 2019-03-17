@@ -3,13 +3,6 @@
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 
-" vim-which-key
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode noruler
-
 " buffer keys
 nnoremap <Leader>bb :b#<CR>
 nnoremap <Leader>bn :bn<CR>
@@ -20,7 +13,8 @@ nnoremap <Leader>bw :w<CR>:bd<CR>
 nnoremap <Leader>bd :Bwipeout<CR>
 " new buffer/tab
 nnoremap <Leader>e :enew<CR>
-
+" format code
+nnoremap <Leader>\ :Neoformat<CR>
 " window keys
 nnoremap <Leader>w< <C-w><
 nnoremap <Leader>w> <C-w>>
@@ -33,6 +27,8 @@ nnoremap <Leader>wh <C-w>h
 nnoremap <Leader>wl <C-w>l
 nnoremap <Leader>wj <C-w>j
 nnoremap <Leader>wk <C-w>k
+" leaderf buffer tag
+nnoremap <Leader>o :LeaderfBufTag<CR>
 
 " command mode maps
 " better command-line window scrolling with <C-P> & <C-N>
@@ -119,15 +115,15 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Show all buffers
-nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
+" nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show files
-nnoremap <silent> <space>f  :<C-u>CocList files<cr>
+" nnoremap <silent> <space>f  :<C-u>CocList files<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.

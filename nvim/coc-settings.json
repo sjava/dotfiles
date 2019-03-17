@@ -21,7 +21,9 @@
             "Version": "3.6.4"
           }
         }
-      }
-    },
-  }
+      },
+      "searchPaths": ["/home/zyb/.pyenv/versions/3.6.4/envs/myapp/bin;/home/zyb/.pyenv/versions/3.6.4/lib/python36.zip;/home/zyb/.pyenv/versions/3.6.4/lib/python3.6;/home/zyb/.pyenv/versions/3.6.4/lib/python3.6/lib-dynload;/home/zyb/.pyenv/versions/3.6.4/envs/myapp/lib/python3.6/site-packages;/home/zyb/.pyenv/versions/3.6.4/envs/myapp/lib/python3.6/site-packages/IPython/extensions"]
+    }
+  },
+  "coc.preferences.triggerCompletionWait": 2000
 }

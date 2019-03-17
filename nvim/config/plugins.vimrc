@@ -1,8 +1,10 @@
 filetype plugin indent on
 
-set background=dark
-let g:onedark_terminal_italics=1
-colorscheme onedark
+" set background=dark
+" let g:onedark_terminal_italics=1
+" colorscheme onedark
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818
