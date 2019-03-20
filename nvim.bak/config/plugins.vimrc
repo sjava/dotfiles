@@ -11,8 +11,13 @@ call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 call deoplete#custom#source('LanguageClient',
           \ 'min_pattern_length',
           \ 2)
+
 let g:neocomplete#enable_at_startup = 1
 let g:neosnippet#enable_complete_done = 1
+let g:neosnippet#enable_snipmate_compatibility = 1
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " echodoc
 set noshowmode
@@ -96,16 +101,16 @@ let g:ale_lint_on_enter = 0
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '~/elixir_tools/elixir-ls/language_server.sh'
+" let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dist/language_server.sh'
 " let g:ale_elixir_elixir_ls_config={
-"    \   'elixirLS': {
-"    \     'dialyzerEnabled': v:false,
-"    \   },
-"    \ }
+"   \   'elixirLS': {
+"   \     'dialyzerEnabled': v:false,
+"   \   },
+"   \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
-      \   'elixir': ['elixir-ls','credo'],
+      \   'elixir': ['credo'],
       \}
 let g:ale_fixers = {
   \   'scss': ['stylelint'],
@@ -120,7 +125,7 @@ let g:LanguageClient_diagnosticsEnable=1
 let g:LanguageClient_completionPreferTextEdit=1
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['~/elixir_tools/elixir-ls/language_server.sh'],
+    \ 'elixir': ['~/tools/elixir-ls/dist/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'vue': ['vls']

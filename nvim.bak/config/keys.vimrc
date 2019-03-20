@@ -33,6 +33,7 @@ nnoremap <Leader>wh <C-w>h
 nnoremap <Leader>wl <C-w>l
 nnoremap <Leader>wj <C-w>j
 nnoremap <Leader>wk <C-w>k
+nnoremap <Leader>ww :w<CR>
 
 " command mode maps
 " better command-line window scrolling with <C-P> & <C-N>
@@ -49,11 +50,9 @@ nnoremap <F3> :set hlsearch!<CR>
 nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
-nnoremap <Leader>cf :Neoformat<CR>
-nnoremap <Leader>cs :sign unplace *<CR>
+nnoremap <Leader>\ :Neoformat<CR>
 nnoremap <Leader>ls :call LanguageClient_contextMenu()<CR>
-nnoremap <Leader>tb :Leaderf bufTag<CR>
-nnoremap <Leader>tf :Leaderf function<CR>
+nnoremap <Leader>o :Leaderf function<CR>
 
 
 " relative line numbers
@@ -66,11 +65,6 @@ set pastetoggle=<F2>
 " override read-only permissions
 cmap w!! %!sudo tee > /dev/null %
 
-" start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
 " 0:up, 1:down, 2:pgup, 3:pgdown, 4:top, 5:bottom
 function! Tools_PreviousCursor(mode)
