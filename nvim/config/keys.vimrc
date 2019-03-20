@@ -27,6 +27,7 @@ nnoremap <Leader>wh <C-w>h
 nnoremap <Leader>wl <C-w>l
 nnoremap <Leader>wj <C-w>j
 nnoremap <Leader>wk <C-w>k
+nnoremap <Leader>ww :w<CR>
 " leaderf buffer tag
 nnoremap <Leader>o :LeaderfBufTag<CR>
 

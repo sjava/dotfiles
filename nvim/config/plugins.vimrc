@@ -56,6 +56,7 @@ let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
+let g:neoformat_enabled_python = ['black']
 
 " ale plugin
 let g:ale_completion_enabled = 0
