@@ -23,7 +23,6 @@ Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'Shougo/context_filetype.vim'
 " editing
-Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
 
