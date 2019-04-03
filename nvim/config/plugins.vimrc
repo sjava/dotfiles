@@ -39,7 +39,7 @@ let g:rainbow_conf = {
       \       'css': 0,
       \   }
       \}
-
+let g:coc_force_debug = 1
 let g:neoformat_wxml_prettydiff = {
      \ 'exe': 'prettydiff',
      \ 'args': ['mode:"beautify"',
@@ -87,3 +87,48 @@ let g:ale_fixers = {
 autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
+let cmdline_app           = {}
+let cmdline_app['python'] = 'ptipython'
+let cmdline_vsplit      = 1
+let cmdline_term_width  = 80
+if has('gui_running') || &termguicolors
+    let cmdline_color_input    = '#9e9e9e'
+    let cmdline_color_normal   = '#00afff'
+    let cmdline_color_number   = '#00ffff'
+    let cmdline_color_integer  = '#00ffff'
+    let cmdline_color_float    = '#00ffff'
+    let cmdline_color_complex  = '#00ffff'
+    let cmdline_color_negnum   = '#d7afff'
+    let cmdline_color_negfloat = '#d7afff'
+    let cmdline_color_date     = '#00d7af'
+    let cmdline_color_true     = '#5fd787'
+    let cmdline_color_false    = '#ff5f5f'
+    let cmdline_color_inf      = '#00afff'
+    let cmdline_color_constant = '#5fafff'
+    let cmdline_color_string   = '#5fd7af'
+    let cmdline_color_stderr   = '#0087ff'
+    let cmdline_color_error    = '#ff0000'
+    let cmdline_color_warn     = '#c0ffff'
+    let cmdline_color_index    = '#d7d787'
+elseif &t_Co == 256
+    let cmdline_color_input    = 247
+    let cmdline_color_normal   =  39
+    let cmdline_color_number   =  51
+    let cmdline_color_integer  =  51
+    let cmdline_color_float    =  51
+    let cmdline_color_complex  =  51
+    let cmdline_color_negnum   = 183
+    let cmdline_color_negfloat = 183
+    let cmdline_color_date     =  43
+    let cmdline_color_true     =  78
+    let cmdline_color_false    = 203
+    let cmdline_color_inf      =  39
+    let cmdline_color_constant =  75
+    let cmdline_color_string   =  79
+    let cmdline_color_stderr   =  33
+    let cmdline_color_error    =  15
+    let cmdline_color_warn     =   1
+    let cmdline_color_index    = 186
+endif
+let cmdline_color_error = 'ctermfg=1 ctermbg=15 guifg=#c00000 guibg=#ffffff gui=underline term=underline'
+let cmdline_follow_colorscheme = 1
