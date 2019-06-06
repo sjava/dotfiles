@@ -3,9 +3,11 @@ filetype plugin indent on
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
+let g:deoplete#look#words = '~/.config/nvim/10K.txt'
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
+let g:float_preview#docked = 1
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 call deoplete#custom#source('LanguageClient',
@@ -25,10 +27,11 @@ let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
 set signcolumn=yes
 
-set background=dark
-
-let g:onedark_terminal_italics=1
-colorscheme onedark
+" set background=dark
+" let g:onedark_terminal_italics=1
+" colorscheme onedark
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 
 " vim-sneak settings
@@ -96,21 +99,21 @@ let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_enter = 0
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-" let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dist/language_server.sh'
-" let g:ale_elixir_elixir_ls_config={
-"   \   'elixirLS': {
-"   \     'dialyzerEnabled': v:false,
-"   \   },
-"   \ }
+let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dist/'
+let g:ale_elixir_elixir_ls_config={
+     \   "elixirLS": {
+     \     "dialyzerEnabled": v:false
+     \   }
+     \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
-      \   'elixir': ['credo'],
+      \   'elixir': ['credo','elixir-ls'],
       \}
 let g:ale_fixers = {
   \   'scss': ['stylelint'],
@@ -121,7 +124,7 @@ let g:ale_fixers = {
 set hidden
 set signcolumn=yes
 let g:LanguageClient_hasSnippetSupport=1
-let g:LanguageClient_diagnosticsEnable=1
+let g:LanguageClient_diagnosticsEnable=0
 let g:LanguageClient_completionPreferTextEdit=1
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
@@ -151,9 +154,23 @@ let g:vue_disable_pre_processors=1
 " vim-which-key
 let g:which_key_use_floating_win=1
 
-function g:Multiple_cursors_before()
-  call deoplete#custom#buffer_option('auto_complete', v:false)
-endfunction
-function g:Multiple_cursors_after()
-  call deoplete#custom#buffer_option('auto_complete', v:true)
-endfunction
+" function g:Multiple_cursors_before()
+"   call deoplete#custom#buffer_option('auto_complete', v:false)
+" endfunction
+" function g:Multiple_cursors_after()
+"   call deoplete#custom#buffer_option('auto_complete', v:true)
+" endfunction
+
+func! Multiple_cursors_before()
+  if deoplete#is_enabled()
+    call deoplete#disable()
+    let g:deoplete_is_enable_before_multi_cursors = 1
+  else
+    let g:deoplete_is_enable_before_multi_cursors = 0
+  endif
+endfunc
+func! Multiple_cursors_after()
+  if g:deoplete_is_enable_before_multi_cursors
+    call deoplete#enable()
+  endif
+endfunc

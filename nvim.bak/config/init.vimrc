@@ -67,6 +67,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'ncm2/float-preview.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'nixprime/cpsm'
@@ -93,6 +94,7 @@ Plug 'kana/vim-textobj-function'
 " python
 Plug 'zchee/deoplete-jedi'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'ujihisa/neco-look'
 " Plug 'ujihisa/neco-look'
 " Plug 'wellle/tmux-complete.vim'
 
@@ -107,4 +109,5 @@ Plug 'chemzqm/wxapp.vim'
 
 " xml
 Plug 'othree/xml.vim'
+Plug 'rhysd/reply.vim'
 call plug#end()

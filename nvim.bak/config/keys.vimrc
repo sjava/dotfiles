@@ -107,6 +107,7 @@ inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 inoremap <C-l> <Esc>A
 inoremap <C-f> <Esc>I
 imap jj <Esc>
+inoremap <C-S-v> <Esc>"+pA
 nmap <Leader>p "+p
 vmap <Leader>y "+y
 nmap j gj
@@ -125,7 +126,8 @@ inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-y>" : "\<CR>")
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+" imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+imap <C-j>     <C-e><Plug>(neosnippet_expand_or_jump)
 smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
 
@@ -144,3 +146,12 @@ xmap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+nnoremap <LocalLeader>s :Repl<CR>
+nnoremap <LocalLeader>t :ReplStop<CR>
+nnoremap <Space> :ReplSend<CR>
+vnoremap <Space> :'<,'>ReplSend<CR>
+nnoremap <LocalLeader>r :ReplRecv<CR>
+vnoremap <LocalLeader>r :'<,'>ReplRecv<CR>
+nnoremap <LocalLeader>a :ReplAuto<CR>
+
