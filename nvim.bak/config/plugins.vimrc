@@ -174,3 +174,9 @@ func! Multiple_cursors_after()
     call deoplete#enable()
   endif
 endfunc
+
+" leaderf ignore dir
+let g:Lf_WildIgnore = {
+      \ 'dir': ['node_modules'],
+      \ 'file': []
+      \}
