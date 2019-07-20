@@ -5,7 +5,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 
 " auto complete and lsp
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " status line
 Plug 'vim-airline/vim-airline'
@@ -47,14 +48,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 "
 " " other
-" Plug 'mattn/emmet-vim'
-" Plug 'othree/html5.vim'
-" Plug 'hail2u/vim-css3-syntax'
-" Plug 'othree/csscomplete.vim'
-" Plug 'groenewege/vim-less'
 Plug 't9md/vim-choosewin'
-" Plug 'chrisbra/unicode.vim'
 Plug 'mhinz/vim-startify'
+Plug 'jalvesaq/vimcmdline'
 "
 " text objects
 Plug 'wellle/targets.vim'

@@ -1,0 +1,13 @@
+{
+  "elixirLS": {
+    "dialyzerEnabled": true
+  },
+  "pyls": {
+    "plugins": {
+      "pycodestyle": {
+        "enabled": false
+      }
+    },
+    "configurationSources": []
+  }
+}

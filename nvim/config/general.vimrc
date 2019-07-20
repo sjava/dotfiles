@@ -122,8 +122,7 @@ set hid " buffer becomes hidden when abandoned
 set clipboard+=unnamed
 
 " set py3 host prog
-let g:python3_host_prog = "/home/zyb/.pyenv/versions/myapp/bin/python3"
-let g:python2_host_prog = "/usr/bin/python"
+let g:python3_host_prog = "/usr/bin/python"
 
 " Better display for messages
 set cmdheight=1

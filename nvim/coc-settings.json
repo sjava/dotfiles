@@ -9,22 +9,10 @@
         }
       }
     },
-    "MPLS": {
-      "command": "dotnet",
-      "args": ["exec", "/usr/lib/microsoft-python-language-server/Microsoft.Python.LanguageServer.dll"],
-      "filetypes": ["python"],
-      "initializationOptions": {
-        "interpreter": {
-          "properties": {
-            "InterpreterPath": "/home/zyb/.pyenv/versions/myapp/bin/python3",
-            "UseDefaultDatabase": true,
-            "Version": "3.6.4"
-          }
-        },
-        "searchPaths": ["/home/zyb/.pyenv/versions/3.6.4/envs/myapp/bin;/home/zyb/.pyenv/versions/3.6.4/lib/python36.zip;/home/zyb/.pyenv/versions/3.6.4/lib/python3.6;/home/zyb/.pyenv/versions/3.6.4/lib/python3.6/lib-dynload;/home/zyb/.pyenv/versions/3.6.4/envs/myapp/lib/python3.6/site-packages;/home/zyb/.pyenv/versions/3.6.4/envs/myapp/lib/python3.6/site-packages/IPython/extensions"]
-      },
-    }
   },
   "suggest.triggerCompletionWait": 300,
-  "suggest.timeout": 5000
+  "suggest.timeout": 5000,
+  "python.jediEnabled": true,
+  "python.linting.enabled": false,
+  "python.pythonPath": "/home/zyb/.local/share/virtualenvs/demo-TmdH2FI_/bin/python"
 }
