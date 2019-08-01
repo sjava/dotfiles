@@ -180,3 +180,8 @@ let g:Lf_WildIgnore = {
       \ 'dir': ['node_modules'],
       \ 'file': []
       \}
+
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 500,
+\ 'max_num_results': 20,
+\ })

@@ -10,6 +10,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 Plug 'Shougo/neosnippet.vim'
