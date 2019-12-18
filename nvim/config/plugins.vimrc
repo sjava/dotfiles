@@ -1,16 +1,48 @@
 filetype plugin indent on
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#disable_auto_complete = 0
+let g:deoplete#look#words = '~/.config/nvim/10K.txt'
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set shortmess+=c
+set completeopt-=preview
+let g:float_preview#docked = 1
+call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
+call deoplete#custom#option('ignore_sources', {'_': ['tag']})
+call deoplete#custom#source('LanguageClient',
+          \ 'min_pattern_length',
+          \ 2)
+
+let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#enable_complete_done = 1
+let g:neosnippet#enable_snipmate_compatibility = 1
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" echodoc
+set noshowmode
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
+set signcolumn=yes
+
 " set background=dark
 " let g:onedark_terminal_italics=1
 " colorscheme onedark
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
+
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818
 let g:sneak#label = 1
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
+
+" disable colorizer at startup
+let g:colorizer_startup = 0
+let g:colorizer_nomap = 1
 
 " rainbow
 let g:rainbow_active = 1
@@ -39,7 +71,7 @@ let g:rainbow_conf = {
       \       'css': 0,
       \   }
       \}
-let g:coc_force_debug = 1
+
 let g:neoformat_wxml_prettydiff = {
      \ 'exe': 'prettydiff',
      \ 'args': ['mode:"beautify"',
@@ -56,79 +88,100 @@ let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
-let g:neoformat_enabled_python = ['black']
+
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+" augroup END
 
 " ale plugin
 let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_enter = 0
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-" let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dist'
-" let g:ale_elixir_elixir_ls_config= {
-"      \   'elixirLS': {
-"      \     'dialyzerEnabled': v:false,
-"      \   },
-"      \ }
+let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dist/'
+let g:ale_elixir_elixir_ls_config={
+     \   "elixirLS": {
+     \     "dialyzerEnabled": v:false
+     \   }
+     \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
-      \   'elixir': ['elixir-ls','credo'],
+      \   'elixir': ['credo','elixir-ls'],
       \}
 let g:ale_fixers = {
   \   'scss': ['stylelint'],
   \   'javascript': ['eslint'],
   \}
 
+" language client
+set hidden
+set signcolumn=yes
+let g:LanguageClient_hasSnippetSupport=1
+let g:LanguageClient_diagnosticsEnable=0
+let g:LanguageClient_completionPreferTextEdit=1
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'elixir': ['~/tools/elixir-ls/dist/language_server.sh'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'vue': ['vls']
+    \ }
+let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
+
+" choosewin{
+" invoke with '-'
+nmap  -  <Plug>(choosewin)
+" if you want to use overlay feature
+let g:choosewin_overlay_enable = 1
+" choosewin}
+
+let g:neoterm_position='vertical'
+
+" markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+
 autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
-let cmdline_app           = {}
-let cmdline_app['python'] = 'ptipython'
-let cmdline_vsplit      = 1
-let cmdline_term_width  = 80
-if has('gui_running') || &termguicolors
-    let cmdline_color_input    = '#9e9e9e'
-    let cmdline_color_normal   = '#00afff'
-    let cmdline_color_number   = '#00ffff'
-    let cmdline_color_integer  = '#00ffff'
-    let cmdline_color_float    = '#00ffff'
-    let cmdline_color_complex  = '#00ffff'
-    let cmdline_color_negnum   = '#d7afff'
-    let cmdline_color_negfloat = '#d7afff'
-    let cmdline_color_date     = '#00d7af'
-    let cmdline_color_true     = '#5fd787'
-    let cmdline_color_false    = '#ff5f5f'
-    let cmdline_color_inf      = '#00afff'
-    let cmdline_color_constant = '#5fafff'
-    let cmdline_color_string   = '#5fd7af'
-    let cmdline_color_stderr   = '#0087ff'
-    let cmdline_color_error    = '#ff0000'
-    let cmdline_color_warn     = '#c0ffff'
-    let cmdline_color_index    = '#d7d787'
-elseif &t_Co == 256
-    let cmdline_color_input    = 247
-    let cmdline_color_normal   =  39
-    let cmdline_color_number   =  51
-    let cmdline_color_integer  =  51
-    let cmdline_color_float    =  51
-    let cmdline_color_complex  =  51
-    let cmdline_color_negnum   = 183
-    let cmdline_color_negfloat = 183
-    let cmdline_color_date     =  43
-    let cmdline_color_true     =  78
-    let cmdline_color_false    = 203
-    let cmdline_color_inf      =  39
-    let cmdline_color_constant =  75
-    let cmdline_color_string   =  79
-    let cmdline_color_stderr   =  33
-    let cmdline_color_error    =  15
-    let cmdline_color_warn     =   1
-    let cmdline_color_index    = 186
-endif
-let cmdline_color_error = 'ctermfg=1 ctermbg=15 guifg=#c00000 guibg=#ffffff gui=underline term=underline'
-let cmdline_follow_colorscheme = 1
+" vim-which-key
+let g:which_key_use_floating_win=1
+
+" function g:Multiple_cursors_before()
+"   call deoplete#custom#buffer_option('auto_complete', v:false)
+" endfunction
+" function g:Multiple_cursors_after()
+"   call deoplete#custom#buffer_option('auto_complete', v:true)
+" endfunction
+
+func! Multiple_cursors_before()
+  if deoplete#is_enabled()
+    call deoplete#disable()
+    let g:deoplete_is_enable_before_multi_cursors = 1
+  else
+    let g:deoplete_is_enable_before_multi_cursors = 0
+  endif
+endfunc
+func! Multiple_cursors_after()
+  if g:deoplete_is_enable_before_multi_cursors
+    call deoplete#enable()
+  endif
+endfunc
+
+" leaderf ignore dir
+let g:Lf_WildIgnore = {
+      \ 'dir': ['node_modules'],
+      \ 'file': []
+      \}
+
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 500,
+\ 'max_num_results': 20,
+\ })
