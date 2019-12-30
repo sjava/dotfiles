@@ -78,6 +78,8 @@ set nrformats-=octal
 set ttimeout
 set ttimeoutlen=100
 
+" detect .md as markdown instead of modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Unix as standard file type
 set ffs=unix,dos,mac
@@ -117,44 +119,14 @@ set sessionoptions-=options
 
 " buffer settings
 set hid " buffer becomes hidden when abandoned
+set signcolumn=yes
+" stop highlighting of underscores in markdown files
+autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown :syntax match markdownIgnore "_"
 
 " clipboard
 set clipboard+=unnamed
 
 " set py3 host prog
-let g:python3_host_prog = "/usr/bin/python"
+let g:python3_host_prog = "/home/zyb/.pyenv/versions/myapp/bin/python3"
+let g:python2_host_prog = "/usr/bin/python"
 
-" Better display for messages
-set cmdheight=1
-set noshowmode
-
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" always display statusline
-set laststatus=2
-
-
-" Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for format selected region
-" vmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-autocmd FileType json syntax match Comment +\/\/.\+$+

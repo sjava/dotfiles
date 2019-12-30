@@ -4,78 +4,111 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 
-" auto complete and lsp
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
-" status line
-Plug 'vim-airline/vim-airline'
-" format table
-Plug 'dhruvasagar/vim-table-mode'
-" preview css color
-Plug 'ap/vim-css-color'
-" " general
+" general
 Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc'
+Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'honza/vim-snippets'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'christoomey/vim-tmux-navigator'
 Plug 'mhinz/vim-grepper'
 Plug 'luochen1990/rainbow'
+Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'Shougo/context_filetype.vim'
-" " editing
+" editing
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
+
+" Plug 'tpope/vim-commentary'
 Plug 'tyru/caw.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
 Plug 'othree/eregex.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
 Plug 'justinmk/vim-sneak'
+" Plug 'rhysd/clever-f.vim'
 Plug 'andymass/vim-matchup'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
 Plug 'jsfaint/gen_tags.vim'
+Plug 'xolox/vim-misc'
+Plug 'MaicoTimmerman/Vim-Jinja2-Syntax'
+Plug 'fisadev/vim-isort'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/fcitx.vim'
+
+" eye candy
 Plug 'myusuf3/numbers.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" javascript
+Plug 'moll/vim-node'
 Plug 'posva/vim-vue'
+Plug 'pangloss/vim-javascript'
+
+
 " elixir
 Plug 'elixir-editors/vim-elixir'
+Plug 'thinca/vim-ref'
+" Plug 'slashmili/alchemist.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'ncm2/float-preview.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-"
-" " other
+" Plug 'nixprime/cpsm'
+
+" other
+Plug 'mattn/emmet-vim'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'othree/csscomplete.vim'
+Plug 'groenewege/vim-less'
 Plug 't9md/vim-choosewin'
+Plug 'chrisbra/unicode.vim'
 Plug 'mhinz/vim-startify'
-Plug 'jalvesaq/vimcmdline'
-"
+
 " text objects
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-brace'
 Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-fold'
+Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
-Plug 'andyl/vim-textobj-elixir'
-"
-" " python
-" Plug 'zchee/deoplete-jedi'
-" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-" " Plug 'ujihisa/neco-look'
-" " Plug 'wellle/tmux-complete.vim'
-"
-" " markdown
-" Plug 'plasticboy/vim-markdown'
-" Plug 'iamcco/markdown-preview.vim'
+
+" python
+Plug 'zchee/deoplete-jedi'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'ujihisa/neco-look'
+" Plug 'ujihisa/neco-look'
+" Plug 'wellle/tmux-complete.vim'
+
+" markdown
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.vim'
 
 Plug 'chr4/nginx.vim'
 
 " wxapp
 Plug 'chemzqm/wxapp.vim'
-"
+
 " xml
 Plug 'othree/xml.vim'
+Plug 'rhysd/reply.vim'
 call plug#end()
