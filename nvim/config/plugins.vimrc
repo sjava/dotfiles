@@ -13,6 +13,19 @@ call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 call deoplete#custom#source('LanguageClient',
           \ 'min_pattern_length',
           \ 2)
+call deoplete#custom#source('tabnine',
+          \ 'rank',
+          \ 100)
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 500,
+\ 'max_num_results': 20,
+\ })
+
+" context_filetype
+if !exists('g:context_filetype#same_filetypes')
+  let g:context_filetype#same_filetypes = {}
+endif
+let g:context_filetype#same_filetypes._ = '_'
 
 let g:neocomplete#enable_at_startup = 1
 let g:neosnippet#enable_complete_done = 1
@@ -101,10 +114,11 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " let g:ale_lint_on_text_changed = 'never'
 " let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dist/'
+let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls'
 let g:ale_elixir_elixir_ls_config={
      \   "elixirLS": {
      \     "dialyzerEnabled": v:false
@@ -128,7 +142,7 @@ let g:LanguageClient_diagnosticsEnable=0
 let g:LanguageClient_completionPreferTextEdit=1
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['~/tools/elixir-ls/dist/language_server.sh'],
+    \ 'elixir': ['/home/zyb/elixir_tools/elixir-ls/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'vue': ['vls']
@@ -180,8 +194,3 @@ let g:Lf_WildIgnore = {
       \ 'dir': ['node_modules'],
       \ 'file': []
       \}
-
-call deoplete#custom#var('tabnine', {
-\ 'line_limit': 500,
-\ 'max_num_results': 20,
-\ })
