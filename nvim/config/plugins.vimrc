@@ -85,17 +85,24 @@ let g:rainbow_conf = {
       \   }
       \}
 
-let g:neoformat_wxml_prettydiff = {
-     \ 'exe': 'prettydiff',
-     \ 'args': ['mode:"beautify"',
-     \ 'lang:"html"',
-     \ 'insize:2',
-     \ 'readmethod:"filescreen"',
-     \ 'endquietly:"quiet"',
-     \ 'source:"%:p"'],
-     \ 'no_append': 1
-     \ }
-let g:neoformat_enabled_wxml = ['prettydiff']
+" let g:neoformat_wxml_prettydiff = {
+"     \ 'exe': 'prettydiff',
+"     \ 'args': ['mode:"beautify"',
+"     \ 'lang:"html"',
+"     \ 'insize:2',
+"     \ 'readmethod:"filescreen"',
+"     \ 'endquietly:"quiet"',
+"     \ 'source:"%:p"'],
+"     \ 'no_append': 1
+"     \ }
+" let g:neoformat_enabled_wxml = ['prettydiff']
+let g:neoformat_wxml_htmlbeautify ={
+            \ 'exe': 'html-beautify',
+            \ 'args': ['--indent-size ' .shiftwidth(),
+            \ '-A force-aligned'],
+            \ 'stdin': 1,
+            \ }
+let g:neoformat_enabled_wxml = ['htmlbeautify']
 
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
