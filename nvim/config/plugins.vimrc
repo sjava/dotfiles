@@ -40,6 +40,10 @@ let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
 set signcolumn=yes
 
+" gen_tags
+" let g:gen_tags#ctags_auto_gen = 1
+" let g:gen_tags#statusline = 1
+
 " set background=dark
 " let g:onedark_terminal_italics=1
 " colorscheme onedark
@@ -174,13 +178,6 @@ let g:vue_disable_pre_processors=1
 
 " vim-which-key
 let g:which_key_use_floating_win=1
-
-" function g:Multiple_cursors_before()
-"   call deoplete#custom#buffer_option('auto_complete', v:false)
-" endfunction
-" function g:Multiple_cursors_after()
-"   call deoplete#custom#buffer_option('auto_complete', v:true)
-" endfunction
 
 func! Multiple_cursors_before()
   if deoplete#is_enabled()
