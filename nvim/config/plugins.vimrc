@@ -1,4 +1,7 @@
 filetype plugin indent on
+:lua << END
+  require'nvim_lsp'.elixirls.setup{}
+END
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -7,12 +10,12 @@ let g:deoplete#look#words = '~/.config/nvim/10K.txt'
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
-let g:float_preview#docked = 1
+let g:float_preview#docked = 0
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
-call deoplete#custom#option('ignore_sources', {'_': ['tag']})
-call deoplete#custom#source('LanguageClient',
-          \ 'min_pattern_length',
-          \ 2)
+call deoplete#custom#option('ignore_sources', {'_': ['tag','ale']})
+" call deoplete#custom#source('LanguageClient',
+"          \ 'min_pattern_length',
+"          \ 2)
 call deoplete#custom#source('tabnine',
           \ 'rank',
           \ 100)
@@ -123,18 +126,18 @@ let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 0
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls'
+let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls/release'
 let g:ale_elixir_elixir_ls_config={
-     \   "elixirLS": {
-     \     "dialyzerEnabled": v:false
-     \   }
-     \ }
+    \   "elixirLS": {
+    \     "dialyzerEnabled": v:false
+    \   }
+    \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
@@ -148,17 +151,17 @@ let g:ale_fixers = {
 " language client
 set hidden
 set signcolumn=yes
-let g:LanguageClient_hasSnippetSupport=1
-let g:LanguageClient_diagnosticsEnable=0
-let g:LanguageClient_completionPreferTextEdit=1
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['/home/zyb/elixir_tools/elixir-ls/language_server.sh'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'vue': ['vls']
-    \ }
-let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
+" let g:LanguageClient_hasSnippetSupport=1
+" let g:LanguageClient_diagnosticsEnable=0
+" let g:LanguageClient_completionPreferTextEdit=1
+" let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_serverCommands = {
+"    \ 'elixir': ['/home/zyb/elixir_tools/elixir-ls/language_server.sh'],
+"    \ 'javascript': ['javascript-typescript-stdio'],
+"    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+"    \ 'vue': ['vls']
+"    \ }
+" let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 
 " choosewin{
 " invoke with '-'
@@ -208,3 +211,7 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+" codelf
+let g:codelf_enable_popup_menu = v:true
+let g:codelf_proxy_url='socks5://127.0.0.1:1080'

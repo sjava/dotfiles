@@ -51,7 +51,16 @@ nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <Leader>\ :Neoformat<CR>
-nnoremap <Leader>ls :call LanguageClient_contextMenu()<CR>
+
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " nnoremap <Leader>o :Leaderf function<CR>
 " noremap <leader>lb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
@@ -134,7 +143,7 @@ let g:send_disable_mapping=1
 nmap <Leader>sl <Plug>SendLine
 nmap <Leader>ss <Plug>Send
 vmap <Leader>ss <Plug>Send
-nmap <leader>se s$
+nmap <Leader>se s$
 
 inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-y>" : "\<CR>")
 
@@ -161,11 +170,11 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-nnoremap <LocalLeader>s :Repl<CR>
-nnoremap <LocalLeader>t :ReplStop<CR>
-nnoremap <Space> :ReplSend<CR>
-vnoremap <Space> :'<,'>ReplSend<CR>
-nnoremap <LocalLeader>r :ReplRecv<CR>
-vnoremap <LocalLeader>r :'<,'>ReplRecv<CR>
-nnoremap <LocalLeader>a :ReplAuto<CR>
+" nnoremap <LocalLeader>s :Repl<CR>
+" nnoremap <LocalLeader>t :ReplStop<CR>
+" nnoremap <Space> :ReplSend<CR>
+" vnoremap <Space> :'<,'>ReplSend<CR>
+" nnoremap <LocalLeader>r :ReplRecv<CR>
+" vnoremap <LocalLeader>r :'<,'>ReplRecv<CR>
+" nnoremap <LocalLeader>a :ReplAuto<CR>
 

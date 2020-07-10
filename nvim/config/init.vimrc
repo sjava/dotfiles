@@ -11,6 +11,7 @@ Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'voldikss/vim-codelf'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 Plug 'Shougo/neosnippet.vim'
@@ -65,11 +66,12 @@ Plug 'pangloss/vim-javascript'
 Plug 'elixir-editors/vim-elixir'
 Plug 'thinca/vim-ref'
 " Plug 'slashmili/alchemist.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'ncm2/float-preview.nvim'
+" Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
+Plug 'Shougo/deoplete-lsp'
+Plug 'neovim/nvim-lsp'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'nixprime/cpsm'
@@ -111,5 +113,5 @@ Plug 'chemzqm/wxapp.vim'
 
 " xml
 Plug 'othree/xml.vim'
-Plug 'rhysd/reply.vim'
+" Plug 'rhysd/reply.vim'
 call plug#end()
