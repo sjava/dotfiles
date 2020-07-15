@@ -149,8 +149,8 @@ inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-y>" : "\<CR>")
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-" imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-imap <C-j>     <C-e><Plug>(neosnippet_expand_or_jump)
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+" imap <C-j>     <C-e><Plug>(neosnippet_expand_or_jump)
 smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
 

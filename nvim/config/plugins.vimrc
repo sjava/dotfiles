@@ -1,7 +1,14 @@
-filetype plugin indent on
 :lua << END
   require'nvim_lsp'.elixirls.setup{}
+  require'nvim_lsp'.pyls.setup{}
+  require'nvim_lsp'.tsserver.setup{}
+  require'nvim_lsp'.cssls.setup{}
+  require'nvim_lsp'.html.setup{}
+  require'nvim_lsp'.dockerls.setup{}
+  require'nvim_lsp'.jsonls.setup{}
 END
+
+filetype plugin indent on
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -31,17 +38,15 @@ endif
 let g:context_filetype#same_filetypes._ = '_'
 
 let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#enable_completed_snippet = 1
 let g:neosnippet#enable_complete_done = 1
-let g:neosnippet#enable_snipmate_compatibility = 1
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
 " echodoc
-set noshowmode
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'signature'
-set signcolumn=yes
+let g:echodoc#type = 'floating'
 
 " gen_tags
 " let g:gen_tags#ctags_auto_gen = 1
