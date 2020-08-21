@@ -9,6 +9,8 @@
 END
 
 filetype plugin indent on
+let g:neoterm_default_mod = 'vertical'
+let g:test#strategy = 'neoterm'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -23,12 +25,12 @@ call deoplete#custom#option('ignore_sources', {'_': ['tag','ale']})
 " call deoplete#custom#source('LanguageClient',
 "          \ 'min_pattern_length',
 "          \ 2)
-call deoplete#custom#source('tabnine',
-          \ 'rank',
-          \ 100)
+call deoplete#custom#source('neosnippet',
+         \ 'rank',
+         \ 1100)
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 500,
-\ 'max_num_results': 20,
+\ 'max_num_results': 5,
 \ })
 
 " context_filetype
@@ -98,23 +100,22 @@ let g:rainbow_conf = {
       \}
 
 " let g:neoformat_wxml_prettydiff = {
-"     \ 'exe': 'prettydiff',
-"     \ 'args': ['mode:"beautify"',
-"     \ 'lang:"html"',
-"     \ 'insize:2',
-"     \ 'readmethod:"filescreen"',
-"     \ 'endquietly:"quiet"',
-"     \ 'source:"%:p"'],
-"     \ 'no_append': 1
-"     \ }
+"    \ 'exe': 'prettydiff beautify',
+"    \ 'args': [
+"    \ 'lang:"html"',
+"    \ 'insize:2',
+"    \ 'readmethod:"filescreen"',
+"    \ 'endquietly:"quiet"',
+"    \ 'source:"%:p"'],
+"    \ 'no_append': 1
+"    \ }
 " let g:neoformat_enabled_wxml = ['prettydiff']
-let g:neoformat_wxml_htmlbeautify ={
-            \ 'exe': 'html-beautify',
-            \ 'args': ['--indent-size ' .shiftwidth(),
-            \ '-A force-aligned'],
-            \ 'stdin': 1,
-            \ }
-let g:neoformat_enabled_wxml = ['htmlbeautify']
+let g:neoformat_wxml_prettier ={
+           \ 'exe': 'prettier',
+           \ 'args': ['--parser html'],
+           \ 'stdin': 1,
+           \ }
+let g:neoformat_enabled_wxml = ['prettier']
 
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
@@ -174,8 +175,6 @@ nmap  -  <Plug>(choosewin)
 " if you want to use overlay feature
 let g:choosewin_overlay_enable = 1
 " choosewin}
-
-let g:neoterm_position='vertical'
 
 " markdown
 let g:vim_markdown_folding_disabled = 1

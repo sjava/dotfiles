@@ -12,19 +12,18 @@ Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'voldikss/vim-codelf'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'ncm2/float-preview.nvim'
-" Plug 'christoomey/vim-tmux-navigator'
 Plug 'mhinz/vim-grepper'
 Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'Shougo/context_filetype.vim'
+Plug 'vim-test/vim-test'
+Plug 'kassio/neoterm'
 " editing
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
@@ -113,5 +112,4 @@ Plug 'chemzqm/wxapp.vim'
 
 " xml
 Plug 'othree/xml.vim'
-" Plug 'rhysd/reply.vim'
 call plug#end()
