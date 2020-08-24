@@ -15,7 +15,7 @@ Plug 'voldikss/vim-codelf'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'liuchengxu/vim-which-key'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'ncm2/float-preview.nvim'
 Plug 'mhinz/vim-grepper'
