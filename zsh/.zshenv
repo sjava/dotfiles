@@ -1,4 +1,4 @@
-export PATH="/home/zyb/.local/bin:$HOME/.yarn/bin:$PATH"
+export PATH="/home/zyb/.local/bin:$HOME/.yarn/bin:/home/zyb/runtime.mixed.linux.x86_64.200224.0d0p/bin:$PATH"
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$HOME/.yarn/bin:$PATH"
 # eval "$(pyenv init -)"
