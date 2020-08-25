@@ -132,13 +132,10 @@ let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 0
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls/release'
+let g:ale_elixir_elixir_ls_release = '~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release'
 let g:ale_elixir_elixir_ls_config={
     \   "elixirLS": {
     \     "dialyzerEnabled": v:false
@@ -157,17 +154,6 @@ let g:ale_fixers = {
 " language client
 set hidden
 set signcolumn=yes
-" let g:LanguageClient_hasSnippetSupport=1
-" let g:LanguageClient_diagnosticsEnable=0
-" let g:LanguageClient_completionPreferTextEdit=1
-" let g:LanguageClient_autoStart = 1
-" let g:LanguageClient_serverCommands = {
-"    \ 'elixir': ['/home/zyb/elixir_tools/elixir-ls/language_server.sh'],
-"    \ 'javascript': ['javascript-typescript-stdio'],
-"    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-"    \ 'vue': ['vls']
-"    \ }
-" let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 
 " choosewin{
 " invoke with '-'
