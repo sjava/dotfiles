@@ -11,18 +11,19 @@ Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+Plug 'voldikss/vim-codelf'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'liuchengxu/vim-which-key'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" Plug 'christoomey/vim-tmux-navigator'
+Plug 'ncm2/float-preview.nvim'
 Plug 'mhinz/vim-grepper'
 Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'Shougo/context_filetype.vim'
+Plug 'vim-test/vim-test'
+Plug 'kassio/neoterm'
 " editing
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
@@ -64,11 +65,12 @@ Plug 'pangloss/vim-javascript'
 Plug 'elixir-editors/vim-elixir'
 Plug 'thinca/vim-ref'
 " Plug 'slashmili/alchemist.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'ncm2/float-preview.nvim'
+" Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
+Plug 'Shougo/deoplete-lsp'
+Plug 'neovim/nvim-lsp'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'nixprime/cpsm'
@@ -93,7 +95,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
 
 " python
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'ujihisa/neco-look'
 " Plug 'ujihisa/neco-look'
@@ -110,5 +112,4 @@ Plug 'chemzqm/wxapp.vim'
 
 " xml
 Plug 'othree/xml.vim'
-Plug 'rhysd/reply.vim'
 call plug#end()

@@ -2,13 +2,71 @@
 " let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
+set timeoutlen=500
 
 " vim-which-key
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode noruler
+let g:which_key_map =  {}
+let g:which_key_map.w = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : [':resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : [':resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ }
+
+let g:which_key_map.l = {
+      \ 'name' : '+lsp' ,
+      \ 'h' : 'hover' ,
+      \ 's' : 'signature_help' ,
+      \ 't' : 'type_definition' ,
+      \ 'g' : {
+        \ 'name': '+goto',
+        \ 'd' : 'definition'       ,
+        \ 'i' : 'implementation'       ,
+        \ 'r' : 'references'       ,
+        \ 'c' : 'declaration'       ,
+        \ 's' : 'document_symbol'       ,
+        \ 'w' : 'workspace_symbol'       ,
+        \ },
+      \}
+
+let g:which_key_map.t = {
+      \ 'name' : '+vim-test' ,
+      \ 'a' : 'test suite(all)' ,
+      \ 'n' : 'test nearest' ,
+      \ 'f' : 'test file' ,
+      \ 'l' : 'test last' ,
+      \ 'v' : 'test visit' ,
+      \}
+
+let g:which_key_map.f = {
+      \ 'name' : '+leaderf' ,
+      \ 'f' : 'file' ,
+      \ 'b' : 'buffer' ,
+      \ 'm' : 'mru' ,
+      \ 'l' : 'line' ,
+      \ 's' : 'search' ,
+      \ 'a' : 'search cursor on word' ,
+      \}
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+call which_key#register('<Space>', "g:which_key_map")
 
 " buffer keys
 nnoremap <Leader>bb :b#<CR>
@@ -22,18 +80,18 @@ nnoremap <Leader>bd :Bwipeout<CR>
 nnoremap <Leader>e :enew<CR>
 
 " window keys
-nnoremap <Leader>w< <C-w><
-nnoremap <Leader>w> <C-w>>
-nnoremap <Leader>w- <C-w>-
-nnoremap <Leader>w+ <C-w>+
-nnoremap <Leader>ws :split<CR>
-nnoremap <Leader>wv :vsplit<CR>
-nnoremap <Leader>wx :close<CR>
-nnoremap <Leader>wh <C-w>h
-nnoremap <Leader>wl <C-w>l
-nnoremap <Leader>wj <C-w>j
-nnoremap <Leader>wk <C-w>k
-nnoremap <Leader>ww :w<CR>
+" nnoremap <Leader>w< <C-w><
+" nnoremap <Leader>w> <C-w>>
+" nnoremap <Leader>w- <C-w>-
+" nnoremap <Leader>w+ <C-w>+
+" nnoremap <Leader>ws :split<CR>
+" nnoremap <Leader>wv :vsplit<CR>
+" nnoremap <Leader>wx :close<CR>
+" nnoremap <Leader>wh <C-w>h
+" nnoremap <Leader>wl <C-w>l
+" nnoremap <Leader>wj <C-w>j
+" nnoremap <Leader>wk <C-w>k
+" nnoremap <Leader>ww :w<CR>
 
 " command mode maps
 " better command-line window scrolling with <C-P> & <C-N>
@@ -51,8 +109,40 @@ nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <Leader>\ :Neoformat<CR>
-nnoremap <Leader>ls :call LanguageClient_contextMenu()<CR>
-nnoremap <Leader>o :Leaderf function<CR>
+
+nnoremap <silent><leader>lgd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent><leader>lgi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent><leader>lgr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent><leader>lgc <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent><leader>lgs <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent><leader>lgw <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent><leader>lh  <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent><leader>ls  <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent><leader>lt  <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" nnoremap <Leader>o :Leaderf function<CR>
+" noremap <leader>lb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+
+" Leaderf keys
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+noremap <leader>fs :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
 
 
 " relative line numbers
@@ -115,19 +205,12 @@ nmap k gk
 vmap j gj
 vmap k gk
 
-" nvim-send-to-term key bind
-let g:send_disable_mapping=1
-nmap <Leader>sl <Plug>SendLine
-nmap <Leader>ss <Plug>Send
-vmap <Leader>ss <Plug>Send
-nmap <leader>se s$
-
 inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-y>" : "\<CR>")
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-" imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-imap <C-j>     <C-e><Plug>(neosnippet_expand_or_jump)
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+" imap <C-j>     <C-e><Plug>(neosnippet_expand_or_jump)
 smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
 
@@ -147,11 +230,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-nnoremap <LocalLeader>s :Repl<CR>
-nnoremap <LocalLeader>t :ReplStop<CR>
-nnoremap <Space> :ReplSend<CR>
-vnoremap <Space> :'<,'>ReplSend<CR>
-nnoremap <LocalLeader>r :ReplRecv<CR>
-vnoremap <LocalLeader>r :'<,'>ReplRecv<CR>
-nnoremap <LocalLeader>a :ReplAuto<CR>
-
+" key map for vim-test
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>

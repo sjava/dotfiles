@@ -1,4 +1,16 @@
+:lua << END
+  require'nvim_lsp'.elixirls.setup{}
+  require'nvim_lsp'.pyls.setup{}
+  require'nvim_lsp'.tsserver.setup{}
+  require'nvim_lsp'.cssls.setup{}
+  require'nvim_lsp'.html.setup{}
+  require'nvim_lsp'.dockerls.setup{}
+  require'nvim_lsp'.jsonls.setup{}
+END
+
 filetype plugin indent on
+let g:neoterm_default_mod = 'vertical'
+let g:test#strategy = 'neoterm'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -7,25 +19,40 @@ let g:deoplete#look#words = '~/.config/nvim/10K.txt'
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 set completeopt-=preview
-let g:float_preview#docked = 1
+let g:float_preview#docked = 0
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
-call deoplete#custom#option('ignore_sources', {'_': ['tag']})
-call deoplete#custom#source('LanguageClient',
-          \ 'min_pattern_length',
-          \ 2)
+call deoplete#custom#option('ignore_sources', {'_': ['tag','ale']})
+" call deoplete#custom#source('LanguageClient',
+"          \ 'min_pattern_length',
+"          \ 2)
+call deoplete#custom#source('neosnippet',
+         \ 'rank',
+         \ 1100)
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 500,
+\ 'max_num_results': 5,
+\ })
+
+" context_filetype
+if !exists('g:context_filetype#same_filetypes')
+  let g:context_filetype#same_filetypes = {}
+endif
+let g:context_filetype#same_filetypes._ = '_'
 
 let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#enable_completed_snippet = 1
 let g:neosnippet#enable_complete_done = 1
-let g:neosnippet#enable_snipmate_compatibility = 1
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
 " echodoc
-set noshowmode
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'signature'
-set signcolumn=yes
+let g:echodoc#type = 'floating'
+
+" gen_tags
+" let g:gen_tags#ctags_auto_gen = 1
+" let g:gen_tags#statusline = 1
 
 " set background=dark
 " let g:onedark_terminal_italics=1
@@ -72,17 +99,23 @@ let g:rainbow_conf = {
       \   }
       \}
 
-let g:neoformat_wxml_prettydiff = {
-     \ 'exe': 'prettydiff',
-     \ 'args': ['mode:"beautify"',
-     \ 'lang:"html"',
-     \ 'insize:2',
-     \ 'readmethod:"filescreen"',
-     \ 'endquietly:"quiet"',
-     \ 'source:"%:p"'],
-     \ 'no_append': 1
-     \ }
-let g:neoformat_enabled_wxml = ['prettydiff']
+" let g:neoformat_wxml_prettydiff = {
+"    \ 'exe': 'prettydiff beautify',
+"    \ 'args': [
+"    \ 'lang:"html"',
+"    \ 'insize:2',
+"    \ 'readmethod:"filescreen"',
+"    \ 'endquietly:"quiet"',
+"    \ 'source:"%:p"'],
+"    \ 'no_append': 1
+"    \ }
+" let g:neoformat_enabled_wxml = ['prettydiff']
+let g:neoformat_wxml_prettier ={
+           \ 'exe': 'prettier',
+           \ 'args': ['--parser html'],
+           \ 'stdin': 1,
+           \ }
+let g:neoformat_enabled_wxml = ['prettier']
 
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
@@ -99,17 +132,18 @@ let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 0
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dist/'
+let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls/release'
 let g:ale_elixir_elixir_ls_config={
-     \   "elixirLS": {
-     \     "dialyzerEnabled": v:false
-     \   }
-     \ }
+    \   "elixirLS": {
+    \     "dialyzerEnabled": v:false
+    \   }
+    \ }
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
@@ -123,17 +157,17 @@ let g:ale_fixers = {
 " language client
 set hidden
 set signcolumn=yes
-let g:LanguageClient_hasSnippetSupport=1
-let g:LanguageClient_diagnosticsEnable=0
-let g:LanguageClient_completionPreferTextEdit=1
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['~/tools/elixir-ls/dist/language_server.sh'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'vue': ['vls']
-    \ }
-let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
+" let g:LanguageClient_hasSnippetSupport=1
+" let g:LanguageClient_diagnosticsEnable=0
+" let g:LanguageClient_completionPreferTextEdit=1
+" let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_serverCommands = {
+"    \ 'elixir': ['/home/zyb/elixir_tools/elixir-ls/language_server.sh'],
+"    \ 'javascript': ['javascript-typescript-stdio'],
+"    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+"    \ 'vue': ['vls']
+"    \ }
+" let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 
 " choosewin{
 " invoke with '-'
@@ -141,8 +175,6 @@ nmap  -  <Plug>(choosewin)
 " if you want to use overlay feature
 let g:choosewin_overlay_enable = 1
 " choosewin}
-
-let g:neoterm_position='vertical'
 
 " markdown
 let g:vim_markdown_folding_disabled = 1
@@ -153,13 +185,6 @@ let g:vue_disable_pre_processors=1
 
 " vim-which-key
 let g:which_key_use_floating_win=1
-
-" function g:Multiple_cursors_before()
-"   call deoplete#custom#buffer_option('auto_complete', v:false)
-" endfunction
-" function g:Multiple_cursors_after()
-"   call deoplete#custom#buffer_option('auto_complete', v:true)
-" endfunction
 
 func! Multiple_cursors_before()
   if deoplete#is_enabled()
@@ -180,8 +205,17 @@ let g:Lf_WildIgnore = {
       \ 'dir': ['node_modules'],
       \ 'file': []
       \}
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-call deoplete#custom#var('tabnine', {
-\ 'line_limit': 500,
-\ 'max_num_results': 20,
-\ })
+" codelf
+let g:codelf_enable_popup_menu = v:true
+let g:codelf_proxy_url='socks5://127.0.0.1:1080'
