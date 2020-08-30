@@ -6,6 +6,7 @@
   require'nvim_lsp'.html.setup{}
   require'nvim_lsp'.dockerls.setup{}
   require'nvim_lsp'.jsonls.setup{}
+  vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 END
 
 filetype plugin indent on
@@ -22,12 +23,12 @@ set completeopt-=preview
 let g:float_preview#docked = 0
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 call deoplete#custom#option('ignore_sources', {'_': ['tag','ale']})
-" call deoplete#custom#source('LanguageClient',
-"          \ 'min_pattern_length',
-"          \ 2)
 call deoplete#custom#source('neosnippet',
          \ 'rank',
-         \ 1100)
+         \ 400)
+call deoplete#custom#source('tabnine',
+         \ 'rank',
+         \ 300)
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 500,
 \ 'max_num_results': 5,
