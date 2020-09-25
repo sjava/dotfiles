@@ -23,7 +23,7 @@ Plug 'luochen1990/rainbow'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'Shougo/context_filetype.vim'
 Plug 'vim-test/vim-test'
-Plug 'kassio/neoterm'
+Plug 'voldikss/vim-floaterm'
 " editing
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'

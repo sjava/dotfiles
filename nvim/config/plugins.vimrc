@@ -10,8 +10,7 @@
 END
 
 filetype plugin indent on
-let g:neoterm_default_mod = 'vertical'
-let g:test#strategy = 'neoterm'
+let g:test#strategy = 'floaterm'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
