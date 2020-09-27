@@ -22,6 +22,7 @@ let g:which_key_map.w = {
       \ 's' : ['<C-W>s'     , 'split-window-below']    ,
       \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
       \ 'f' : ['Windows'    , 'fzf-window']            ,
+      \ 'c' : ['<Plug>(choosewin)'    , 'choose window'],
       \ }
 
 let g:which_key_map.l = {
@@ -57,24 +58,18 @@ let g:which_key_map.f = {
       \ 'n' : 'function' ,
       \ 'l' : 'line' ,
       \ 's' : 'search' ,
+      \ 't' : 'buffer tag' ,
+      \ 'w' : 'display window' ,
       \ 'a' : 'search cursor on word' ,
       \}
 
 let g:which_key_map.b = {
       \ 'name' : '+tabs' ,
-      \ '1' : ['<Plug>AirlineSelectTab1','tab1'] ,
-      \ '2' : ['<Plug>AirlineSelectTab2','tab2'] ,
-      \ '3' : ['<Plug>AirlineSelectTab3','tab3'] ,
-      \ '4' : ['<Plug>AirlineSelectTab4','tab4'] ,
-      \ '5' : ['<Plug>AirlineSelectTab5','tab5'] ,
-      \ '6' : ['<Plug>AirlineSelectTab6','tab6'] ,
-      \ '7' : ['<Plug>AirlineSelectTab7','tab7'] ,
-      \ '8' : ['<Plug>AirlineSelectTab8','tab8'] ,
-      \ '9' : ['<Plug>AirlineSelectTab9','tab9'] ,
       \ '-' : ['<Plug>AirlineSelectPrevTab','previous tab'] ,
       \ '+' : ['<Plug>AirlineSelectNextTab','next tab'] ,
       \ 'd' : [':Bwipeout','close buffer'] ,
       \ 'e' : [':enew','edit new buffer'] ,
+      \ 'b' : ['Buffers'    , 'fzf-buffer']            ,
       \}
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>

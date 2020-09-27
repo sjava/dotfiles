@@ -168,3 +168,8 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
+
+" vim-win
+map <leader>fw <plug>WinWin
+command Win :call win#Win()
+let g:win_ext_command_map = {"\<cr>": 'Win#exit'}
