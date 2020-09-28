@@ -28,6 +28,9 @@ call deoplete#custom#option('ignore_sources', {'_': ['tag','ale']})
 call deoplete#custom#source('neosnippet',
          \ 'rank',
          \ 1100)
+call deoplete#custom#source('tabnine',
+         \ 'rank',
+         \ 10)
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 500,
 \ 'max_num_results': 5,
@@ -122,23 +125,15 @@ let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
 
-" augroup fmt
-"   autocmd!
-"   autocmd BufWritePre * undojoin | Neoformat
-" augroup END
-
 " ale plugin
 let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 0
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls/release'
+let g:ale_elixir_elixir_ls_release = '~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release'
 let g:ale_elixir_elixir_ls_config={
     \   "elixirLS": {
     \     "dialyzerEnabled": v:false
@@ -157,17 +152,6 @@ let g:ale_fixers = {
 " language client
 set hidden
 set signcolumn=yes
-" let g:LanguageClient_hasSnippetSupport=1
-" let g:LanguageClient_diagnosticsEnable=0
-" let g:LanguageClient_completionPreferTextEdit=1
-" let g:LanguageClient_autoStart = 1
-" let g:LanguageClient_serverCommands = {
-"    \ 'elixir': ['/home/zyb/elixir_tools/elixir-ls/language_server.sh'],
-"    \ 'javascript': ['javascript-typescript-stdio'],
-"    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-"    \ 'vue': ['vls']
-"    \ }
-" let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 
 " choosewin{
 " invoke with '-'
@@ -219,3 +203,18 @@ let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 " codelf
 let g:codelf_enable_popup_menu = v:true
 let g:codelf_proxy_url='socks5://127.0.0.1:1080'
+
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+" let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+" let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
+let g:fzf_layout = { 'down': '~40%' }
+
+function! WindowNumber(...)
+    let builder = a:1
+    let context = a:2
+    call builder.add_section('airline_b', '%{tabpagewinnr(tabpagenr())}')
+    return 0
+endfunction
+call airline#add_statusline_func('WindowNumber')
+call airline#add_inactive_statusline_func('WindowNumber')

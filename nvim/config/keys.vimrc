@@ -27,7 +27,7 @@ let g:which_key_map.w = {
       \ '=' : ['<C-W>='     , 'balance-window']        ,
       \ 's' : ['<C-W>s'     , 'split-window-below']    ,
       \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
-      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ 'f' : ['Windows'    , 'fzf-window']            ,
       \ }
 
 let g:which_key_map.l = {
@@ -60,24 +60,42 @@ let g:which_key_map.f = {
       \ 'f' : 'file' ,
       \ 'b' : 'buffer' ,
       \ 'm' : 'mru' ,
+      \ 'n' : 'function' ,
       \ 'l' : 'line' ,
       \ 's' : 'search' ,
       \ 'a' : 'search cursor on word' ,
+      \}
+
+let g:which_key_map.b = {
+      \ 'name' : '+tabs' ,
+      \ '1' : ['<Plug>AirlineSelectTab1','tab1'] ,
+      \ '2' : ['<Plug>AirlineSelectTab2','tab2'] ,
+      \ '3' : ['<Plug>AirlineSelectTab3','tab3'] ,
+      \ '4' : ['<Plug>AirlineSelectTab4','tab4'] ,
+      \ '5' : ['<Plug>AirlineSelectTab5','tab5'] ,
+      \ '6' : ['<Plug>AirlineSelectTab6','tab6'] ,
+      \ '7' : ['<Plug>AirlineSelectTab7','tab7'] ,
+      \ '8' : ['<Plug>AirlineSelectTab8','tab8'] ,
+      \ '9' : ['<Plug>AirlineSelectTab9','tab9'] ,
+      \ '-' : ['<Plug>AirlineSelectPrevTab','previous tab'] ,
+      \ '+' : ['<Plug>AirlineSelectNextTab','next tab'] ,
+      \ 'd' : [':Bwipeout','close buffer'] ,
+      \ 'e' : [':enew','edit new buffer'] ,
       \}
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 call which_key#register('<Space>', "g:which_key_map")
 
 " buffer keys
-nnoremap <Leader>bb :b#<CR>
-nnoremap <Leader>bn :bn<CR>
-nnoremap <Leader>bp :bp<CR>
-nnoremap <Leader>bf :bf<CR>
-nnoremap <Leader>bl :bl<CR>
-nnoremap <Leader>bw :w<CR>:bd<CR>
-nnoremap <Leader>bd :Bwipeout<CR>
+" nnoremap <Leader>bb :b#<CR>
+" nnoremap <Leader>bn :bn<CR>
+" nnoremap <Leader>bp :bp<CR>
+" nnoremap <Leader>bf :bf<CR>
+" nnoremap <Leader>bl :bl<CR>
+" nnoremap <Leader>bw :w<CR>:bd<CR>
+" nnoremap <Leader>bd :Bwipeout<CR>
 " new buffer/tab
-nnoremap <Leader>e :enew<CR>
+" nnoremap <Leader>e :enew<CR>
 
 " window keys
 " nnoremap <Leader>w< <C-w><
@@ -120,7 +138,7 @@ nnoremap <silent><leader>lh  <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent><leader>ls  <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent><leader>lt  <cmd>lua vim.lsp.buf.type_definition()<CR>
 " nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-" nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 " nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 " nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 " nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -133,9 +151,11 @@ nnoremap <silent><leader>lt  <cmd>lua vim.lsp.buf.type_definition()<CR>
 
 " Leaderf keys
 let g:Lf_ShortcutF = "<leader>ff"
+let g:Lf_ShortcutB = "<leader>fb"
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 noremap <leader>fs :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
@@ -236,3 +256,6 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
+
+map <leader>fw <plug>WinWin
+command Win :call win#Win()

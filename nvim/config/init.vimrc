@@ -73,7 +73,7 @@ Plug 'Shougo/deoplete-lsp'
 Plug 'neovim/nvim-lsp'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'nixprime/cpsm'
+Plug 'dstein64/vim-win'
 
 " other
 Plug 'mattn/emmet-vim'
