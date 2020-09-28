@@ -1,120 +1,16 @@
 " map Leader
-" let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 set timeoutlen=500
 
-" vim-which-key
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode noruler
-let g:which_key_map =  {}
-let g:which_key_map.w = {
-      \ 'name' : '+windows' ,
-      \ 'w' : ['<C-W>w'     , 'other-window']          ,
-      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
-      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
-      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
-      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
-      \ 'h' : ['<C-W>h'     , 'window-left']           ,
-      \ 'j' : ['<C-W>j'     , 'window-below']          ,
-      \ 'l' : ['<C-W>l'     , 'window-right']          ,
-      \ 'k' : ['<C-W>k'     , 'window-up']             ,
-      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
-      \ 'J' : [':resize +5'  , 'expand-window-below']   ,
-      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
-      \ 'K' : [':resize -5'  , 'expand-window-up']      ,
-      \ '=' : ['<C-W>='     , 'balance-window']        ,
-      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
-      \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
-      \ 'f' : ['Windows'    , 'fzf-window']            ,
-      \ }
-
-let g:which_key_map.l = {
-      \ 'name' : '+lsp' ,
-      \ 'h' : 'hover' ,
-      \ 's' : 'signature_help' ,
-      \ 't' : 'type_definition' ,
-      \ 'g' : {
-        \ 'name': '+goto',
-        \ 'd' : 'definition'       ,
-        \ 'i' : 'implementation'       ,
-        \ 'r' : 'references'       ,
-        \ 'c' : 'declaration'       ,
-        \ 's' : 'document_symbol'       ,
-        \ 'w' : 'workspace_symbol'       ,
-        \ },
-      \}
-
-let g:which_key_map.t = {
-      \ 'name' : '+vim-test' ,
-      \ 'a' : 'test suite(all)' ,
-      \ 'n' : 'test nearest' ,
-      \ 'f' : 'test file' ,
-      \ 'l' : 'test last' ,
-      \ 'v' : 'test visit' ,
-      \}
-
-let g:which_key_map.f = {
-      \ 'name' : '+leaderf' ,
-      \ 'f' : 'file' ,
-      \ 'b' : 'buffer' ,
-      \ 'm' : 'mru' ,
-      \ 'n' : 'function' ,
-      \ 'l' : 'line' ,
-      \ 's' : 'search' ,
-      \ 'a' : 'search cursor on word' ,
-      \}
-
-let g:which_key_map.b = {
-      \ 'name' : '+tabs' ,
-      \ '1' : ['<Plug>AirlineSelectTab1','tab1'] ,
-      \ '2' : ['<Plug>AirlineSelectTab2','tab2'] ,
-      \ '3' : ['<Plug>AirlineSelectTab3','tab3'] ,
-      \ '4' : ['<Plug>AirlineSelectTab4','tab4'] ,
-      \ '5' : ['<Plug>AirlineSelectTab5','tab5'] ,
-      \ '6' : ['<Plug>AirlineSelectTab6','tab6'] ,
-      \ '7' : ['<Plug>AirlineSelectTab7','tab7'] ,
-      \ '8' : ['<Plug>AirlineSelectTab8','tab8'] ,
-      \ '9' : ['<Plug>AirlineSelectTab9','tab9'] ,
-      \ '-' : ['<Plug>AirlineSelectPrevTab','previous tab'] ,
-      \ '+' : ['<Plug>AirlineSelectNextTab','next tab'] ,
-      \ 'd' : [':Bwipeout','close buffer'] ,
-      \ 'e' : [':enew','edit new buffer'] ,
-      \}
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 call which_key#register('<Space>', "g:which_key_map")
 
-" buffer keys
-" nnoremap <Leader>bb :b#<CR>
-" nnoremap <Leader>bn :bn<CR>
-" nnoremap <Leader>bp :bp<CR>
-" nnoremap <Leader>bf :bf<CR>
-" nnoremap <Leader>bl :bl<CR>
-" nnoremap <Leader>bw :w<CR>:bd<CR>
-" nnoremap <Leader>bd :Bwipeout<CR>
-" new buffer/tab
-" nnoremap <Leader>e :enew<CR>
-
-" window keys
-" nnoremap <Leader>w< <C-w><
-" nnoremap <Leader>w> <C-w>>
-" nnoremap <Leader>w- <C-w>-
-" nnoremap <Leader>w+ <C-w>+
-" nnoremap <Leader>ws :split<CR>
-" nnoremap <Leader>wv :vsplit<CR>
-" nnoremap <Leader>wx :close<CR>
-" nnoremap <Leader>wh <C-w>h
-" nnoremap <Leader>wl <C-w>l
-" nnoremap <Leader>wj <C-w>j
-" nnoremap <Leader>wk <C-w>k
-" nnoremap <Leader>ww :w<CR>
-
 " command mode maps
 " better command-line window scrolling with <C-P> & <C-N>
-" cnoremap <C-p> <Up>
-" cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " %% to expand active buffer location on cmdline
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -139,7 +35,7 @@ nnoremap <silent><leader>ls  <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent><leader>lt  <cmd>lua vim.lsp.buf.type_definition()<CR>
 " nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-" nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 " nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 " nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 " nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
@@ -163,10 +59,6 @@ noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<C
 " search visually selected text literally
 xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 noremap go :<C-U>Leaderf! rg --recall<CR>
-
-
-" relative line numbers
-nnoremap <Leader>3 :NumbersToggle<CR>
 
 " vim paste mode toggle (for fixing indentation issues when pasting text)
 nnoremap <F2> :set invpaste paste?<CR>
@@ -257,5 +149,7 @@ nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 
+" vim-win
 map <leader>fw <plug>WinWin
 command Win :call win#Win()
+let g:win_ext_command_map = {"\<cr>": 'Win#exit'}
