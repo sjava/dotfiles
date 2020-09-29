@@ -68,3 +68,21 @@ let g:tmuxline_preset = {
         \ 'x': '#h',
         \ 'y': '%b %d',
         \ 'z': '%R'}
+
+function! GetUnicodeNumber(num) abort
+  if a:num > 0 && a:num <= 20
+    return nr2char(char2nr('①') + (a:num - 1))
+  else
+    return 'Failed'
+  endif
+endfunction
+
+function! WindowNumber(...)
+    let builder = a:1
+    let context = a:2
+    call builder.add_section('airline_b', '%{GetUnicodeNumber(tabpagewinnr(tabpagenr()))} ')
+    return 0
+endfunction
+
+call airline#add_statusline_func('WindowNumber')
+call airline#add_inactive_statusline_func('WindowNumber')
