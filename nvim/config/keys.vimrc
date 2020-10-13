@@ -132,10 +132,6 @@ imap jj <Esc>
 inoremap <C-S-v> <Esc>"+pA
 nmap <Leader>p "+p
 vmap <Leader>y "+y
-nmap j gj
-nmap k gk
-vmap j gj
-vmap k gk
 
 inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-y>" : "\<CR>")
 

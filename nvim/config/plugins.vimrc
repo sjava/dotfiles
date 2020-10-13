@@ -14,20 +14,24 @@ let g:test#strategy = 'floaterm'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 0
+" let g:deoplete#disable_auto_complete = 0
 let g:deoplete#look#words = '~/.config/nvim/10K.txt'
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
-set completeopt-=preview
+" set completeopt-=preview
+set completeopt+=noinsert
+
 let g:float_preview#docked = 0
 call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
-call deoplete#custom#option('ignore_sources', {'_': ['tag','ale']})
+call deoplete#custom#option({
+                           \ 'ignore_sources': {'_': ['tag','ale']}
+                           \ })
 call deoplete#custom#source('neosnippet',
          \ 'rank',
          \ 400)
 call deoplete#custom#source('tabnine',
          \ 'rank',
-         \ 300)
+         \ 500)
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 500,
 \ 'max_num_results': 5,
