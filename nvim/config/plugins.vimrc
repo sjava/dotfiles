@@ -152,9 +152,5 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-" codelf
-let g:codelf_enable_popup_menu = v:true
-let g:codelf_proxy_url='socks5://127.0.0.1:1080'
-
 " fzf
 let g:fzf_layout = {'down':'~40%'}

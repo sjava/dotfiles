@@ -11,7 +11,6 @@ Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'voldikss/vim-codelf'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
