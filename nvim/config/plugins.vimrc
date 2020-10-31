@@ -27,13 +27,14 @@ call deoplete#custom#var('buffer', 'require_same_filetype', v:false)
 call deoplete#custom#option({
                            \ 'ignore_sources': {'_': ['tag','ale']},
                            \ 'auto_refresh_delay': 100,
+                           \ 'auto_complete_delay': 100,
                            \ })
 call deoplete#custom#source('neosnippet',
          \ 'rank',
-         \ 400)
+         \ 100)
 call deoplete#custom#source('tabnine',
          \ 'rank',
-         \ 10)
+         \ 200)
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 500,
 \ 'max_num_results': 5,
