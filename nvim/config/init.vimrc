@@ -68,7 +68,7 @@ Plug 'thinca/vim-ref'
 "    \ 'do': 'bash install.sh',
 "    \ }
 Plug 'Shougo/deoplete-lsp'
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'nixprime/cpsm'

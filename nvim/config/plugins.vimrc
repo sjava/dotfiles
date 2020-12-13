@@ -1,11 +1,11 @@
 :lua << END
-  require'nvim_lsp'.elixirls.setup{}
-  require'nvim_lsp'.pyls.setup{}
-  require'nvim_lsp'.tsserver.setup{}
-  require'nvim_lsp'.cssls.setup{}
-  require'nvim_lsp'.html.setup{}
-  require'nvim_lsp'.dockerls.setup{}
-  require'nvim_lsp'.jsonls.setup{}
+  require'lspconfig'.elixirls.setup{}
+  require'lspconfig'.pyls.setup{}
+  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.cssls.setup{}
+  require'lspconfig'.html.setup{}
+  require'lspconfig'.dockerls.setup{}
+  require'lspconfig'.jsonls.setup{}
   vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 END
 
@@ -31,10 +31,10 @@ call deoplete#custom#option({
                            \ })
 call deoplete#custom#source('neosnippet',
          \ 'rank',
-         \ 100)
+         \ 400)
 call deoplete#custom#source('tabnine',
          \ 'rank',
-         \ 200)
+         \ 500)
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 500,
 \ 'max_num_results': 5,
