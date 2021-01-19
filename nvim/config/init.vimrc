@@ -11,6 +11,7 @@ Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'voldikss/vim-codelf'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -47,7 +48,6 @@ Plug 'fisadev/vim-isort'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/fcitx.vim'
-
 " eye candy
 Plug 'myusuf3/numbers.vim'
 Plug 'vim-airline/vim-airline'

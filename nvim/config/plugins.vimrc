@@ -1,5 +1,7 @@
 :lua << END
-  require'lspconfig'.elixirls.setup{}
+require'lspconfig'.elixirls.setup{
+  cmd = { "/home/zyb/elixir_tools/elixir_ls/language_server.sh" };
+}
   require'lspconfig'.pyls.setup{}
   require'lspconfig'.tsserver.setup{}
   require'lspconfig'.cssls.setup{}
