@@ -1,11 +1,13 @@
 :lua << END
-  require'nvim_lsp'.elixirls.setup{}
-  require'nvim_lsp'.pyls.setup{}
-  require'nvim_lsp'.tsserver.setup{}
-  require'nvim_lsp'.cssls.setup{}
-  require'nvim_lsp'.html.setup{}
-  require'nvim_lsp'.dockerls.setup{}
-  require'nvim_lsp'.jsonls.setup{}
+require'lspconfig'.elixirls.setup{
+cmd = { "/home/zyb/tools/elixir-ls/dest/language_server.sh" };
+}
+  require'lspconfig'.pyls.setup{}
+  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.cssls.setup{}
+  require'lspconfig'.html.setup{}
+  require'lspconfig'.dockerls.setup{}
+  require'lspconfig'.jsonls.setup{}
   vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 END
 
@@ -98,7 +100,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_virtualtext_cursor=1
 nmap  <M-k> <Plug>(ale_previous_wrap)
 nmap  <M-j> <Plug>(ale_next_wrap)
-let g:ale_elixir_elixir_ls_release = '~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release'
+let g:ale_elixir_elixir_ls_release = '/home/zyb/tools/elixir-ls/dest'
 let g:ale_elixir_elixir_ls_config={
     \   "elixirLS": {
     \     "dialyzerEnabled": v:false
