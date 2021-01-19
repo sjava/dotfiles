@@ -3,14 +3,14 @@ call plug#begin('~/.config/nvim/plugged')
 " colorschemes
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " general
 Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'voldikss/vim-codelf'
 Plug 'Shougo/neosnippet.vim'
@@ -67,7 +67,7 @@ Plug 'thinca/vim-ref'
 "    \ 'branch': 'next',
 "    \ 'do': 'bash install.sh',
 "    \ }
-Plug 'Shougo/deoplete-lsp'
+" Plug 'Shougo/deoplete-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
