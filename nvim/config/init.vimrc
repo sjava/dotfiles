@@ -5,22 +5,17 @@ Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " general
-Plug 'w0rp/ale'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/echodoc'
+" Plug 'w0rp/ale'
+" Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'voldikss/vim-codelf'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'ncm2/float-preview.nvim'
 Plug 'mhinz/vim-grepper'
-Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'Shougo/context_filetype.vim'
 Plug 'vim-test/vim-test'
 Plug 'voldikss/vim-floaterm'

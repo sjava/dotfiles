@@ -1,24 +1,25 @@
 syntax on
 syntax enable
-
+set hidden
 set hlsearch
 set ignorecase
-
+set nobackup
+set nowritebackup
 set number
+
+set shortmess+=c
+set cmdheight=1
+set signcolumn=yes
+set updatetime=300
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 if (has("termguicolors"))
     set termguicolors
 endif
 
+filetype plugin indent on
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
 
 set undodir=~/.config/nvim/undodir
 set undofile
@@ -117,9 +118,6 @@ if !empty(&viminfo)
 endif
 set sessionoptions-=options
 
-" buffer settings
-set hid " buffer becomes hidden when abandoned
-set signcolumn=yes
 " stop highlighting of underscores in markdown files
 autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown :syntax match markdownIgnore "_"
 
