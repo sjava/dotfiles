@@ -3,3 +3,4 @@ autoload/*.old
 **/plugged/**
 **/backup/**
 **/undodir/**
+*.old
