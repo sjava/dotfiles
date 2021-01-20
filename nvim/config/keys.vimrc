@@ -78,7 +78,7 @@ inoremap <silent><M-u> <c-\><c-o>:call Tools_PreviousCursor(6)<cr>
 inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 
 " terminal return normal mode
-:tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 
 inoremap <C-l> <Esc>A
 inoremap <C-f> <Esc>I

@@ -92,6 +92,7 @@ let g:vue_disable_pre_processors=1
 
 " vim-which-key
 let g:which_key_use_floating_win=1
+let g:which_key_floating_relative_win=1
 
 " leaderf ignore dir
 let g:Lf_WildIgnore = {
@@ -115,4 +116,5 @@ let g:codelf_proxy_url='socks5://127.0.0.1:1080'
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " fzf
+autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 " let g:fzf_layout = {'down':'~40%'}
