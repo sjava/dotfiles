@@ -1,6 +1,4 @@
 " All status line configuration goes here
-
-set cmdheight=1
 set display+=lastline
 
 " general config

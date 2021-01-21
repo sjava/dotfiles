@@ -25,20 +25,23 @@ let g:which_key_map.w = {
       \ 'c' : ['<Plug>(choosewin)'    , 'choose window'],
       \ }
 
+let g:which_key_map.g = {
+      \ 'name' : '+GoTo code navigation' ,
+      \ 'd' : ['<Plug>(coc-definition)','definition'] ,
+      \ 'r' : ['<Plug>(coc-references)','references'] ,
+      \ 'i' : ['<Plug>(coc-implementation)','implementation'] ,
+      \ 'y' : ['<Plug>(coc-type-definition)','type-definition'] ,
+      \}
+
 let g:which_key_map.l = {
-      \ 'name' : '+lsp' ,
-      \ 'h' : 'hover' ,
-      \ 's' : 'signature_help' ,
-      \ 't' : 'type_definition' ,
-      \ 'g' : {
-        \ 'name': '+goto',
-        \ 'd' : 'definition'       ,
-        \ 'i' : 'implementation'       ,
-        \ 'r' : 'references'       ,
-        \ 'c' : 'declaration'       ,
-        \ 's' : 'document_symbol'       ,
-        \ 'w' : 'workspace_symbol'       ,
-        \ },
+      \ 'name' : '+coclist action' ,
+      \ 'a' : [':CocList diagnostics','diagnostics'] ,
+      \ 'e' : [':CocList extensions','extensions'] ,
+      \ 'c' : [':CocList commands','commands'] ,
+      \ 'o' : [':CocList outline','outline'] ,
+      \ 'p' : [':CocListResume','Resume latest coc list'] ,
+      \ 'j' : [':CocNext','Do default action for next item'] ,
+      \ 'k' : [':CocPrev','Do default action for previous item'] ,
       \}
 
 let g:which_key_map.t = {
