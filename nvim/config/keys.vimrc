@@ -194,3 +194,5 @@ let g:win_ext_command_map = {"\<cr>": 'Win#exit'}
 " vim-sneak settings
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
+
+map gcc <plug>NERDCommenterToggle
