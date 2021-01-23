@@ -119,8 +119,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> <M-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <M-j> <Plug>(coc-diagnostic-next)
+nmap  <M-k> <Plug>(ale_previous_wrap)
+nmap  <M-j> <Plug>(ale_next_wrap)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)

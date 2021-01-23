@@ -41,16 +41,9 @@ if !exists('g:context_filetype#same_filetypes')
 endif
 let g:context_filetype#same_filetypes._ = '_'
 
-" let g:neocomplete#enable_at_startup = 1
-" let g:neosnippet#enable_completed_snippet = 1
-" let g:neosnippet#enable_complete_done = 1
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-
-" echodoc
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'floating'
 
 " gen_tags
 " let g:gen_tags#ctags_auto_gen = 1
@@ -62,6 +55,27 @@ endif
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
+" ale plugin
+let g:ale_disable_lsp = 1
+let g:ale_completion_enabled = 0
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_virtualtext_cursor=1
+let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir_ls'
+let g:ale_elixir_elixir_ls_config={
+    \   "elixirLS": {
+    \     "dialyzerEnabled": v:true
+    \   }
+    \ }
+let g:ale_linters = {
+      \   'python': ['flake8','isort'],
+      \   'javascript': ['eslint'],
+      \   'elixir': ['credo','elixir-ls'],
+      \}
+let g:ale_fixers = {
+  \   'scss': ['stylelint'],
+  \   'javascript': ['eslint'],
+  \}
 
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818

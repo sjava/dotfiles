@@ -5,7 +5,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " general
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " Plug 'Shougo/echodoc'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
