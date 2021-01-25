@@ -195,8 +195,5 @@ let g:win_ext_command_map = {"\<cr>": 'Win#exit'}
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
-<<<<<<< HEAD
 " nerdcommenter toggle map
-=======
->>>>>>> d855dcef2895161b7584dcdb41260f1793fcf511
 map gcc <plug>NERDCommenterToggle
