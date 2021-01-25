@@ -1,3 +1,22 @@
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.elixir = {
+  install_info = {
+    url = "/home/zyb/tools/tree-sitter-elixir",
+    files = {"src/parser.c"}
+  },
+  filetype = "elixir",
+  used_by = {"eelixir"}
+}
+EOF
+
 let g:test#strategy = 'floaterm'
 let g:float_preview#docked = 0
 
@@ -32,10 +51,10 @@ endif
 " let g:gen_tags#statusline = 1
 
 " set background=dark
-let g:onedark_terminal_italics=1
-colorscheme onedark
-" let g:gruvbox_italic=1
-" colorscheme gruvbox
+" let g:onedark_terminal_italics=1
+" colorscheme onedark
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 
 " vim-sneak settings
@@ -90,3 +109,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " fzf
 autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 " let g:fzf_layout = {'down':'~40%'}
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
