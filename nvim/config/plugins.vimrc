@@ -6,15 +6,23 @@ require'nvim-treesitter.configs'.setup {
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
+
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.elixir = {
-  install_info = {
-    url = "/home/zyb/tools/tree-sitter-elixir",
-    files = {"src/parser.c"}
-  },
-  filetype = "elixir",
-  used_by = {"eelixir"}
+install_info = {
+url = "/home/zyb/tools/tree-sitter-elixir",
+files = {"src/parser.c"}
+},
+filetype = "elixir",
+used_by = {"eelixir"}
 }
+
+require'nvim-treesitter.configs'.setup {
+rainbow = {
+    enable = true,
+    disable = {'bash'} -- please disable bash until I figure #1 out
+    }
+    }
 EOF
 
 let g:test#strategy = 'floaterm'
@@ -35,27 +43,40 @@ if !exists('g:context_filetype#same_filetypes')
 endif
 let g:context_filetype#same_filetypes._ = '_'
 
-" let g:neocomplete#enable_at_startup = 1
-" let g:neosnippet#enable_completed_snippet = 1
-" let g:neosnippet#enable_complete_done = 1
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-
-" echodoc
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'floating'
 
 " gen_tags
 " let g:gen_tags#ctags_auto_gen = 1
 " let g:gen_tags#statusline = 1
 
-" set background=dark
 " let g:onedark_terminal_italics=1
 " colorscheme onedark
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
+" ale plugin
+let g:ale_disable_lsp = 1
+let g:ale_completion_enabled = 0
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_virtualtext_cursor=1
+let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir_ls'
+let g:ale_elixir_elixir_ls_config={
+    \   "elixirLS": {
+    \     "dialyzerEnabled": v:true
+    \   }
+    \ }
+let g:ale_linters = {
+      \   'python': ['flake8','isort'],
+      \   'javascript': ['eslint'],
+      \   'elixir': ['credo','elixir-ls'],
+      \}
+let g:ale_fixers = {
+  \   'scss': ['stylelint'],
+  \   'javascript': ['eslint'],
+  \}
 
 " vim-sneak settings
 hi SneakPluginTarget ctermfg=black ctermbg=181818
@@ -87,7 +108,6 @@ let g:vue_disable_pre_processors=1
 
 " vim-which-key
 let g:which_key_use_floating_win=1
-let g:which_key_floating_relative_win=1
 
 " leaderf ignore dir
 let g:Lf_WildIgnore = {
@@ -112,4 +132,3 @@ autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-

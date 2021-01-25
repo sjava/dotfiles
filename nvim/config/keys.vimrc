@@ -119,8 +119,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> <M-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <M-j> <Plug>(coc-diagnostic-next)
+nmap  <M-k> <Plug>(ale_previous_wrap)
+nmap  <M-j> <Plug>(ale_next_wrap)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -195,5 +195,8 @@ let g:win_ext_command_map = {"\<cr>": 'Win#exit'}
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
+<<<<<<< HEAD
 " nerdcommenter toggle map
+=======
+>>>>>>> d855dcef2895161b7584dcdb41260f1793fcf511
 map gcc <plug>NERDCommenterToggle
