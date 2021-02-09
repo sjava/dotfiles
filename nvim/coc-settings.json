@@ -1,4 +1,3 @@
 {
-  "diagnostic.displayByAle":true,
-  "codeLens.enable":true
+  "diagnostic.displayByAle":true
 }

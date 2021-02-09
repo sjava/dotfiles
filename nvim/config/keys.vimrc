@@ -196,3 +196,9 @@ map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
 map gcc <plug>NERDCommenterToggle
+
+" floaterm new keys
+nnoremap   <silent>   <F8>    :FloatermNew<CR>
+tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermNew<CR>
+
+let g:user_emmet_leader_key='<C-k>'

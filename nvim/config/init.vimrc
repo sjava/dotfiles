@@ -6,11 +6,7 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " general
 Plug 'w0rp/ale'
-" Plug 'Shougo/echodoc'
-Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'voldikss/vim-codelf'
 Plug 'haya14busa/incsearch.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -23,23 +19,19 @@ Plug 'voldikss/vim-floaterm'
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
 
-Plug 'p00f/nvim-ts-rainbow'
 Plug 'preservim/nerdcommenter'
-" Plug 'tyru/caw.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'othree/eregex.vim'
 Plug 'machakann/vim-sandwich'
-Plug 'jiangmiao/auto-pairs'
 Plug 'justinmk/vim-sneak'
 Plug 'andymass/vim-matchup'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
 Plug 'jsfaint/gen_tags.vim'
 Plug 'xolox/vim-misc'
-Plug 'MaicoTimmerman/Vim-Jinja2-Syntax'
 Plug 'fisadev/vim-isort'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
@@ -58,16 +50,8 @@ Plug 'pangloss/vim-javascript'
 " elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'thinca/vim-ref'
-" Plug 'slashmili/alchemist.vim'
-" Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-" Plug 'Shougo/deoplete-lsp'
-Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'nixprime/cpsm'
 
 " other
 Plug 'mattn/emmet-vim'
@@ -89,11 +73,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
 
 " python
-" Plug 'zchee/deoplete-jedi'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'ujihisa/neco-look'
-" Plug 'ujihisa/neco-look'
-" Plug 'wellle/tmux-complete.vim'
 
 " markdown
 Plug 'plasticboy/vim-markdown'
@@ -101,9 +81,7 @@ Plug 'iamcco/markdown-preview.vim'
 
 Plug 'chr4/nginx.vim'
 
-" wxapp
-Plug 'chemzqm/wxapp.vim'
-
 " xml
 Plug 'othree/xml.vim'
+Plug 'chemzqm/wxapp.vim'
 call plug#end()

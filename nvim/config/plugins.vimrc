@@ -1,27 +1,27 @@
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-}
-require'nvim-treesitter.configs'.setup {
-  rainbow = {
-    enable = true,
-    disable = {'bash'} -- please disable bash until I figure #1 out
-  }
-}
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.elixir = {
-  install_info = {
-    url = "/home/zyb/elixir_tools/tree-sitter-elixir",
-    files = {"src/parser.c"}
-  },
-  filetype = "elixir", -- if filetype does not agrees with parser name
-  used_by = {"eelixir"} -- additional filetypes that use this parser
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+  " ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  " highlight = {
+    " enable = true,              -- false will disable the whole extension
+    " disable = { "c", "rust" },  -- list of language that will be disabled
+  " },
+" }
+" require'nvim-treesitter.configs'.setup {
+  " rainbow = {
+    " enable = true,
+    " disable = {'bash'} -- please disable bash until I figure #1 out
+  " }
+" }
+" local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+" parser_config.elixir = {
+  " install_info = {
+    " url = "/home/zyb/elixir_tools/tree-sitter-elixir",
+    " files = {"src/parser.c"}
+  " },
+  " filetype = "elixir", -- if filetype does not agrees with parser name
+  " used_by = {"eelixir"} -- additional filetypes that use this parser
+" }
+" EOF
 
 let g:test#strategy = 'floaterm'
 let g:float_preview#docked = 0
@@ -56,8 +56,12 @@ let g:gruvbox_italic=1
 colorscheme gruvbox
 
 " ale plugin
+let g:ale_floating_preview = 1
 let g:ale_disable_lsp = 1
 let g:ale_completion_enabled = 0
+"自定义error和warning图标
+let g:ale_sign_error = "❌"
+let g:ale_sign_warning = "⚠️"
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_virtualtext_cursor=1
