@@ -1,7 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " colorschemes
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " general

@@ -15,7 +15,8 @@ let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#show_tab_type=1
 let g:airline#extensions#tmuxline#enabled=0
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'simple'
+" let g:airline_theme = 'gruvbox'
 "let g:airline_theme='onedark'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
