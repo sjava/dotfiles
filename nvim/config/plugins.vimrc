@@ -24,7 +24,6 @@
 " EOF
 
 let g:test#strategy = 'floaterm'
-let g:float_preview#docked = 0
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -50,10 +49,10 @@ endif
 " let g:gen_tags#statusline = 1
 
 " set background=dark
-"let g:onedark_terminal_italics=1
-"colorscheme onedark
-let g:gruvbox_italic=1
-colorscheme gruvbox
+let g:onedark_terminal_italics=1
+colorscheme onedark
+" let g:gruvbox_italic=1
+" colorscheme gruvbox
 
 " ale plugin
 let g:ale_floating_preview = 1
@@ -128,9 +127,6 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-" codelf
-let g:codelf_enable_popup_menu = v:true
-let g:codelf_proxy_url='socks5://127.0.0.1:1080'
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " fzf

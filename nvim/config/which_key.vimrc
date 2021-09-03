@@ -22,7 +22,6 @@ let g:which_key_map.w = {
       \ 's' : ['<C-W>s'     , 'split-window-below']    ,
       \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
       \ 'f' : ['Windows'    , 'fzf-window']            ,
-      \ 'c' : ['<Plug>(choosewin)'    , 'choose window'],
       \ }
 
 let g:which_key_map.g = {
@@ -62,7 +61,6 @@ let g:which_key_map.f = {
       \ 'l' : 'line' ,
       \ 's' : 'search' ,
       \ 't' : 'buffer tag' ,
-      \ 'w' : 'display window' ,
       \ 'a' : 'search cursor on word' ,
       \}
 

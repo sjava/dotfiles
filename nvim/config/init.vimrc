@@ -2,14 +2,14 @@ call plug#begin('~/.config/nvim/plugged')
 
 " colorschemes
 Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'joshdick/onedark.vim'
 " general
 Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'haya14busa/incsearch.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug 'ncm2/float-preview.nvim'
 Plug 'mhinz/vim-grepper'
 Plug 'Shougo/context_filetype.vim'
 Plug 'vim-test/vim-test'
@@ -35,6 +35,7 @@ Plug 'fisadev/vim-isort'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/fcitx.vim'
+Plug 'honza/vim-snippets'
 " eye candy
 Plug 'myusuf3/numbers.vim'
 Plug 'vim-airline/vim-airline'
@@ -58,7 +59,6 @@ Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/csscomplete.vim'
 Plug 'groenewege/vim-less'
-Plug 'dstein64/vim-win'
 Plug 'chrisbra/unicode.vim'
 Plug 'mhinz/vim-startify'
 
