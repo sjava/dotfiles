@@ -1,29 +1,21 @@
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-  " ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  " highlight = {
-    " enable = true,              -- false will disable the whole extension
-    " disable = { "c", "rust" },  -- list of language that will be disabled
-  " },
-" }
-" require'nvim-treesitter.configs'.setup {
-  " rainbow = {
-    " enable = true,
-    " disable = {'bash'} -- please disable bash until I figure #1 out
-  " }
-" }
-" local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-" parser_config.elixir = {
-  " install_info = {
-    " url = "/home/zyb/elixir_tools/tree-sitter-elixir",
-    " files = {"src/parser.c"}
-  " },
-  " filetype = "elixir", -- if filetype does not agrees with parser name
-  " used_by = {"eelixir"} -- additional filetypes that use this parser
-" }
-" EOF
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 let g:test#strategy = 'floaterm'
+let g:float_preview#docked = 0
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -48,23 +40,18 @@ endif
 " let g:gen_tags#ctags_auto_gen = 1
 " let g:gen_tags#statusline = 1
 
-" set background=dark
 let g:onedark_terminal_italics=1
 colorscheme onedark
-" let g:gruvbox_italic=1
-" colorscheme gruvbox
 
 " ale plugin
-let g:ale_floating_preview = 1
-let g:ale_disable_lsp = 1
+let g:ale_disable_lsp = 0
 let g:ale_completion_enabled = 0
-"自定义error和warning图标
-let g:ale_sign_error = "❌"
-let g:ale_sign_warning = "⚠️"
 let g:ale_sign_column_always = 1
+let g:ale_detail_to_floating_preview = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_virtualtext_cursor=1
-let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir_ls'
+let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls-1.12'
 let g:ale_elixir_elixir_ls_config={
     \   "elixirLS": {
     \     "dialyzerEnabled": v:true
@@ -97,6 +84,7 @@ let g:neoformat_wxml_prettier ={
 let g:neoformat_enabled_wxml = ['prettier']
 
 let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_html = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_scss = ['prettier']
@@ -109,29 +97,29 @@ autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
 " vim-which-key
-let g:which_key_use_floating_win=1
+function! FormatWhichKey(mapping) abort
+  let l:ret = a:mapping
+  let l:ret = substitute(l:ret, '\c<cr>$', '', '')
+  let l:ret = substitute(l:ret, '^:', '', '')
+  let l:ret = substitute(l:ret, '^\c<c-u>', '', '')
+  let l:ret = substitute(l:ret, '^<Plug>', '', '')
+  let l:ret = substitute(l:ret, '^AirlineSelect', '', '')
+  return l:ret
+endfunction
 
-" leaderf ignore dir
-let g:Lf_WildIgnore = {
-      \ 'dir': ['node_modules'],
-      \ 'file': []
-      \}
-" don't show the help in normal mode
-let g:Lf_HideHelp = 1
-let g:Lf_UseCache = 0
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_IgnoreCurrentBufferName = 1
-" popup mode
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:which_key_run_map_on_popup = 1
+let g:which_key_use_floating_win = 1
+let g:which_key_disable_default_offset = 1
+let g:which_key_centered = 0
+let g:which_key_floating_opts = { 'width': 150, 'height': 10}
+let g:WhichKeyFormatFunc = function('FormatWhichKey')
 
+" vim clap
+let g:clap_layout = { 'relative': 'editor' }
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " fzf
 autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
-" let g:fzf_layout = {'down':'~40%'}
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1

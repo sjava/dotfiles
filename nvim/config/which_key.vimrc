@@ -53,15 +53,17 @@ let g:which_key_map.t = {
       \}
 
 let g:which_key_map.f = {
-      \ 'name' : '+leaderf' ,
-      \ 'f' : 'file' ,
-      \ 'b' : 'buffer' ,
-      \ 'm' : 'mru' ,
-      \ 'n' : 'function' ,
-      \ 'l' : 'line' ,
-      \ 's' : 'search' ,
-      \ 't' : 'buffer tag' ,
-      \ 'a' : 'search cursor on word' ,
+      \ 'name' : '+Clap' ,
+      \ 'f' : [':Clap files','find files'] ,
+      \ 'b' : [':Clap buffers','open buffers'] ,
+      \ 'c' : [':Clap command','all commands'] ,
+      \ 'h' : [':Clap command_history','command history'] ,
+      \ 'd' : [':Clap dumb_jump','Definitions/References'] ,
+      \ 's' : [':Clap grep','search'] ,
+      \ 't' : [':Clap tags','current buffer tag'] ,
+      \ 'm' : [':Clap proj_tags','all tag'] ,
+      \ 'w' : [':Clap windows','windows'] ,
+      \ 'a' : [':Clap grep ++query=<cword>','search cursor on word'] ,
       \}
 
 let g:which_key_map.b = {

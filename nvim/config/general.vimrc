@@ -11,7 +11,7 @@ set shortmess+=c
 set cmdheight=1
 set signcolumn=yes
 set updatetime=300
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 if (has("termguicolors"))
     set termguicolors
 endif

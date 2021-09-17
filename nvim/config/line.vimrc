@@ -15,13 +15,13 @@ let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#show_tab_type=1
 let g:airline#extensions#tmuxline#enabled=0
-" let g:airline_theme = 'simple'
 let g:airline_theme='onedark'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -66,4 +66,3 @@ let g:tmuxline_preset = {
         \ 'x': '#h',
         \ 'y': '%b %d',
         \ 'z': '%R'}
-

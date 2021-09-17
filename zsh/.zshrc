@@ -92,7 +92,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias nvim="MIX_ENV=editor nvim"
 # alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_PREFER_DARK_THEME=1 NVIM_GTK_NO_WINDOW_DECORATION=1 nvim-gtk"
-alias pnvim="https_proxy=http://127.0.0.1:8889 nvim"
+alias nvim="$HOME/nvim.appimage"
+alias useproxy="export http_proxy=http://127.0.0.1:8889 https_proxy=http://127.0.0.1:8889"
+alias noproxy="unset http_proxy https_proxy"
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 . $HOME/.asdf/asdf.sh
