@@ -22,7 +22,6 @@ let g:which_key_map.w = {
       \ 's' : ['<C-W>s'     , 'split-window-below']    ,
       \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
       \ 'f' : ['Windows'    , 'fzf-window']            ,
-      \ 'c' : ['<Plug>(choosewin)'    , 'choose window'],
       \ }
 
 let g:which_key_map.g = {
@@ -54,16 +53,16 @@ let g:which_key_map.t = {
       \}
 
 let g:which_key_map.f = {
-      \ 'name' : '+leaderf' ,
-      \ 'f' : 'file' ,
-      \ 'b' : 'buffer' ,
-      \ 'm' : 'mru' ,
-      \ 'n' : 'function' ,
-      \ 'l' : 'line' ,
-      \ 's' : 'search' ,
-      \ 't' : 'buffer tag' ,
-      \ 'w' : 'display window' ,
-      \ 'a' : 'search cursor on word' ,
+      \ 'name' : '+Clap' ,
+      \ 'f' : [':Clap files','find files'] ,
+      \ 'b' : [':Clap buffers','open buffers'] ,
+      \ 'c' : [':Clap command','all commands'] ,
+      \ 'h' : [':Clap command_history','command history'] ,
+      \ 'd' : [':Clap dumb_jump','Definitions/References'] ,
+      \ 't' : [':Clap tags','current buffer tag'] ,
+      \ 'm' : [':Clap proj_tags','all tag'] ,
+      \ 'w' : [':Clap windows','windows'] ,
+      \ 'a' : [':Clap grep ++query=<cword>','search cursor on word'] ,
       \}
 
 let g:which_key_map.b = {
