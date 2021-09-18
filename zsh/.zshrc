@@ -58,7 +58,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(pip git npm sudo asdf yarn archlinux mix pipenv z docker cargo rust rustup)
+plugins=(pip git npm sudo asdf yarn archlinux mix z docker cargo rust rustup)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,7 +91,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nvim="$HOME/nvim.appimage"
-alias pnvim="http_proxy=http://127.0.0.1:8889 https_proxy=http://127.0.0.1:8889 nvim"
 alias useproxy="export http_proxy=http://127.0.0.1:8889 https_proxy=http://127.0.0.1:8889"
 alias noproxy="unset http_proxy https_proxy"
 [[ $TMUX = "" ]] && export TERM="xterm-256color"

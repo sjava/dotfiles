@@ -1,7 +1,9 @@
-export PATH="/home/zyb/tools/runtime/bin/:/home/zyb/.local/bin:$HOME/.yarn/bin:$PATH"
+export PATH="/home/zyb/.local/bin:$HOME/.yarn/bin:$PATH"
 export EDITOR="$HOME/nvim.appimage"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export PIPENV_VENV_IN_PROJECT=1
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 . "$HOME/.cargo/env"

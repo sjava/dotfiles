@@ -97,7 +97,7 @@ autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
 " vim-which-key
-function! Format_which_key(mapping) abort
+function! FormatWhichKey(mapping) abort
   let l:ret = a:mapping
   let l:ret = substitute(l:ret, '\c<cr>$', '', '')
   let l:ret = substitute(l:ret, '^:', '', '')
@@ -106,17 +106,28 @@ function! Format_which_key(mapping) abort
   let l:ret = substitute(l:ret, '^AirlineSelect', '', '')
   return l:ret
 endfunction
-let g:which_key_use_floating_win = 1
-let g:which_key_centered = 0
-let g:which_key_floating_opts = { 'width': 200,'height': 10 }
-let g:WhichKeyFormatFunc = function('Format_which_key')
 
+let g:which_key_run_map_on_popup = 1
+let g:which_key_use_floating_win = 1
+let g:which_key_disable_default_offset = 1
+let g:which_key_centered = 0
+let g:which_key_floating_opts = { 'width': 150, 'height': 10}
+let g:WhichKeyFormatFunc = function('FormatWhichKey')
 
 " vim clap
 let g:clap_layout = { 'relative': 'editor' }
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " fzf
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case --glob "!tags" -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
 " Add spaces after comment delimiters by default

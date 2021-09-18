@@ -21,7 +21,6 @@ let g:which_key_map.w = {
       \ '=' : ['<C-W>='     , 'balance-window']        ,
       \ 's' : ['<C-W>s'     , 'split-window-below']    ,
       \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
-      \ 'f' : ['Windows'    , 'fzf-window']            ,
       \ }
 
 let g:which_key_map.g = {
@@ -53,15 +52,19 @@ let g:which_key_map.t = {
       \}
 
 let g:which_key_map.f = {
-      \ 'name' : '+Clap' ,
-      \ 'f' : [':Clap files','find files'] ,
-      \ 'b' : [':Clap buffers','open buffers'] ,
-      \ 'c' : [':Clap command','all commands'] ,
-      \ 'h' : [':Clap command_history','command history'] ,
+      \ 'name' : '+Search' ,
+      \ 'f' : [':Files','find files'] ,
+      \ 'b' : [':Buffers','open buffers'] ,
+      \ 'c' : [':Commands','all commands'] ,
+      \ 'L' : [':Lines','all lines'] ,
+      \ 'l' : [':BLines','buffer lines'] ,
+      \ 'm' : [':Maps','all maps'] ,
+      \ 'h' : [':History:','command history'] ,
       \ 'd' : [':Clap dumb_jump','Definitions/References'] ,
-      \ 't' : [':Clap tags','current buffer tag'] ,
-      \ 'm' : [':Clap proj_tags','all tag'] ,
-      \ 'w' : [':Clap windows','windows'] ,
+      \ 's' : [':RG','search'] ,
+      \ 't' : [':BTags','buffer tag'] ,
+      \ 'T' : [':Tags','all tag'] ,
+      \ 'w' : [':Windows','windows'] ,
       \ 'a' : [':Clap grep ++query=<cword>','search cursor on word'] ,
       \}
 
