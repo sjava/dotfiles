@@ -51,7 +51,7 @@ let g:ale_detail_to_floating_preview = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_virtualtext_cursor=1
-let g:ale_elixir_elixir_ls_release = '/home/zyb/elixir_tools/elixir-ls-1.12'
+let g:ale_elixir_elixir_ls_release = '~/tools/elixir-ls'
 let g:ale_elixir_elixir_ls_config={
     \   "elixirLS": {
     \     "dialyzerEnabled": v:true
@@ -113,9 +113,6 @@ let g:which_key_disable_default_offset = 1
 let g:which_key_centered = 0
 let g:which_key_floating_opts = { 'width': 150, 'height': 10}
 let g:WhichKeyFormatFunc = function('FormatWhichKey')
-
-" vim clap
-let g:clap_layout = { 'relative': 'editor' }
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " fzf

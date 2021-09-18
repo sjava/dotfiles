@@ -60,12 +60,10 @@ let g:which_key_map.f = {
       \ 'l' : [':BLines','buffer lines'] ,
       \ 'm' : [':Maps','all maps'] ,
       \ 'h' : [':History:','command history'] ,
-      \ 'd' : [':Clap dumb_jump','Definitions/References'] ,
       \ 's' : [':RG','search'] ,
       \ 't' : [':BTags','buffer tag'] ,
       \ 'T' : [':Tags','all tag'] ,
       \ 'w' : [':Windows','windows'] ,
-      \ 'a' : [':Clap grep ++query=<cword>','search cursor on word'] ,
       \}
 
 let g:which_key_map.b = {
