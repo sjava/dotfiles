@@ -53,13 +53,15 @@ let g:which_key_map.t = {
 
 let g:which_key_map.f = {
       \ 'name' : '+Search' ,
-      \ 'f' : [':Files','find files'] ,
+      \ 'a' : [':Ag','ag find'] ,
       \ 'b' : [':Buffers','open buffers'] ,
       \ 'c' : [':Commands','all commands'] ,
+      \ 'f' : [':GFiles','git files'] ,
+      \ 'h' : [':History:','command history'] ,
       \ 'L' : [':Lines','all lines'] ,
       \ 'l' : [':BLines','buffer lines'] ,
       \ 'm' : [':Maps','all maps'] ,
-      \ 'h' : [':History:','command history'] ,
+      \ 'r' : [':Rg','rg find'] ,
       \ 's' : [':RG','search'] ,
       \ 't' : [':BTags','buffer tag'] ,
       \ 'T' : [':Tags','all tag'] ,

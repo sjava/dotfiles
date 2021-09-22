@@ -14,6 +14,9 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 let g:test#strategy = 'floaterm'
 let g:float_preview#docked = 0
 
