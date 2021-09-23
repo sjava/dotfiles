@@ -90,7 +90,7 @@ let g:which_key_map.b = {
       \ '+' : ['<Plug>AirlineSelectNextTab','next tab'] ,
       \ 'd' : [':Bwipeout','close buffer'] ,
       \ 'e' : [':enew','edit new buffer'] ,
-      \ 'b' : ['Buffers'    , 'fzf-buffer']            ,
+      \ 'f' : [':IndentBlanklineRefresh'    , 'refresh indent line']            ,
       \}
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>

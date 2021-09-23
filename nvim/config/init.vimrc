@@ -7,7 +7,8 @@ Plug 'navarasu/onedark.nvim'
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'sjava/vim-which-key'
+" Plug 'sjava/vim-which-key'
+Plug 'liuchengxu/vim-which-key'
 Plug 'Shougo/context_filetype.vim'
 Plug 'vim-test/vim-test'
 Plug 'voldikss/vim-floaterm'

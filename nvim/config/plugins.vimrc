@@ -113,8 +113,8 @@ endfunction
 let g:which_key_run_map_on_popup = 1
 let g:which_key_use_floating_win = 1
 let g:which_key_disable_default_offset = 1
-let g:which_key_centered = 0
-let g:which_key_floating_opts = { 'width': 150, 'height': 10}
+let g:which_key_centered = 1
+let g:which_key_floating_opts = { 'height': '10' }
 let g:WhichKeyFormatFunc = function('FormatWhichKey')
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -138,3 +138,4 @@ let g:clap_theme = 'material_design_dark'
 let g:clap_enable_icon = 1
 
 let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
+let g:indent_blankline_buftype_exclude = ['nofile']
