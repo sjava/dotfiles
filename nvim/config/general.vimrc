@@ -11,7 +11,7 @@ set shortmess+=c
 set cmdheight=1
 set signcolumn=yes
 set updatetime=300
-set foldlevel=1
+set foldlevel=99
 
 if (has("termguicolors"))
     set termguicolors
