@@ -18,7 +18,6 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 let g:test#strategy = 'floaterm'
-let g:float_preview#docked = 0
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -118,17 +117,6 @@ let g:which_key_floating_opts = { 'height': '10' }
 let g:WhichKeyFormatFunc = function('FormatWhichKey')
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
-" fzf
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case --glob "!tags" -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -139,3 +127,4 @@ let g:clap_enable_icon = 1
 
 let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
 let g:indent_blankline_buftype_exclude = ['nofile']
+
