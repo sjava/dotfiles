@@ -8,6 +8,7 @@ Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'sjava/vim-which-key'
+Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
 Plug 'liuchengxu/vim-which-key'
 Plug 'Shougo/context_filetype.vim'
 Plug 'vim-test/vim-test'

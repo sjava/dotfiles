@@ -5,7 +5,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 let g:which_key_map =  {}
 let g:which_key_map.w = {
       \ 'name' : '+windows' ,
-      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'w' : 'select window',
       \ 'd' : ['<C-W>c'     , 'delete-window']         ,
       \ '-' : ['<C-W>s'     , 'split-window-below']    ,
       \ '|' : ['<C-W>v'     , 'split-window-right']    ,

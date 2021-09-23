@@ -181,3 +181,4 @@ nnoremap   <silent>   <F8>    :FloatermNew<CR>
 tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermNew<CR>
 
 let g:user_emmet_leader_key='<C-k>'
+map <silent> <leader>ww :lua require('nvim-window').pick()<CR>
