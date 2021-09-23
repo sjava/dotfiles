@@ -12,6 +12,8 @@ Plug 'Shougo/context_filetype.vim'
 Plug 'vim-test/vim-test'
 Plug 'voldikss/vim-floaterm'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+Plug 'liuchengxu/vista.vim'
 " editing
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
@@ -19,7 +21,8 @@ Plug 'honza/vim-snippets'
 
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-repeat'
 Plug 'othree/eregex.vim'
 Plug 'machakann/vim-sandwich'
@@ -44,10 +47,10 @@ Plug 'pangloss/vim-javascript'
 
 " elixir
 Plug 'elixir-editors/vim-elixir'
-Plug 'thinca/vim-ref'
+" Plug 'thinca/vim-ref'
 " Plug 'neovim/nvim-lspconfig'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 
 " other
 Plug 'mattn/emmet-vim'

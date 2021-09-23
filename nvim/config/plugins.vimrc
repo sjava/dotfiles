@@ -132,3 +132,9 @@ autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+let g:clap_layout = { 'relative': 'editor' }
+let g:clap_theme = 'material_design_dark'
+let g:clap_enable_icon = 1
+
+let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
