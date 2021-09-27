@@ -37,6 +37,7 @@ Plug 'jsfaint/gen_tags.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/fcitx.vim'
+Plug 'max397574/better-escape.nvim'
 " eye candy
 Plug 'myusuf3/numbers.vim'
 Plug 'vim-airline/vim-airline'

@@ -72,7 +72,7 @@ tnoremap <Esc> <C-\><C-n>
 
 inoremap <C-l> <Esc>A
 inoremap <C-f> <Esc>I
-imap jj <Esc>
+" imap jj <Esc>
 inoremap <C-S-v> <Esc>"+pA
 nmap <Leader>p "+p
 vmap <Leader>y "+y

@@ -100,3 +100,4 @@ DEFAULT_USER="zyb"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+eval "$(starship init zsh)"
