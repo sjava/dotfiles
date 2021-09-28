@@ -4,3 +4,4 @@ autoload/*.old
 **/backup/**
 **/undodir/**
 *.old
+fonts/**
