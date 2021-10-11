@@ -51,10 +51,6 @@ Plug 'pangloss/vim-javascript'
 
 " elixir
 Plug 'elixir-editors/vim-elixir'
-" Plug 'thinca/vim-ref'
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
 
 " other
 Plug 'mattn/emmet-vim'
@@ -62,13 +58,10 @@ Plug 'chrisbra/unicode.vim'
 Plug 'mhinz/vim-startify'
 
 " text objects
-Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
-Plug 'Julian/vim-textobj-brace'
-Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-fold'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'kana/vim-textobj-function'
+Plug 'amiralies/vim-textobj-elixir'
+Plug 'wellle/targets.vim'
 
 " markdown
 Plug 'plasticboy/vim-markdown'
