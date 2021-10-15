@@ -2,7 +2,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " colorschemes
 Plug 'navarasu/onedark.nvim'
-Plug 'sunjon/shade.nvim'
 
 " general
 Plug 'w0rp/ale'
