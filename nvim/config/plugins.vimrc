@@ -4,7 +4,7 @@ require'nvim-treesitter.configs'.setup {
   ignore_install = {},
   highlight = {
     enable = true,
-    disable = {},
+    disable = {"elixir"},
     additional_vim_regex_highlighting = false,
   },
 }
@@ -48,11 +48,12 @@ colorscheme onedark
 
 " ale plugin
 let g:ale_disable_lsp = 1
+let g:ale_lint_on_save = 0
 let g:ale_completion_enabled = 0
 let g:ale_sign_error = 'x>'
 let g:ale_sign_warning = '!>'
 let g:ale_sign_column_always = 1
-let g:ale_detail_to_floating_preview = 1
+let g:ale_floating_preview = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_virtualtext_cursor = 1
