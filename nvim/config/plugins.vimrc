@@ -8,15 +8,6 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require'shade'.setup{
-  overlay_opacity = 50,
-  opacity_step = 1,
-  keys = {
-    brightness_up    = '<C-Up>',
-    brightness_down  = '<C-Down>',
-    toggle           = '<Leader>s',
-  }
-}
 require("better_escape").setup {
     mapping = {"jk", "jj"},
     timeout = vim.o.timeoutlen,
@@ -64,13 +55,7 @@ let g:ale_sign_column_always = 1
 let g:ale_detail_to_floating_preview = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
-let g:ale_virtualtext_cursor=1
-" let g:ale_elixir_elixir_ls_release = '~/tools/elixir-ls'
-" let g:ale_elixir_elixir_ls_config={
-    " \   "elixirLS": {
-    " \     "dialyzerEnabled": v:true
-    " \   }
-    " \ }
+let g:ale_virtualtext_cursor = 1
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
       \   'javascript': ['eslint'],
