@@ -23,7 +23,6 @@ Plug 'honza/vim-snippets'
 
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-" Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-repeat'
 Plug 'othree/eregex.vim'
@@ -41,6 +40,7 @@ Plug 'max397574/better-escape.nvim'
 Plug 'myusuf3/numbers.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'xiyaowong/nvim-cursorword'
 
 " javascript
 Plug 'moll/vim-node'
