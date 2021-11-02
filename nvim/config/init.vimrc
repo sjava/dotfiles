@@ -70,5 +70,6 @@ Plug 'chr4/nginx.vim'
 
 " wxapp
 Plug 'chemzqm/wxapp.vim'
+Plug 'kassio/neoterm'
 
 call plug#end()

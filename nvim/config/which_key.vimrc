@@ -51,6 +51,12 @@ let g:which_key_map.t = {
       \ 'v' : 'test visit' ,
       \}
 
+let g:which_key_map.s = {
+      \ 'name' : '+neoterm repl' ,
+      \ 'f' : [':TREPLSendFile','send file'] ,
+      \ 'l' : [':TREPLSendLine','send current line'] ,
+      \ 's' : [':TREPLSendSelection','send current selection range'] ,
+      \}
 " let g:which_key_map.f = {
       " \ 'name' : '+Search' ,
       " \ 'a' : [':Ag','ag find'] ,
@@ -94,4 +100,5 @@ let g:which_key_map.b = {
       \}
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 call which_key#register('<Space>', "g:which_key_map")
