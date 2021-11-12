@@ -18,7 +18,9 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-let g:test#strategy = 'floaterm'
+" let g:test#strategy = 'floaterm'
+let g:neoterm_autoscroll = 1
+let g:test#strategy = 'neoterm'
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')

@@ -70,7 +70,7 @@ inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 " terminal return normal mode
 tnoremap <Esc> <C-\><C-n>
 
-inoremap <C-e> <Esc>A
+inoremap <C-l> <Esc>A
 inoremap <C-s> <Esc>I
 " imap jj <Esc>
 inoremap <C-S-v> <Esc>"+pA
