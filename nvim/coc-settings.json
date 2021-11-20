@@ -1,5 +1,5 @@
 {
-  "diagnostic.displayByAle":true,
+  "diagnostic.displayByAle":false,
   "rust-analyzer.diagnostics.disabled":["unresolved import"],
   "elixir.pathToElixirLS": "~/tools/elixir-ls/language_server.sh"
 }
