@@ -7,6 +7,13 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
     additional_vim_regex_highlighting = false,
   },
+  textsubjects = {
+    enable = true,
+    keymaps = {
+      ['.'] = 'textsubjects-smart',
+      [';'] = 'textsubjects-container-outer',
+      }
+  },
 }
 require("better_escape").setup {
     mapping = {"jk", "jj"},
@@ -53,8 +60,6 @@ let g:ale_enabled = 0
 let g:ale_disable_lsp = 1
 let g:ale_lint_on_save = 0
 let g:ale_completion_enabled = 0
-" let g:ale_sign_error = 'x>'
-" let g:ale_sign_warning = '!>'
 let g:ale_sign_column_always = 1
 let g:ale_floating_preview = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -128,4 +133,4 @@ let g:clap_enable_icon = 1
 let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case -g "!tags"'
 
 let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
-let g:indent_blankline_buftype_exclude = ['nofile','terminal']
+let g:indent_blankline_buftype_exclude = ['nofile', 'terminal']
