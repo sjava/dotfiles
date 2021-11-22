@@ -49,6 +49,7 @@ let g:onedark_terminal_italics=1
 colorscheme onedark
 
 " ale plugin
+let g:ale_enabled = 0
 let g:ale_disable_lsp = 1
 let g:ale_lint_on_save = 0
 let g:ale_completion_enabled = 0
@@ -57,7 +58,7 @@ let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_floating_preview = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+" let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_virtualtext_cursor = 1
 let g:ale_linters = {
       \   'python': ['flake8','isort'],
@@ -127,5 +128,4 @@ let g:clap_enable_icon = 1
 let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case -g "!tags"'
 
 let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
-let g:indent_blankline_buftype_exclude = ['nofile']
-
+let g:indent_blankline_buftype_exclude = ['nofile','terminal']
