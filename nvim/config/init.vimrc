@@ -5,7 +5,8 @@ Plug 'navarasu/onedark.nvim'
 
 " general
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'sjava/vim-which-key'
 Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'

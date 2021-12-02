@@ -1,4 +1,6 @@
 {
-  "diagnostic.displayByAle":false,
+  "diagnostic.displayByAle": false,
+  "tabnine.priority": 50,
+  "snippets.priority": 150,
   "elixir.pathToElixirLS": "~/tools/elixir-ls/language_server.sh"
 }
