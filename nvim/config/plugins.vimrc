@@ -27,7 +27,9 @@ set foldexpr=nvim_treesitter#foldexpr()
 
 " let g:test#strategy = 'floaterm'
 let g:neoterm_autoscroll = 1
-let g:test#strategy = 'neoterm'
+" let g:test#strategy = 'neoterm'
+let g:shtuff_receiver = 'devrunner'
+let g:test#strategy = 'shtuff'
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -127,6 +129,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
+let g:clap_provider_tags_force_vista = 1
 let g:clap_layout = { 'relative': 'editor' }
 let g:clap_theme = 'material_design_dark'
 let g:clap_enable_icon = 1
@@ -134,3 +137,4 @@ let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case -g "!tag
 
 let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
 let g:indent_blankline_buftype_exclude = ['nofile', 'terminal']
+
