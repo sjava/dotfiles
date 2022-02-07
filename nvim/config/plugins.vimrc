@@ -130,7 +130,7 @@ let g:NERDSpaceDelims = 1
 let g:clap_layout = { 'relative': 'editor' }
 let g:clap_theme = 'material_design_dark'
 let g:clap_enable_icon = 1
-let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case -g "!tags"'
+" let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case -g "!tags"'
 
 let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
 let g:indent_blankline_buftype_exclude = ['nofile', 'terminal']
