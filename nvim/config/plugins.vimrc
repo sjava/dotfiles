@@ -58,7 +58,7 @@ let g:onedark_terminal_italics=1
 colorscheme onedark
 
 " ale plugin
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 let g:ale_disable_lsp = 1
 let g:ale_lint_on_save = 0
 let g:ale_completion_enabled = 0
@@ -138,3 +138,4 @@ let g:clap_enable_icon = 1
 let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
 let g:indent_blankline_buftype_exclude = ['nofile', 'terminal']
 
+highlight CocHighlightText cterm=underline gui=underline
