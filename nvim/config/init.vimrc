@@ -57,6 +57,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mattn/emmet-vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'mhinz/vim-startify'
+Plug 'nathom/filetype.nvim'
 
 " text objects
 Plug 'kana/vim-textobj-user'
