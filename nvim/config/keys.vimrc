@@ -182,8 +182,8 @@ map F <Plug>Sneak_S
 map gcc <plug>NERDCommenterToggle
 
 " floaterm new
-nnoremap   <silent>   <F8>    :FloatermNew<CR>
-tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermNew<CR>
+nnoremap   <silent>   <leader>tt   :FloatermToggle<CR>
+tnoremap   <silent>   <leader>tt   <C-\><C-n>:FloatermToggle<CR>
 
 let g:user_emmet_leader_key='<C-k>'
 map <silent> <leader>ww :lua require('nvim-window').pick()<CR>
