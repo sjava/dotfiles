@@ -11,7 +11,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'sjava/vim-which-key'
 Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
 Plug 'liuchengxu/vim-which-key'
-Plug 'Shougo/context_filetype.vim'
+" Plug 'Shougo/context_filetype.vim'
 Plug 'vim-test/vim-test'
 Plug 'voldikss/vim-floaterm'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -22,6 +22,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
 Plug 'honza/vim-snippets'
+Plug 'AndrewRadev/inline_edit.vim'
 
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'

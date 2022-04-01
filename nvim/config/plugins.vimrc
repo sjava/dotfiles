@@ -139,3 +139,35 @@ let g:indent_blankline_char_list = ['|', '¦', '┆', '┊']
 let g:indent_blankline_buftype_exclude = ['nofile', 'terminal']
 
 highlight CocHighlightText cterm=underline gui=underline
+
+let g:inline_edit_new_buffer_command = "vnew"
+let g:inline_edit_patterns = [
+      \   {
+        \     'main_filetype':     'mpx',
+        \     'sub_filetype':      'javascript',
+        \     'indent_adjustment': 1,
+        \     'start':             '<script>',
+        \     'end':               '</script>',
+        \   },
+      \   {
+        \     'main_filetype':     'mpx',
+        \     'sub_filetype':      'wxml',
+        \     'indent_adjustment': 1,
+        \     'start':             '<template>',
+        \     'end':               '</template>',
+        \   },
+      \   {
+        \     'main_filetype':     'mpx',
+        \     'sub_filetype':      'scss',
+        \     'indent_adjustment': 1,
+        \     'start':             '<style lang="scss">',
+        \     'end':               '</style>',
+        \   },
+      \   {
+        \     'main_filetype':     'mpx',
+        \     'sub_filetype':      'json',
+        \     'indent_adjustment': 1,
+        \     'start':             '<script type="application/json">',
+        \     'end':               '</script>',
+        \   },
+        \ ]

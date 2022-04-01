@@ -187,3 +187,11 @@ tnoremap   <silent>   <leader>tt   <C-\><C-n>:FloatermToggle<CR>
 
 let g:user_emmet_leader_key='<C-k>'
 map <silent> <leader>ww :lua require('nvim-window').pick()<CR>
+
+" inline edit
+" normal mode:
+nnoremap <leader>e :InlineEdit<cr>
+" visual mode:
+xnoremap <leader>e :InlineEdit<cr>
+" insert mode:
+inoremap <c-e> <esc>:InlineEdit<cr>a
