@@ -86,12 +86,20 @@ let g:colorizer_startup = 0
 let g:colorizer_nomap = 1
 
 " neoformat config
+let g:neoformat_try_node_exe = 1
 let g:neoformat_wxml_prettier ={
            \ 'exe': 'prettier',
            \ 'args': ['--parser html'],
            \ 'stdin': 1,
            \ }
 let g:neoformat_enabled_wxml = ['prettier']
+
+let g:neoformat_javascript_prettier ={
+      \ 'exe': 'prettier',
+      \ 'args': ['--stdin-filepath', '"%:p"', '--parser', 'babel'],
+      \ 'stdin': 1,
+      \ 'try_node_exe': 1,
+      \ }
 
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_html = ['prettier']
@@ -140,6 +148,11 @@ let g:indent_blankline_buftype_exclude = ['nofile', 'terminal']
 
 highlight CocHighlightText cterm=underline gui=underline
 
+let g:nrrw_rgn_vert = 1
+let g:nrrw_rgn_wdth = 80
+let g:nrrw_rgn_incr = 30
+
+let g:inline_edit_autowrite = 1
 let g:inline_edit_new_buffer_command = "vnew"
 let g:inline_edit_patterns = [
       \   {

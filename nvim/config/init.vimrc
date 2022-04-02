@@ -23,6 +23,7 @@ Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
 Plug 'honza/vim-snippets'
 Plug 'AndrewRadev/inline_edit.vim'
+Plug 'chrisbra/NrrwRgn'
 
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
