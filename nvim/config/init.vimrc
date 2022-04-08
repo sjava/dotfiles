@@ -16,8 +16,12 @@ Plug 'vim-test/vim-test'
 Plug 'voldikss/vim-floaterm'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'RRethy/nvim-treesitter-textsubjects'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'liuchengxu/vista.vim'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'fannheyward/telescope-coc.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 " editing
 Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
@@ -35,7 +39,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'andymass/vim-matchup'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
-Plug 'jsfaint/gen_tags.vim'
+Plug 'craigemery/vim-autotag'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/fcitx.vim'
@@ -75,5 +79,7 @@ Plug 'chr4/nginx.vim'
 " wxapp
 Plug 'chemzqm/wxapp.vim'
 Plug 'kassio/neoterm'
+
+Plug 'beauwilliams/focus.nvim'
 
 call plug#end()

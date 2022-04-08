@@ -20,6 +20,8 @@ require("better_escape").setup {
     timeout = vim.o.timeoutlen,
     keys = "<Esc>",
 }
+require('telescope').load_extension('coc')
+require("focus").setup({excluded_filetypes = { 'floaterm', 'term', 'toggleterm' }})
 EOF
 
 set foldmethod=expr
