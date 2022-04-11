@@ -81,5 +81,6 @@ Plug 'chemzqm/wxapp.vim'
 Plug 'kassio/neoterm'
 
 Plug 'beauwilliams/focus.nvim'
+Plug 'github/copilot.vim'
 
 call plug#end()

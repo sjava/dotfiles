@@ -1,7 +1,7 @@
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
-  ignore_install = {},
+  ignore_install = {"php","phpdoc","swift"},
   highlight = {
     enable = true,
     disable = {},
@@ -21,7 +21,8 @@ require("better_escape").setup {
     keys = "<Esc>",
 }
 require('telescope').load_extension('coc')
-require("focus").setup({excluded_filetypes = { 'floaterm', 'term', 'toggleterm' }})
+require("focus").setup({excluded_filetypes = { 'floaterm', 'term', 'toggleterm' },width = 100})
+vim.api.nvim_set_keymap('n', '<c-l>', ':FocusSplitNicely<CR>', { silent = true })
 EOF
 
 set foldmethod=expr
