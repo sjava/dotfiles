@@ -21,7 +21,7 @@ require("better_escape").setup {
     keys = "<Esc>",
 }
 require('telescope').load_extension('coc')
-require("focus").setup({excluded_filetypes = { 'floaterm', 'term', 'toggleterm' },width = 100})
+require("focus").setup({excluded_filetypes = { 'floaterm', 'term', 'toggleterm' },width = 110})
 vim.api.nvim_set_keymap('n', '<c-l>', ':FocusSplitNicely<CR>', { silent = true })
 EOF
 
