@@ -5,5 +5,5 @@ autoload/*.old
 **/undodir/**
 *.old
 fonts/**
-./AstroVim
+AstroVim/
 AstroVim/**

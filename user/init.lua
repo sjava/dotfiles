@@ -48,7 +48,16 @@ local config = {
     -- Add plugins, the packer syntax without the "use"
     init = {
       -- { "andweeb/presence.nvim" },
-      -- {"yamatsum/nvim-cursorline"},
+      { "sjava/inline_edit.vim" },
+      { "sainnhe/gruvbox-material" },
+      { "https://gitlab.com/yorickpeterse/nvim-window.git" },
+      { "machakann/vim-sandwich" },
+      { "vim-test/vim-test" },
+      { "ggandor/lightspeed.nvim",
+        config = function()
+          require('lightspeed').setup {}
+        end,
+      },
       {
         "ray-x/lsp_signature.nvim",
         event = "BufRead",
@@ -56,7 +65,7 @@ local config = {
           require("lsp_signature").setup()
         end,
       },
-      { "sainnhe/gruvbox-material" },
+
       -- DAP:
         { "mfussenegger/nvim-dap" },
         {
@@ -167,6 +176,25 @@ local config = {
   ["which-key"] = {
     -- Add bindings to the normal mode <leader> mappings
     register_n_leader = {
+      ["i"] = { "<cmd>InlineEdit<cr>", "Inline Edit"},
+      ["w"] = {
+        name = "windows",
+        s = { "<C-w>s", "horizontal split window" },
+        v = { "<C-w>v", "vertical split window" },
+        h = { "<C-w>h", "left window"},
+        j = { "<C-w>j", "below window"},
+        l = { "<C-w>l", "right window"},
+        k = { "<C-w>k", "up window"},
+        w = {"<cmd>lua require('nvim-window').pick()<cr>", "window pick"},
+      },
+      ["j"] = {
+        name = "test",
+        n = { "<cmd>TestNearest<cr>", "test near" },
+        f = { "<cmd>TestFile<cr>", "test file" },
+        a = { "<cmd>TestSuite<cr>", "test all" },
+        l = { "<cmd>TestLast<cr>", "test last" },
+        v = { "<cmd>TestVisit<cr>", "test visit" },
+      },
       -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
     },
   },
@@ -265,8 +293,50 @@ local config = {
     -- Set options
     set.relativenumber = true
 
+    -- vim-test config
+    vim.g['shtuff_receiver'] = "devrunner"
+    vim.g['test#strategy'] = "shtuff"
+
+    -- inline edit config
+    vim.g['inline_edit_autowrite'] = 1
+    vim.g['inline_edit_new_buffer_command'] = "vnew"
+    vim.g['inline_edit_patterns'] = {
+      {
+        main_filetype = "mpx",
+        sub_filetype = "javascript",
+        indent_adjustment = 1,
+        start = "<script>",
+        ['end'] = "</script>"
+      },
+      {
+        main_filetype = "mpx",
+        sub_filetype = "scss",
+        indent_adjustment = 1,
+        start = "<style lang=\"scss\">",
+        ['end'] = "</style>"
+      },
+      {
+        main_filetype = "mpx",
+        sub_filetype = "wxml",
+        indent_adjustment = 1,
+        start = "<template>",
+        ['end'] = "</template>"
+      },
+      {
+        main_filetype = "mpx",
+        sub_filetype = "json",
+        indent_adjustment = 1,
+        start = "<script type=\"application/json\">",
+        ['end'] = "</script>"
+      }
+    }
+
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
+    map("i", "<C-l>", "<Esc>A", opts)
+    map("i", "<C-s>", "<Esc>I", opts)
+    map("i", "<C-i>", "<Esc><cmd>InlineEdit<cr>a", opts)
+    map("v", "<leader>y", "\"+y", opts)
 
     -- Set autocommands
     vim.cmd [[
