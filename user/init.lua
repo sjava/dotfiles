@@ -7,16 +7,14 @@ local config = {
   default_theme = {
     diagnostics_style = "none",
     -- Modify the color table
-    colors = {
-      fg = "#abb2bf",
-    },
+    colors = {fg = "#abb2bf"},
     -- Modify the highlight groups
     highlights = function(highlights)
       local C = require "default_theme.colors"
 
-      highlights.Normal = { fg = C.fg, bg = C.bg }
+      highlights.Normal = {fg = C.fg, bg = C.bg}
       return highlights
-    end,
+    end
   },
 
   -- Disable default plugins
@@ -34,169 +32,147 @@ local config = {
     which_key = true,
     neoscroll = true,
     ts_rainbow = true,
-    ts_autotag = true,
+    ts_autotag = true
   },
 
   -- Disable AstroVim ui features
-  ui = {
-    nui_input = true,
-    telescope_select = true,
-  },
+  ui = {nui_input = true, telescope_select = true},
 
   -- Configure plugins
   plugins = {
     -- Add plugins, the packer syntax without the "use"
     init = {
       -- { "andweeb/presence.nvim" },
-      { "sjava/inline_edit.vim" },
-      { "sainnhe/gruvbox-material" },
-      { "https://gitlab.com/yorickpeterse/nvim-window.git" },
-      { "machakann/vim-sandwich" },
-      { "vim-test/vim-test" },
-      { "ggandor/lightspeed.nvim",
-        config = function()
-          require('lightspeed').setup {}
-        end,
-      },
+      {"sjava/inline_edit.vim"},
+      {"sainnhe/gruvbox-material"},
+      {"https://gitlab.com/yorickpeterse/nvim-window.git"},
+      {"machakann/vim-sandwich"},
+      {"vim-test/vim-test"},
+      {"chrisbra/NrrwRgn"},
+      {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
+      {"sbdchd/neoformat"},
       {
         "ray-x/lsp_signature.nvim",
         event = "BufRead",
-        config = function()
-          require("lsp_signature").setup()
-        end,
+        config = function() require("lsp_signature").setup() end
       },
 
       -- DAP:
-        { "mfussenegger/nvim-dap" },
-        {
-          "rcarriga/nvim-dap-ui",
-          requires = { "nvim-dap", "rust-tools.nvim" },
-          config = function()
-            local dapui = require "dapui"
-            dapui.setup {}
+      {"mfussenegger/nvim-dap"},
+      {
+        "rcarriga/nvim-dap-ui",
+        requires = {"nvim-dap", "rust-tools.nvim"},
+        config = function()
+          local dapui = require "dapui"
+          dapui.setup {}
 
-            local dap = require "dap"
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-              dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-              dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-              dapui.close()
-            end
-          end,
-        },
-        {
-          "Pocco81/DAPInstall.nvim",
-          config = function()
-            require("dap-install").setup {}
-          end,
-        },
-        {
-          "mfussenegger/nvim-dap-python",
-        },
-        -- Rust support
-        {
-          "simrat39/rust-tools.nvim",
-          requires = { "nvim-lspconfig", "nvim-lsp-installer", "nvim-dap", "Comment.nvim", "plenary.nvim" },
-          -- Is configured via the server_registration_override installed below!
-        },
-        {
-          "Saecki/crates.nvim",
-          after = "nvim-cmp",
-          config = function()
-            require("crates").setup()
+          local dap = require "dap"
+          dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
+          dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
+          dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
+        end
+      },
+      {"Pocco81/DAPInstall.nvim", config = function() require("dap-install").setup {} end},
+      {"mfussenegger/nvim-dap-python"},
 
-            local cmp = require "cmp"
-            local config = cmp.get_config()
-            table.insert(config.sources, { name = "crates" })
-            cmp.setup(config)
-          end,
-        },
-        -- Text objects
-        { "bkad/CamelCaseMotion" },
-        {
-          "nvim-treesitter/nvim-treesitter-textobjects",
-          after = "nvim-treesitter",
-          config = function()
-            require("nvim-treesitter.configs").setup {
-              textobjects = {
-                select = {
-                  enable = true,
+      -- Rust support
+      {
+        "simrat39/rust-tools.nvim",
+        requires = {
+          "nvim-lspconfig",
+          "nvim-lsp-installer",
+          "nvim-dap",
+          "Comment.nvim",
+          "plenary.nvim"
+        }
+      },
+      {
+        "Saecki/crates.nvim",
+        after = "nvim-cmp",
+        config = function()
+          require("crates").setup()
 
-                  -- Automatically jump forward to textobj, similar to targets.vim
-                  lookahead = true,
+          local cmp = require "cmp"
+          local config = cmp.get_config()
+          table.insert(config.sources, {name = "crates"})
+          cmp.setup(config)
+        end
+      },
 
-                  keymaps = {
-                    -- You can use the capture groups defined in textobjects.scm
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@class.outer",
-                    ["ic"] = "@class.inner",
-                    ["ab"] = "@block.outer",
-                    ["ib"] = "@block.inner",
-                    ["a-"] = "@parameter.outer",
-                    ["i-"] = "@parameter.inner",
+      -- Text objects
+      {"bkad/CamelCaseMotion"},
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        config = function()
+          require("nvim-treesitter.configs").setup {
+            textobjects = {
+              select = {
+                enable = true,
 
-                    -- Or you can define your own textobjects like this
-                    -- ["iF"] = {
-                    --    python = "(function_definition) @function",
-                    --    cpp = "(function_definition) @function",
-                    --    c = "(function_definition) @function",
-                    --    java = "(method_declaration) @function",
-                    -- },
-                  },
-                },
-              },
+                -- Automatically jump forward to textobj, similar to targets.vim
+                lookahead = true,
+
+                keymaps = {
+                  -- You can use the capture groups defined in textobjects.scm
+                  ["af"] = "@function.outer",
+                  ["if"] = "@function.inner",
+                  ["ac"] = "@class.outer",
+                  ["ic"] = "@class.inner",
+                  ["ab"] = "@block.outer",
+                  ["ib"] = "@block.inner",
+                  ["a-"] = "@parameter.outer",
+                  ["i-"] = "@parameter.inner"
+
+                  -- Or you can define your own textobjects like this
+                  -- ["iF"] = {
+                  --    python = "(function_definition) @function",
+                  --    cpp = "(function_definition) @function",
+                  --    c = "(function_definition) @function",
+                  --    java = "(method_declaration) @function",
+                  -- },
+                }
+              }
             }
-          end,
-        },
-    },
-    -- All other entries override the setup() call for default plugins
-    treesitter = {
-      ensure_installed = { "lua" },
-    },
-    lualine = {
-      options = {
-        theme = 'gruvbox-material'
+          }
+        end
       }
     },
-    packer = {
-      compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
-    },
+
+    -- All other entries override the setup() call for default plugins
+    treesitter = {ensure_installed = {"lua"}},
+    lualine = {options = {theme = 'gruvbox-material'}},
+    packer = {compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"}
   },
 
   -- Add paths for including more VS Code style snippets in luasnip
-  luasnip = {
-    vscode_snippet_paths = {},
-  },
+  luasnip = {vscode_snippet_paths = {}},
 
   -- Modify which-key registration
   ["which-key"] = {
     -- Add bindings to the normal mode <leader> mappings
     register_n_leader = {
-      ["i"] = { "<cmd>InlineEdit<cr>", "Inline Edit"},
+      ["i"] = {"<cmd>InlineEdit<cr>", "Inline Edit"},
       ["w"] = {
         name = "windows",
-        s = { "<C-w>s", "horizontal split window" },
-        v = { "<C-w>v", "vertical split window" },
-        h = { "<C-w>h", "left window"},
-        j = { "<C-w>j", "below window"},
-        l = { "<C-w>l", "right window"},
-        k = { "<C-w>k", "up window"},
-        w = {"<cmd>lua require('nvim-window').pick()<cr>", "window pick"},
+        s = {"<C-w>s", "horizontal split window"},
+        v = {"<C-w>v", "vertical split window"},
+        h = {"<C-w>h", "left window"},
+        j = {"<C-w>j", "below window"},
+        l = {"<C-w>l", "right window"},
+        k = {"<C-w>k", "up window"},
+        w = {"<cmd>lua require('nvim-window').pick()<cr>", "window pick"}
       },
       ["j"] = {
         name = "test",
-        n = { "<cmd>TestNearest<cr>", "test near" },
-        f = { "<cmd>TestFile<cr>", "test file" },
-        a = { "<cmd>TestSuite<cr>", "test all" },
-        l = { "<cmd>TestLast<cr>", "test last" },
-        v = { "<cmd>TestVisit<cr>", "test visit" },
-      },
+        n = {"<cmd>TestNearest<cr>", "test near"},
+        f = {"<cmd>TestFile<cr>", "test file"},
+        a = {"<cmd>TestSuite<cr>", "test all"},
+        l = {"<cmd>TestLast<cr>", "test last"},
+        v = {"<cmd>TestVisit<cr>", "test visit"}
+      }
       -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
-    },
+    }
   },
 
   -- Extend LSP configuration
@@ -219,12 +195,12 @@ local config = {
         require("rust-tools").setup {
           server = server_opts,
           dap = {
-              adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-            },
+            adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
           }
-        else
-          server:setup(server_opts)
-        end
+        }
+      else
+        server:setup(server_opts)
+      end
     end,
 
     -- Add overrides for LSP server settings, the keys are the name of the server
@@ -241,23 +217,18 @@ local config = {
       --     },
       --   },
       -- },
-    },
+    }
   },
 
   -- Diagnostics configuration (for vim.diagnostics.config({}))
-  diagnostics = {
-    virtual_text = true,
-    underline = true,
-  },
+  diagnostics = {virtual_text = true, underline = true},
 
   -- null-ls configuration
   ["null-ls"] = function()
     -- Formatting and linting
     -- https://github.com/jose-elias-alvarez/null-ls.nvim
     local status_ok, null_ls = pcall(require, "null-ls")
-    if not status_ok then
-      return
-    end
+    if not status_ok then return end
 
     -- Check supported formatters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -268,26 +239,32 @@ local config = {
     local diagnostics = null_ls.builtins.diagnostics
 
     null_ls.setup {
-      debug = false,
+      debug = true,
       sources = {
         -- Set a formatter
-        formatting.rufo,
+        -- formatting.prettier,
+        formatting.prettier.with({
+          extra_args = function(params)
+            if params.ft == "javascript" then return {"--parser", "babel"} end
+          end
+        }),
+
         -- Set a linter
-        diagnostics.rubocop,
+        diagnostics.eslint
       },
       -- NOTE: You can remove this on attach function to disable format on save
       on_attach = function(client)
         if client.resolved_capabilities.document_formatting then
           vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
         end
-      end,
+      end
     }
   end,
 
   -- This function is run last
   -- good place to configure mappings and vim options
   polish = function()
-    local opts = { noremap = true, silent = true }
+    local opts = {noremap = true, silent = true}
     local map = vim.api.nvim_set_keymap
     local set = vim.opt
     -- Set options
@@ -296,6 +273,33 @@ local config = {
     -- vim-test config
     vim.g['shtuff_receiver'] = "devrunner"
     vim.g['test#strategy'] = "shtuff"
+
+    -- neoformat config
+    vim.g['neoformat_javascript_prettier'] = {
+      exe = "prettier",
+      stdin = 1,
+      args = {"--stdin-filepath", '"%:p"', "--parser", "babel"}
+    }
+    vim.g['neoformat_json_prettier'] = {
+      exe = "prettier",
+      stdin = 1,
+      args = {"--stdin-filepath", '"%:p"', "--parser", "json"}
+    }
+    vim.g['neoformat_html_prettier'] = {
+      exe = "prettier",
+      stdin = 1,
+      args = {"--stdin-filepath", '"%:p"', "--parser", "html"}
+    }
+    vim.g['neoformat_wxml_prettier'] = {
+      exe = "prettier",
+      stdin = 1,
+      args = {"--stdin-filepath", '"%:p"', "--parser", "html"}
+    }
+    vim.g['neoformat_enabled_wxml'] = {'prettier'}
+
+    -- NrrwRgn
+    vim.g['nrrw_rgn_vert'] = 1
+    vim.g['nrrw_rgn_resize_window'] = "relative"
 
     -- inline edit config
     vim.g['inline_edit_autowrite'] = 1
@@ -317,7 +321,7 @@ local config = {
       },
       {
         main_filetype = "mpx",
-        sub_filetype = "wxml",
+        sub_filetype = "html",
         indent_adjustment = 1,
         start = "<template>",
         ['end'] = "</template>"
@@ -345,7 +349,12 @@ local config = {
         autocmd bufwritepost plugins.lua source <afile> | PackerSync
       augroup end
     ]]
-  end,
+    vim.cmd [[
+      command! -nargs=* -bang -range -complete=filetype NN
+      \ :<line1>,<line2> call nrrwrgn#NrrwRgn('',<q-bang>)
+      \ | set filetype=<args>
+    ]]
+  end
 }
 
 return config

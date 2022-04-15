@@ -91,7 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias nvim="$HOME/nvim.appimage"
-alias useproxy="export http_proxy=http://127.0.0.1:20172 https_proxy=http://127.0.0.1:20172"
+alias useproxy="export http_proxy=http://127.0.0.1:20171 https_proxy=http://127.0.0.1:20171"
 alias noproxy="unset http_proxy https_proxy"
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
