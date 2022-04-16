@@ -24,6 +24,7 @@ require('telescope').load_extension('coc')
 require("focus").setup({excluded_filetypes = { 'floaterm', 'term', 'toggleterm' },width = 110})
 vim.api.nvim_set_keymap('n', '<c-l>', ':FocusSplitNicely<CR>', { silent = true })
 EOF
+let g:coc_global_extensions = ['vscode-elixir-snippets', 'coc-tabnine','coc-snippets','coc-pairs','coc-lists','coc-html','coc-floaterm','coc-emmet','coc-diagnostic','coc-wxml','coc-tsserver','coc-rust-analyzer','coc-pyright','coc-json','coc-elixir','coc-css']
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
