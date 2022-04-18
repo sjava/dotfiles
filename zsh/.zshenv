@@ -1,4 +1,5 @@
-export PATH="/home/zyb/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export npm_config_prefix="$HOME/.local"
 export EDITOR="$HOME/nvim.appimage"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
