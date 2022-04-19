@@ -43,7 +43,6 @@ local config = {
     -- Add plugins, the packer syntax without the "use"
     init = {
       -- { "andweeb/presence.nvim" },
-      {"sjava/inline_edit.vim"},
       {"sainnhe/gruvbox-material"},
       {"https://gitlab.com/yorickpeterse/nvim-window.git"},
       {"machakann/vim-sandwich"},
@@ -51,6 +50,7 @@ local config = {
       {"chrisbra/NrrwRgn"},
       {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
       {"sbdchd/neoformat"},
+      {"wellle/targets.vim"},
       {
         "ray-x/lsp_signature.nvim",
         event = "BufRead",
@@ -72,7 +72,11 @@ local config = {
           dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
         end
       },
-      {"Pocco81/DAPInstall.nvim", config = function() require("dap-install").setup {} end},
+      {
+        "Pocco81/DAPInstall.nvim",
+        module = 'dap-install',
+        config = function() require("dap-install").setup {} end
+      },
       {"mfussenegger/nvim-dap-python"},
 
       -- Rust support
@@ -246,18 +250,21 @@ local config = {
         formatting.prettier.with({
           extra_args = function(params)
             if params.ft == "javascript" then return {"--parser", "babel"} end
+            if params.ft == "scss" then return {"--parser", "scss"} end
+            if params.ft == "json" then return {"--parser", "json"} end
+            if params.ft == "html" then return {"--parser", "html"} end
           end
         }),
 
         -- Set a linter
-        diagnostics.eslint
-      },
+        diagnostics.eslint_d
+      }
       -- NOTE: You can remove this on attach function to disable format on save
-      on_attach = function(client)
-        if client.resolved_capabilities.document_formatting then
-          vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
-        end
-      end
+      -- on_attach = function(client)
+      --   if client.resolved_capabilities.document_formatting then
+      --     vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+      --   end
+      -- end
     }
   end,
 
@@ -300,40 +307,6 @@ local config = {
     -- NrrwRgn
     vim.g['nrrw_rgn_vert'] = 1
     vim.g['nrrw_rgn_resize_window'] = "relative"
-
-    -- inline edit config
-    vim.g['inline_edit_autowrite'] = 1
-    vim.g['inline_edit_new_buffer_command'] = "vnew"
-    vim.g['inline_edit_patterns'] = {
-      {
-        main_filetype = "mpx",
-        sub_filetype = "javascript",
-        indent_adjustment = 1,
-        start = "<script>",
-        ['end'] = "</script>"
-      },
-      {
-        main_filetype = "mpx",
-        sub_filetype = "scss",
-        indent_adjustment = 1,
-        start = "<style lang=\"scss\">",
-        ['end'] = "</style>"
-      },
-      {
-        main_filetype = "mpx",
-        sub_filetype = "html",
-        indent_adjustment = 1,
-        start = "<template>",
-        ['end'] = "</template>"
-      },
-      {
-        main_filetype = "mpx",
-        sub_filetype = "json",
-        indent_adjustment = 1,
-        start = "<script type=\"application/json\">",
-        ['end'] = "</script>"
-      }
-    }
 
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
