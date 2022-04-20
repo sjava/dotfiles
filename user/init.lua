@@ -45,12 +45,23 @@ local config = {
       -- { "andweeb/presence.nvim" },
       {"sainnhe/gruvbox-material"},
       {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
-      {"https://gitlab.com/yorickpeterse/nvim-window.git"},
+      {
+        "https://gitlab.com/yorickpeterse/nvim-window.git",
+        module = "nvim-window",
+        config = function()
+          require("nvim-window").setup {
+            normal_hl = "WinJumpColor",
+            hint_hl = "Bold",
+            border = "none"
+          }
+        end
+      },
       {"machakann/vim-sandwich"},
       {"vim-test/vim-test"},
       {"andymass/vim-matchup"},
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
+      {"rainbowhxch/beacon.nvim"},
       {
         "zbirenbaum/copilot.lua",
         event = {"VimEnter"},
@@ -87,9 +98,9 @@ local config = {
         end
       },
       {
-        "Pocco81/DAPInstall.nvim",
-        module = 'dap-install',
-        config = function() require("dap-install").setup {} end
+        "Pocco81/dap-buddy.nvim",
+        module = 'dap-buddy',
+        config = function() require("dab-buddy").setup() end
       },
       {"mfussenegger/nvim-dap-python"},
 
@@ -259,7 +270,7 @@ local config = {
     local diagnostics = null_ls.builtins.diagnostics
 
     null_ls.setup {
-      debug = true,
+      debug = false,
       sources = {
         -- Set a formatter
         -- formatting.prettier,
