@@ -1,21 +1,21 @@
 local config = {
 
   -- Set colorscheme
-  colorscheme = "gruvbox-material",
+  colorscheme = "catppuccin",
 
   -- Default theme configuration
-  default_theme = {
-    diagnostics_style = "none",
-    -- Modify the color table
-    colors = {fg = "#abb2bf"},
-    -- Modify the highlight groups
-    highlights = function(highlights)
-      local C = require "default_theme.colors"
-
-      highlights.Normal = {fg = C.fg, bg = C.bg}
-      return highlights
-    end
-  },
+  -- default_theme = {
+  --   diagnostics_style = "none",
+  --   -- Modify the color table
+  --   colors = {fg = "#abb2bf"},
+  --   -- Modify the highlight groups
+  --   highlights = function(highlights)
+  --     local C = require "default_theme.colors"
+  --
+  --     highlights.Normal = {fg = C.fg, bg = C.bg}
+  --     return highlights
+  --   end
+  -- },
 
   -- Disable default plugins
   enabled = {
@@ -44,9 +44,23 @@ local config = {
     init = {
       -- { "andweeb/presence.nvim" },
       {"sainnhe/gruvbox-material"},
+      {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
       {"https://gitlab.com/yorickpeterse/nvim-window.git"},
       {"machakann/vim-sandwich"},
       {"vim-test/vim-test"},
+      {"andymass/vim-matchup"},
+      {"elixir-editors/vim-elixir"},
+      {"chemzqm/wxapp.vim"},
+      {
+        "zbirenbaum/copilot.lua",
+        event = {"VimEnter"},
+        config = function() vim.defer_fn(function() require("copilot").setup() end, 100) end
+      },
+      {
+        "zbirenbaum/copilot-cmp",
+        after = {"copilot.lua", "nvim-cmp"},
+        config = function() require("core.utils").add_cmp_source("copilot", 1000) end
+      },
       {"chrisbra/NrrwRgn"},
       {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
       {"sbdchd/neoformat"},
@@ -145,7 +159,7 @@ local config = {
 
     -- All other entries override the setup() call for default plugins
     treesitter = {ensure_installed = {"lua"}},
-    lualine = {options = {theme = 'gruvbox-material'}},
+    lualine = {options = {theme = "catppuccin"}},
     packer = {compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"}
   },
 
@@ -156,7 +170,6 @@ local config = {
   ["which-key"] = {
     -- Add bindings to the normal mode <leader> mappings
     register_n_leader = {
-      ["i"] = {"<cmd>InlineEdit<cr>", "Inline Edit"},
       ["w"] = {
         name = "windows",
         s = {"<C-w>s", "horizontal split window"},
@@ -182,8 +195,11 @@ local config = {
   -- Extend LSP configuration
   lsp = {
     -- add to the server on_attach function
-    -- on_attach = function(client, bufnr)
-    -- end,
+    on_attach = function(client, bufnr)
+      if client.name == "elixirls" then
+        client.resolved_capabilities.document_formatting = false
+      end
+    end,
 
     -- override the lsp installer server-registration function
     -- server_registration = function(server, opts)
@@ -247,6 +263,8 @@ local config = {
       sources = {
         -- Set a formatter
         -- formatting.prettier,
+        formatting.mix,
+        formatting.lua_format,
         formatting.prettier.with({
           extra_args = function(params)
             if params.ft == "javascript" then return {"--parser", "babel"} end
@@ -257,7 +275,8 @@ local config = {
         }),
 
         -- Set a linter
-        diagnostics.eslint_d
+        diagnostics.eslint_d,
+        diagnostics.credo
       }
       -- NOTE: You can remove this on attach function to disable format on save
       -- on_attach = function(client)
@@ -312,7 +331,6 @@ local config = {
     map("n", "<C-s>", ":w!<CR>", opts)
     map("i", "<C-l>", "<Esc>A", opts)
     map("i", "<C-s>", "<Esc>I", opts)
-    map("i", "<C-i>", "<Esc><cmd>InlineEdit<cr>a", opts)
     map("v", "<leader>y", "\"+y", opts)
 
     -- Set autocommands
@@ -326,6 +344,10 @@ local config = {
       command! -nargs=* -bang -range -complete=filetype NN
       \ :<line1>,<line2> call nrrwrgn#NrrwRgn('',<q-bang>)
       \ | set filetype=<args>
+    ]]
+    vim.cmd [[
+      autocmd! cursor_off
+      autocmd! dashboard_settings
     ]]
   end
 }
