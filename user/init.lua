@@ -3,20 +3,6 @@ local config = {
   -- Set colorscheme
   colorscheme = "catppuccin",
 
-  -- Default theme configuration
-  -- default_theme = {
-  --   diagnostics_style = "none",
-  --   -- Modify the color table
-  --   colors = {fg = "#abb2bf"},
-  --   -- Modify the highlight groups
-  --   highlights = function(highlights)
-  --     local C = require "default_theme.colors"
-  --
-  --     highlights.Normal = {fg = C.fg, bg = C.bg}
-  --     return highlights
-  --   end
-  -- },
-
   -- Disable default plugins
   enabled = {
     bufferline = true,
@@ -45,17 +31,8 @@ local config = {
       -- { "andweeb/presence.nvim" },
       {"sainnhe/gruvbox-material"},
       {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
-      {
-        "https://gitlab.com/yorickpeterse/nvim-window.git",
-        module = "nvim-window",
-        config = function()
-          require("nvim-window").setup {
-            normal_hl = "WinJumpColor",
-            hint_hl = "Bold",
-            border = "none"
-          }
-        end
-      },
+      {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
+      {"hoschi/yode-nvim", config = function() require('yode-nvim').setup({}) end},
       {"machakann/vim-sandwich"},
       {"vim-test/vim-test"},
       {"andymass/vim-matchup"},
@@ -189,7 +166,7 @@ local config = {
         j = {"<C-w>j", "below window"},
         l = {"<C-w>l", "right window"},
         k = {"<C-w>k", "up window"},
-        w = {"<cmd>lua require('nvim-window').pick()<cr>", "window pick"}
+        w = {"<cmd>WindowPick<cr>", "window pick"}
       },
       ["j"] = {
         name = "test",
@@ -342,7 +319,9 @@ local config = {
     map("n", "<C-s>", ":w!<CR>", opts)
     map("i", "<C-l>", "<Esc>A", opts)
     map("i", "<C-s>", "<Esc>I", opts)
-    map("v", "<leader>y", "\"+y", opts)
+    map("v", "<leader>ac", ":YodeCreateSeditorFloating<CR>", opts)
+    map("n", "<leader>ar", ":YodeCreateSeditorReplace<CR>", opts)
+    map("n", "<leader>ad", ":YodeBufferDelete<cr>", opts)
 
     -- Set autocommands
     vim.cmd [[
