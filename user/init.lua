@@ -29,7 +29,6 @@ local config = {
     -- Add plugins, the packer syntax without the "use"
     init = {
       -- { "andweeb/presence.nvim" },
-      {"sainnhe/gruvbox-material"},
       {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
       {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
       {"hoschi/yode-nvim", config = function() require('yode-nvim').setup({}) end},
@@ -39,6 +38,7 @@ local config = {
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
+      { "beauwilliams/focus.nvim", config = function() require("focus").setup() end },
       {
         "zbirenbaum/copilot.lua",
         event = {"VimEnter"},
@@ -322,6 +322,7 @@ local config = {
     map("v", "<leader>ac", ":YodeCreateSeditorFloating<CR>", opts)
     map("n", "<leader>ar", ":YodeCreateSeditorReplace<CR>", opts)
     map("n", "<leader>ad", ":YodeBufferDelete<cr>", opts)
+    map("n", "<c-l>", ":FocusSplitNicely<CR>", opts)
 
     -- Set autocommands
     vim.cmd [[
@@ -331,14 +332,30 @@ local config = {
       augroup end
     ]]
     vim.cmd [[
+      autocmd! cursor_off
+      autocmd! dashboard_settings
+    ]]
+
+    -- Set commands
+    vim.cmd [[
       command! -nargs=* -bang -range -complete=filetype NN
       \ :<line1>,<line2> call nrrwrgn#NrrwRgn('',<q-bang>)
       \ | set filetype=<args>
     ]]
-    vim.cmd [[
-      autocmd! cursor_off
-      autocmd! dashboard_settings
-    ]]
+    vim.api.nvim_create_autocmd("CursorHold", {
+      buffer = bufnr,
+      callback = function()
+        local opts = {
+          focusable = false,
+          close_events = {"BufLeave", "CursorMoved", "InsertEnter", "FocusLost"},
+          border = 'rounded',
+          source = 'always',
+          prefix = ' ',
+          scope = 'cursor'
+        }
+        vim.diagnostic.open_float(nil, opts)
+      end
+    })
   end
 }
 
