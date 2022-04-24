@@ -38,7 +38,7 @@ local config = {
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
-      { "beauwilliams/focus.nvim", config = function() require("focus").setup() end },
+      {"beauwilliams/focus.nvim", config = function() require("focus").setup() end},
       {
         "zbirenbaum/copilot.lua",
         event = {"VimEnter"},
@@ -108,36 +108,17 @@ local config = {
       -- Text objects
       {"bkad/CamelCaseMotion"},
       {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        "RRethy/nvim-treesitter-textsubjects",
         after = "nvim-treesitter",
         config = function()
-          require("nvim-treesitter.configs").setup {
-            textobjects = {
-              select = {
-                enable = true,
-
-                -- Automatically jump forward to textobj, similar to targets.vim
-                lookahead = true,
-
-                keymaps = {
-                  -- You can use the capture groups defined in textobjects.scm
-                  ["af"] = "@function.outer",
-                  ["if"] = "@function.inner",
-                  ["ac"] = "@class.outer",
-                  ["ic"] = "@class.inner",
-                  ["ab"] = "@block.outer",
-                  ["ib"] = "@block.inner",
-                  ["a-"] = "@parameter.outer",
-                  ["i-"] = "@parameter.inner"
-
-                  -- Or you can define your own textobjects like this
-                  -- ["iF"] = {
-                  --    python = "(function_definition) @function",
-                  --    cpp = "(function_definition) @function",
-                  --    c = "(function_definition) @function",
-                  --    java = "(method_declaration) @function",
-                  -- },
-                }
+          require('nvim-treesitter.configs').setup {
+            textsubjects = {
+              enable = true,
+              prev_selection = ',',
+              keymaps = {
+                ['.'] = 'textsubjects-smart',
+                [';'] = 'textsubjects-container-outer',
+                ['i;'] = 'textsubjects-container-inner'
               }
             }
           }
@@ -246,6 +227,7 @@ local config = {
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
     local diagnostics = null_ls.builtins.diagnostics
 
+    local parsers = {javascript = "babel", scss = "scss", json = "json", html = "html"}
     null_ls.setup {
       debug = false,
       sources = {
@@ -254,12 +236,7 @@ local config = {
         formatting.mix,
         formatting.lua_format,
         formatting.prettier.with({
-          extra_args = function(params)
-            if params.ft == "javascript" then return {"--parser", "babel"} end
-            if params.ft == "scss" then return {"--parser", "scss"} end
-            if params.ft == "json" then return {"--parser", "json"} end
-            if params.ft == "html" then return {"--parser", "html"} end
-          end
+          extra_args = function(params) return {"--parser", parsers[params.ft]} end
         }),
 
         -- Set a linter
@@ -287,6 +264,7 @@ local config = {
     -- vim-test config
     vim.g['shtuff_receiver'] = "devrunner"
     vim.g['test#strategy'] = "shtuff"
+    vim.g['python3_host_prog'] = "/usr/bin/python3"
 
     -- neoformat config
     vim.g['neoformat_javascript_prettier'] = {
@@ -331,17 +309,6 @@ local config = {
         autocmd bufwritepost plugins.lua source <afile> | PackerSync
       augroup end
     ]]
-    vim.cmd [[
-      autocmd! cursor_off
-      autocmd! dashboard_settings
-    ]]
-
-    -- Set commands
-    vim.cmd [[
-      command! -nargs=* -bang -range -complete=filetype NN
-      \ :<line1>,<line2> call nrrwrgn#NrrwRgn('',<q-bang>)
-      \ | set filetype=<args>
-    ]]
     vim.api.nvim_create_autocmd("CursorHold", {
       buffer = bufnr,
       callback = function()
@@ -356,6 +323,12 @@ local config = {
         vim.diagnostic.open_float(nil, opts)
       end
     })
+    -- Set commands
+    vim.cmd [[
+      command! -nargs=* -bang -range -complete=filetype NN
+      \ :<line1>,<line2> call nrrwrgn#NrrwRgn('',<q-bang>)
+      \ | set filetype=<args>
+    ]]
   end
 }
 
