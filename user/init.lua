@@ -39,15 +39,12 @@ local config = {
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
       {"beauwilliams/focus.nvim", config = function() require("focus").setup() end},
+      {"github/copilot.vim"},
       {
-        "zbirenbaum/copilot.lua",
-        event = {"VimEnter"},
-        config = function() vim.defer_fn(function() require("copilot").setup() end, 100) end
-      },
-      {
-        "zbirenbaum/copilot-cmp",
-        after = {"copilot.lua", "nvim-cmp"},
-        config = function() require("core.utils").add_cmp_source("copilot", 1000) end
+        "tzachar/cmp-tabnine",
+        run = "./install.sh",
+        requires = "hrsh7th/nvim-cmp",
+        config = function() require("core.utils").add_cmp_source("cmp_tabnine", 1000) end
       },
       {"chrisbra/NrrwRgn"},
       {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
@@ -164,7 +161,7 @@ local config = {
   -- Extend LSP configuration
   lsp = {
     -- add to the server on_attach function
-    on_attach = function(client, bufnr)
+    on_attach = function(client, _)
       if client.name == "elixirls" then
         client.resolved_capabilities.document_formatting = false
       end
@@ -310,9 +307,9 @@ local config = {
       augroup end
     ]]
     vim.api.nvim_create_autocmd("CursorHold", {
-      buffer = bufnr,
+      -- buffer = bufnr,
       callback = function()
-        local opts = {
+        local opts1 = {
           focusable = false,
           close_events = {"BufLeave", "CursorMoved", "InsertEnter", "FocusLost"},
           border = 'rounded',
@@ -320,7 +317,7 @@ local config = {
           prefix = ' ',
           scope = 'cursor'
         }
-        vim.diagnostic.open_float(nil, opts)
+        vim.diagnostic.open_float(nil, opts1)
       end
     })
     -- Set commands
