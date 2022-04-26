@@ -35,6 +35,7 @@ local config = {
       {"machakann/vim-sandwich"},
       {"vim-test/vim-test"},
       {"andymass/vim-matchup"},
+      {"mg979/vim-visual-multi", branch = "master"},
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
