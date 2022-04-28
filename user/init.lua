@@ -41,10 +41,14 @@ local config = {
       {"machakann/vim-sandwich"},
       {"vim-test/vim-test"},
       {"andymass/vim-matchup"},
+      {"mg979/vim-visual-multi", branch = "master"},
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
-      {"beauwilliams/focus.nvim", config = function() require("focus").setup() end},
+      {
+        "beauwilliams/focus.nvim",
+        config = function() require("focus").setup({width = 100, minwidth = 60}) end
+      },
       {"github/copilot.vim"},
       {
         "tzachar/cmp-tabnine",
