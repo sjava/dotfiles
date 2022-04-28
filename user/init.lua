@@ -1,7 +1,13 @@
+local colorscheme = "default_theme"
+local theme_installed, _ = pcall(require, "catppuccin")
+if theme_installed then
+  colorscheme = "catppuccin"
+end
 local config = {
 
   -- Set colorscheme
-  colorscheme = "catppuccin",
+  -- colorscheme = "catppuccin",
+  colorscheme = colorscheme,
 
   -- Disable default plugins
   enabled = {

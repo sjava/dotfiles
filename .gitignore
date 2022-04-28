@@ -6,4 +6,5 @@ autoload/*.old
 *.old
 fonts/**
 AstroVim/
+AstroNvim/
 AstroVim/**
