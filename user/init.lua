@@ -1,12 +1,10 @@
 local colorscheme = "default_theme"
 local theme_installed, _ = pcall(require, "catppuccin")
-if theme_installed then
-  colorscheme = "catppuccin"
-end
+if theme_installed then colorscheme = "catppuccin" end
+
 local config = {
 
   -- Set colorscheme
-  -- colorscheme = "catppuccin",
   colorscheme = colorscheme,
 
   -- Disable default plugins
@@ -66,39 +64,6 @@ local config = {
         config = function() require("lsp_signature").setup() end
       },
 
-      -- DAP:
-      {"mfussenegger/nvim-dap"},
-      {
-        "rcarriga/nvim-dap-ui",
-        requires = {"nvim-dap", "rust-tools.nvim"},
-        config = function()
-          local dapui = require "dapui"
-          dapui.setup {}
-
-          local dap = require "dap"
-          dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
-          dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
-          dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
-        end
-      },
-      {
-        "Pocco81/dap-buddy.nvim",
-        module = 'dap-buddy',
-        config = function() require("dab-buddy").setup() end
-      },
-      {"mfussenegger/nvim-dap-python"},
-
-      -- Rust support
-      {
-        "simrat39/rust-tools.nvim",
-        requires = {
-          "nvim-lspconfig",
-          "nvim-lsp-installer",
-          "nvim-dap",
-          "Comment.nvim",
-          "plenary.nvim"
-        }
-      },
       {
         "Saecki/crates.nvim",
         after = "nvim-cmp",
@@ -111,6 +76,7 @@ local config = {
           cmp.setup(config)
         end
       },
+      {"simrat39/rust-tools.nvim"},
 
       -- Text objects
       {"bkad/CamelCaseMotion"},
@@ -170,6 +136,8 @@ local config = {
 
   -- Extend LSP configuration
   lsp = {
+    servers = {},
+
     -- add to the server on_attach function
     on_attach = function(client, _)
       if client.name == "elixirls" then
@@ -178,24 +146,11 @@ local config = {
     end,
 
     -- override the lsp installer server-registration function
-    -- server_registration = function(server, opts)
-    --   server:setup(opts)
-    -- end
-    server_registration = function(server, server_opts)
-      -- Special code for rust.tools.nvim!
-      if server.name == "rust_analyzer" then
-        local extension_path = vim.fn.stdpath "data" .. "/dapinstall/codelldb/extension"
-        local codelldb_path = extension_path .. "/adapter/codelldb"
-        local liblldb_path = extension_path .. "/lldb/lib/liblldb.so"
-
-        require("rust-tools").setup {
-          server = server_opts,
-          dap = {
-            adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
-          }
-        }
+    server_registration = function(server, opts)
+      if server == "rust_analyzer" then
+        require("rust-tools").setup({})
       else
-        server:setup(server_opts)
+        require("lspconfig")[server].setup(opts)
       end
     end,
 
@@ -316,20 +271,7 @@ local config = {
         autocmd bufwritepost plugins.lua source <afile> | PackerSync
       augroup end
     ]]
-    vim.api.nvim_create_autocmd("CursorHold", {
-      -- buffer = bufnr,
-      callback = function()
-        local opts1 = {
-          focusable = false,
-          close_events = {"BufLeave", "CursorMoved", "InsertEnter", "FocusLost"},
-          border = 'rounded',
-          source = 'always',
-          prefix = ' ',
-          scope = 'cursor'
-        }
-        vim.diagnostic.open_float(nil, opts1)
-      end
-    })
+
     -- Set commands
     vim.cmd [[
       command! -nargs=* -bang -range -complete=filetype NN
