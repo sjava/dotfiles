@@ -52,7 +52,9 @@ local config = {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp",
-        config = function() require("core.utils").add_cmp_source("cmp_tabnine", 1000) end
+        config = function()
+          require("core.utils").add_cmp_source({name = "cmp_tabnine", priority = 700})
+        end
       },
       {"chrisbra/NrrwRgn"},
       {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
