@@ -7,6 +7,17 @@ local config = {
   -- Set colorscheme
   colorscheme = colorscheme,
 
+  -- set vim options here (vim.<first_key>.<second_key> =  value)
+  options = {
+    opt = {
+      relativenumber = true -- sets vim.opt.relativenumber
+    },
+    g = {
+      mapleader = " ", -- sets vim.g.mapleader
+      python3_host_prog = "/usr/bin/python3"
+    }
+  },
+
   -- Disable default plugins
   enabled = {
     bufferline = true,
@@ -52,7 +63,9 @@ local config = {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp",
-        config = function() require("core.utils").add_cmp_source("cmp_tabnine", 1000) end
+        config = function()
+          require("core.utils").add_cmp_source({name = "cmp_tabnine", priority = 700})
+        end
       },
       {"chrisbra/NrrwRgn"},
       {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
@@ -111,28 +124,34 @@ local config = {
   -- Modify which-key registration
   ["which-key"] = {
     -- Add bindings to the normal mode <leader> mappings
-    register_n_leader = {
-      ["w"] = {
-        name = "windows",
-        s = {"<C-w>s", "horizontal split window"},
-        v = {"<C-w>v", "vertical split window"},
-        h = {"<C-w>h", "left window"},
-        j = {"<C-w>j", "below window"},
-        l = {"<C-w>l", "right window"},
-        k = {"<C-w>k", "up window"},
-        w = {"<cmd>WindowPick<cr>", "window pick"}
-      },
-      ["j"] = {
-        name = "test",
-        n = {"<cmd>TestNearest<cr>", "test near"},
-        f = {"<cmd>TestFile<cr>", "test file"},
-        a = {"<cmd>TestSuite<cr>", "test all"},
-        l = {"<cmd>TestLast<cr>", "test last"},
-        v = {"<cmd>TestVisit<cr>", "test visit"}
+    -- register_n_leader = {
+    register_mappings = {
+      n = {
+        ["<leader>"] = {
+          ["w"] = {
+            name = "windows",
+            s = {"<C-w>s", "horizontal split window"},
+            v = {"<C-w>v", "vertical split window"},
+            h = {"<C-w>h", "left window"},
+            j = {"<C-w>j", "below window"},
+            l = {"<C-w>l", "right window"},
+            k = {"<C-w>k", "up window"},
+            w = {"<cmd>WindowPick<cr>", "window pick"}
+          },
+          ["j"] = {
+            name = "test",
+            n = {"<cmd>TestNearest<cr>", "test near"},
+            f = {"<cmd>TestFile<cr>", "test file"},
+            a = {"<cmd>TestSuite<cr>", "test all"},
+            l = {"<cmd>TestLast<cr>", "test last"},
+            v = {"<cmd>TestVisit<cr>", "test visit"}
+          }
+        }
       }
-      -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
     }
+    -- }
   },
+  cmp = {source_priority = {nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250}},
 
   -- Extend LSP configuration
   lsp = {
@@ -219,14 +238,6 @@ local config = {
   polish = function()
     local opts = {noremap = true, silent = true}
     local map = vim.api.nvim_set_keymap
-    local set = vim.opt
-    -- Set options
-    set.relativenumber = true
-
-    -- vim-test config
-    vim.g['shtuff_receiver'] = "devrunner"
-    vim.g['test#strategy'] = "shtuff"
-    vim.g['python3_host_prog'] = "/usr/bin/python3"
 
     -- neoformat config
     vim.g['neoformat_javascript_prettier'] = {
@@ -251,9 +262,13 @@ local config = {
     }
     vim.g['neoformat_enabled_wxml'] = {'prettier'}
 
-    -- NrrwRgn
+    -- set nrrw config
     vim.g['nrrw_rgn_vert'] = 1
     vim.g['nrrw_rgn_resize_window'] = "relative"
+
+    -- set vim-test config
+    vim.g['shtuff_receiver'] = "devrunner"
+    vim.g['test#strategy'] = "shtuff"
 
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
@@ -265,12 +280,13 @@ local config = {
     map("n", "<c-l>", ":FocusSplitNicely<CR>", opts)
 
     -- Set autocommands
-    vim.cmd [[
-      augroup packer_conf
-        autocmd!
-        autocmd bufwritepost plugins.lua source <afile> | PackerSync
-      augroup end
-    ]]
+    vim.api.nvim_create_augroup("packer_conf", {clear = true})
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      desc = "Sync packer after modifying plugins.lua",
+      group = "packer_conf",
+      pattern = "plugins.lua",
+      command = "source <afile> | PackerSync"
+    })
 
     -- Set commands
     vim.cmd [[
