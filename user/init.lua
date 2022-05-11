@@ -18,24 +18,6 @@ local config = {
     }
   },
 
-  -- Disable default plugins
-  enabled = {
-    bufferline = true,
-    neo_tree = true,
-    lualine = true,
-    gitsigns = true,
-    colorizer = true,
-    toggle_term = true,
-    comment = true,
-    symbols_outline = true,
-    indent_blankline = true,
-    dashboard = true,
-    which_key = true,
-    neoscroll = true,
-    ts_rainbow = true,
-    ts_autotag = true
-  },
-
   -- Disable AstroVim ui features
   ui = {nui_input = true, telescope_select = true},
 
@@ -124,7 +106,6 @@ local config = {
   -- Modify which-key registration
   ["which-key"] = {
     -- Add bindings to the normal mode <leader> mappings
-    -- register_n_leader = {
     register_mappings = {
       n = {
         ["<leader>"] = {
@@ -149,7 +130,6 @@ local config = {
         }
       }
     }
-    -- }
   },
   cmp = {source_priority = {nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250}},
 
