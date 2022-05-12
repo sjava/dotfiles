@@ -155,6 +155,12 @@ local config = {
 
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
+      pyright = {
+        cmd = {
+          vim.fn.stdpath("data") .. "/lsp_servers/pyright/node_modules/.bin/pyright-langserver",
+          "--stdio"
+        }
+      }
       -- example for addings schemas to yamlls
       -- yamlls = {
       --   settings = {
@@ -195,6 +201,7 @@ local config = {
         -- Set a formatter
         -- formatting.prettier,
         formatting.mix,
+        formatting.black,
         formatting.lua_format,
         formatting.prettier.with({
           extra_args = function(params) return {"--parser", parsers[params.ft]} end
@@ -219,7 +226,7 @@ local config = {
     local opts = {noremap = true, silent = true}
     local map = vim.api.nvim_set_keymap
 
-    vim.api.nvim_del_keymap("n","<leader>w")
+    vim.api.nvim_del_keymap("n", "<leader>w")
 
     -- neoformat config
     vim.g['neoformat_javascript_prettier'] = {
