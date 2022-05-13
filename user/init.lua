@@ -160,6 +160,13 @@ local config = {
           vim.fn.stdpath("data") .. "/lsp_servers/pyright/node_modules/.bin/pyright-langserver",
           "--stdio"
         }
+      },
+      tsserver = {
+        cmd = {
+          vim.fn.stdpath("data") ..
+            "/lsp_servers/tsserver/node_modules/.bin/typescript-language-server",
+          "--stdio"
+        }
       }
       -- example for addings schemas to yamlls
       -- yamlls = {
