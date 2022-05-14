@@ -18,24 +18,6 @@ local config = {
     }
   },
 
-  -- Disable default plugins
-  enabled = {
-    bufferline = true,
-    neo_tree = true,
-    lualine = true,
-    gitsigns = true,
-    colorizer = true,
-    toggle_term = true,
-    comment = true,
-    symbols_outline = true,
-    indent_blankline = true,
-    dashboard = true,
-    which_key = true,
-    neoscroll = true,
-    ts_rainbow = true,
-    ts_autotag = true
-  },
-
   -- Disable AstroVim ui features
   ui = {nui_input = true, telescope_select = true},
 
@@ -124,7 +106,6 @@ local config = {
   -- Modify which-key registration
   ["which-key"] = {
     -- Add bindings to the normal mode <leader> mappings
-    -- register_n_leader = {
     register_mappings = {
       n = {
         ["<leader>"] = {
@@ -149,7 +130,6 @@ local config = {
         }
       }
     }
-    -- }
   },
   cmp = {source_priority = {nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250}},
 
@@ -175,6 +155,19 @@ local config = {
 
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
+      pyright = {
+        cmd = {
+          vim.fn.stdpath("data") .. "/lsp_servers/pyright/node_modules/.bin/pyright-langserver",
+          "--stdio"
+        }
+      },
+      tsserver = {
+        cmd = {
+          vim.fn.stdpath("data") ..
+            "/lsp_servers/tsserver/node_modules/.bin/typescript-language-server",
+          "--stdio"
+        }
+      }
       -- example for addings schemas to yamlls
       -- yamlls = {
       --   settings = {
@@ -215,6 +208,7 @@ local config = {
         -- Set a formatter
         -- formatting.prettier,
         formatting.mix,
+        formatting.black,
         formatting.lua_format,
         formatting.prettier.with({
           extra_args = function(params) return {"--parser", parsers[params.ft]} end
@@ -238,6 +232,8 @@ local config = {
   polish = function()
     local opts = {noremap = true, silent = true}
     local map = vim.api.nvim_set_keymap
+
+    vim.api.nvim_del_keymap("n", "<leader>w")
 
     -- neoformat config
     vim.g['neoformat_javascript_prettier'] = {
