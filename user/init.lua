@@ -93,6 +93,37 @@ local config = {
         end
       }
     },
+    ["null-ls"] = function(config)
+      local null_ls = require "null-ls"
+      local parsers = {javascript = "babel", scss = "scss", json = "json", html = "html"}
+      -- Check supported formatters and linters
+      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+      config.sources = {
+        -- Set a formatter
+        null_ls.builtins.formatting.mix,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.lua_format,
+        null_ls.builtins.formatting.prettier.with({
+          extra_args = function(params) return {"--parser", parsers[params.ft]} end
+        }),
+        -- Set a linter
+        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.credo
+      }
+      -- set up null-ls's on_attach function
+      -- config.on_attach = function(client)
+      --   -- NOTE: You can remove this on attach function to disable format on save
+      --   if client.resolved_capabilities.document_formatting then
+      --     vim.api.nvim_create_autocmd("BufWritePre", {
+      --       desc = "Auto format before save",
+      --       pattern = "<buffer>",
+      --       callback = vim.lsp.buf.formatting_sync,
+      --     })
+      --   end
+      -- end
+      return config -- return final config table
+    end,
 
     -- All other entries override the setup() call for default plugins
     treesitter = {ensure_installed = {"lua"}},
@@ -185,47 +216,6 @@ local config = {
 
   -- Diagnostics configuration (for vim.diagnostics.config({}))
   diagnostics = {virtual_text = true, underline = true},
-
-  -- null-ls configuration
-  ["null-ls"] = function()
-    -- Formatting and linting
-    -- https://github.com/jose-elias-alvarez/null-ls.nvim
-    local status_ok, null_ls = pcall(require, "null-ls")
-    if not status_ok then return end
-
-    -- Check supported formatters
-    -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-    local formatting = null_ls.builtins.formatting
-
-    -- Check supported linters
-    -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-    local diagnostics = null_ls.builtins.diagnostics
-
-    local parsers = {javascript = "babel", scss = "scss", json = "json", html = "html"}
-    null_ls.setup {
-      debug = false,
-      sources = {
-        -- Set a formatter
-        -- formatting.prettier,
-        formatting.mix,
-        formatting.black,
-        formatting.lua_format,
-        formatting.prettier.with({
-          extra_args = function(params) return {"--parser", parsers[params.ft]} end
-        }),
-
-        -- Set a linter
-        diagnostics.eslint_d,
-        diagnostics.credo
-      }
-      -- NOTE: You can remove this on attach function to disable format on save
-      -- on_attach = function(client)
-      --   if client.resolved_capabilities.document_formatting then
-      --     vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
-      --   end
-      -- end
-    }
-  end,
 
   -- This function is run last
   -- good place to configure mappings and vim options
