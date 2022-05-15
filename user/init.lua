@@ -36,6 +36,7 @@ local config = {
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
+      {"echasnovski/mini.nvim", config = function() require('mini.cursorword').setup() end},
       {
         "beauwilliams/focus.nvim",
         config = function() require("focus").setup({width = 100, minwidth = 60}) end
