@@ -125,6 +125,7 @@ local config = {
       -- end
       return config -- return final config table
     end,
+    -- feline = {theme = 'catppuccin'},
 
     -- All other entries override the setup() call for default plugins
     treesitter = {ensure_installed = {"lua"}},
