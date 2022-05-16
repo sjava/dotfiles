@@ -128,7 +128,6 @@ local config = {
 
     -- All other entries override the setup() call for default plugins
     treesitter = {ensure_installed = {"lua"}},
-    lualine = {options = {theme = "catppuccin"}},
     packer = {compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"}
   },
 
