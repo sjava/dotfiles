@@ -46,9 +46,7 @@ local config = {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp",
-        config = function()
-          require("core.utils").add_cmp_source({name = "cmp_tabnine", priority = 700})
-        end
+        config = function() astronvim.add_cmp_source({name = "cmp_tabnine", priority = 700}) end
       },
       {"chrisbra/NrrwRgn"},
       {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
@@ -180,7 +178,6 @@ local config = {
     -- override the lsp installer server-registration function
     server_registration = function(server, opts)
       if server == "rust_analyzer" then
-        print(vim.inspect(opts))
         require("rust-tools").setup({
           server = vim.tbl_deep_extend("force", {standalone = true}, opts)
         })
