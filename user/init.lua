@@ -105,6 +105,7 @@ local config = {
         null_ls.builtins.formatting.mix,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.lua_format,
+        null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.prettier.with({
           extra_args = function(params) return {"--parser", parsers[params.ft]} end
         }),
@@ -170,8 +171,8 @@ local config = {
     servers = {},
 
     -- add to the server on_attach function
-    on_attach = function(client, _)
-      if client.name == "elixirls" then
+    on_attach = function(client, bufnr)
+      if client.name == "elixirls" or client.name == "rust_analyzer" then
         client.resolved_capabilities.document_formatting = false
       end
     end,
@@ -179,7 +180,10 @@ local config = {
     -- override the lsp installer server-registration function
     server_registration = function(server, opts)
       if server == "rust_analyzer" then
-        require("rust-tools").setup({})
+        print(vim.inspect(opts))
+        require("rust-tools").setup({
+          server = vim.tbl_deep_extend("force", {standalone = true}, opts)
+        })
       else
         require("lspconfig")[server].setup(opts)
       end
