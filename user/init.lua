@@ -276,9 +276,14 @@ local config = {
       command = "source <afile> | PackerSync"
     })
 
-    vim.api.nvim_create_autocmd("TermOpen", {
+    -- auto set mini cursorword
+    vim.api.nvim_create_autocmd("insertEnter", {
       pattern = "*",
       command = "lua vim.b.minicursorword_disable = true"
+    })
+    vim.api.nvim_create_autocmd("insertLeave", {
+      pattern = "*",
+      command = "lua vim.b.minicursorword_disable = false"
     })
 
     -- Set commands
