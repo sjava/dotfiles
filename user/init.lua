@@ -276,6 +276,11 @@ local config = {
       command = "source <afile> | PackerSync"
     })
 
+    vim.api.nvim_create_autocmd("TermOpen", {
+      pattern = "*",
+      command = "lua vim.b.minicursorword_disable = true"
+    })
+
     -- Set commands
     vim.cmd [[
       command! -nargs=* -bang -range -complete=filetype NN
