@@ -29,14 +29,21 @@ local config = {
       {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
       {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
       {"hoschi/yode-nvim", config = function() require('yode-nvim').setup({}) end},
-      {"machakann/vim-sandwich"},
       {"vim-test/vim-test"},
       {"andymass/vim-matchup"},
       {"mg979/vim-visual-multi", branch = "master"},
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
-      {"echasnovski/mini.nvim", config = function() require('mini.cursorword').setup() end},
+      {
+        "echasnovski/mini.nvim",
+        config = function()
+          require('mini.cursorword').setup()
+          require('mini.surround').setup()
+          require('mini.jump2d').setup()
+          require('mini.misc').setup()
+        end
+      },
       {
         "beauwilliams/focus.nvim",
         config = function() require("focus").setup({width = 100, minwidth = 60}) end
@@ -49,7 +56,6 @@ local config = {
         config = function() astronvim.add_cmp_source({name = "cmp_tabnine", priority = 700}) end
       },
       {"chrisbra/NrrwRgn"},
-      {"ggandor/lightspeed.nvim", config = function() require('lightspeed').setup {} end},
       {"sbdchd/neoformat"},
       {"wellle/targets.vim"},
       {
