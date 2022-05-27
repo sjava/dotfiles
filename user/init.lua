@@ -53,7 +53,7 @@ local config = {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp",
-        config = function() astronvim.add_cmp_source({name = "cmp_tabnine", priority = 700}) end
+        config = function() astronvim.add_cmp_source({name = "cmp_tabnine", priority = 2000}) end
       },
       {"chrisbra/NrrwRgn"},
       {"sbdchd/neoformat"},
@@ -283,13 +283,17 @@ local config = {
     })
 
     -- auto set mini cursorword
-    vim.api.nvim_create_autocmd("insertEnter", {
+    -- vim.api.nvim_create_autocmd("insertEnter", {
+    --   pattern = "*",
+    --   command = "lua vim.b.minicursorword_disable = true"
+    -- })
+    -- vim.api.nvim_create_autocmd("insertLeave", {
+    --   pattern = "*",
+    --   command = "lua vim.b.minicursorword_disable = false"
+    -- })
+    vim.api.nvim_create_autocmd("TermOpen", {
       pattern = "*",
       command = "lua vim.b.minicursorword_disable = true"
-    })
-    vim.api.nvim_create_autocmd("insertLeave", {
-      pattern = "*",
-      command = "lua vim.b.minicursorword_disable = false"
     })
 
     -- Set commands
