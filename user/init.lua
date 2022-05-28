@@ -98,6 +98,7 @@ local config = {
         end
       }
     },
+    colorizer = {{"*", "!toggleterm", "!packer"}},
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
       local parsers = {javascript = "babel", scss = "scss", json = "json", html = "html"}
@@ -282,19 +283,14 @@ local config = {
       command = "source <afile> | PackerSync"
     })
 
-    -- auto set mini cursorword
-    -- vim.api.nvim_create_autocmd("insertEnter", {
-    --   pattern = "*",
-    --   command = "lua vim.b.minicursorword_disable = true"
-    -- })
-    -- vim.api.nvim_create_autocmd("insertLeave", {
-    --   pattern = "*",
-    --   command = "lua vim.b.minicursorword_disable = false"
-    -- })
     vim.api.nvim_create_autocmd("TermOpen", {
       pattern = "*",
       command = "lua vim.b.minicursorword_disable = true"
     })
+    -- vim.api.nvim_create_autocmd("TermEnter", {
+    --   pattern = "*",
+    --   command = "ColorizerDetachFromBuffer"
+    -- })
 
     -- Set commands
     vim.cmd [[
