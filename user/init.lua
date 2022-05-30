@@ -1,11 +1,7 @@
-local colorscheme = "default_theme"
-local theme_installed, _ = pcall(require, "catppuccin")
-if theme_installed then colorscheme = "catppuccin" end
-
 local config = {
 
   -- Set colorscheme
-  colorscheme = colorscheme,
+  colorscheme = "catppuccin",
 
   -- set vim options here (vim.<first_key>.<second_key> =  value)
   options = {
@@ -28,7 +24,6 @@ local config = {
       -- { "andweeb/presence.nvim" },
       {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
       {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
-      {"hoschi/yode-nvim", config = function() require('yode-nvim').setup({}) end},
       {"vim-test/vim-test"},
       {"andymass/vim-matchup"},
       {"mg979/vim-visual-multi", branch = "master"},
@@ -270,9 +265,6 @@ local config = {
     map("n", "<C-s>", ":w!<CR>", opts)
     -- map("i", "<C-l>", "<Esc>A", opts)
     -- map("i", "<C-s>", "<Esc>I", opts)
-    map("v", "<leader>ac", ":YodeCreateSeditorFloating<CR>", opts)
-    map("n", "<leader>ar", ":YodeCreateSeditorReplace<CR>", opts)
-    map("n", "<leader>ad", ":YodeBufferDelete<cr>", opts)
     map("n", "<c-l>", ":FocusSplitNicely<CR>", opts)
 
     local readline = require 'readline'
