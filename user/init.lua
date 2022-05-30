@@ -35,6 +35,7 @@ local config = {
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
+      {"linty-org/readline.nvim"},
       {
         "echasnovski/mini.nvim",
         config = function()
@@ -267,12 +268,28 @@ local config = {
 
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
-    map("i", "<C-l>", "<Esc>A", opts)
-    map("i", "<C-s>", "<Esc>I", opts)
+    -- map("i", "<C-l>", "<Esc>A", opts)
+    -- map("i", "<C-s>", "<Esc>I", opts)
     map("v", "<leader>ac", ":YodeCreateSeditorFloating<CR>", opts)
     map("n", "<leader>ar", ":YodeCreateSeditorReplace<CR>", opts)
     map("n", "<leader>ad", ":YodeBufferDelete<cr>", opts)
     map("n", "<c-l>", ":FocusSplitNicely<CR>", opts)
+
+    local readline = require 'readline'
+    vim.keymap.set('!', '<M-f>', readline.forward_word)
+    vim.keymap.set('!', '<M-b>', readline.backward_word)
+    vim.keymap.set('!', '<C-a>', readline.beginning_of_line)
+    vim.keymap.set('!', '<C-e>', readline.end_of_line)
+    vim.keymap.set('!', '<M-d>', readline.kill_word)
+    vim.keymap.set('!', '<C-w>', readline.backward_kill_word)
+    vim.keymap.set('!', '<C-k>', readline.kill_line)
+    vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
+    vim.keymap.set('!', '<C-d>', '<Delete>') -- delete-char
+    vim.keymap.set('!', '<C-h>', '<BS>') -- backward-delete-char
+    vim.keymap.set('!', '<C-f>', '<Right>') -- forward-char
+    vim.keymap.set('!', '<C-b>', '<Left>') -- backward-char
+    vim.keymap.set('!', '<C-n>', '<Down>') -- next-line
+    vim.keymap.set('!', '<C-p>', '<Up>') -- previous-line
 
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", {clear = true})
@@ -287,10 +304,6 @@ local config = {
       pattern = "*",
       command = "lua vim.b.minicursorword_disable = true"
     })
-    -- vim.api.nvim_create_autocmd("TermEnter", {
-    --   pattern = "*",
-    --   command = "ColorizerDetachFromBuffer"
-    -- })
 
     -- Set commands
     vim.cmd [[
