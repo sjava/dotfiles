@@ -49,7 +49,7 @@ local config = {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp",
-        config = function() astronvim.add_cmp_source({name = "cmp_tabnine", priority = 2000}) end
+        config = function() astronvim.add_cmp_source({name = "cmp_tabnine", priority = 700}) end
       },
       {"chrisbra/NrrwRgn"},
       {"sbdchd/neoformat"},
