@@ -36,7 +36,7 @@ local config = {
         config = function()
           require('mini.cursorword').setup()
           require('mini.surround').setup()
-          require('mini.jump2d').setup()
+          require('mini.jump2d').setup({allowed_windows = {not_current = false}})
           require('mini.misc').setup()
         end
       },

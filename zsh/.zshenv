@@ -1,5 +1,6 @@
 export PATH="$HOME/.local/bin:$HOME/.luarocks/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export npm_config_prefix="$HOME/.local"
+export PYTHONPATH="$HOME/nb_monitor/ctwing_nb_sdk"
 export EDITOR="nvim"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
