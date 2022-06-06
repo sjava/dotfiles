@@ -44,7 +44,6 @@ local config = {
         "beauwilliams/focus.nvim",
         config = function() require("focus").setup({width = 100, minwidth = 60}) end
       },
-      {"github/copilot.vim"},
       {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
