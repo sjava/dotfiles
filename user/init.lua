@@ -10,7 +10,8 @@ local config = {
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
-      python3_host_prog = "/usr/bin/python3"
+      python3_host_prog = "/usr/bin/python3",
+      matchup_matchparen_deferred = 1
     }
   },
 
