@@ -24,6 +24,7 @@ local config = {
     init = {
       -- { "andweeb/presence.nvim" },
       {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
+      {'anuvyklack/pretty-fold.nvim', config = function() require('pretty-fold').setup() end},
       {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
       {"vim-test/vim-test"},
       {"andymass/vim-matchup"},
