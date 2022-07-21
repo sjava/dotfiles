@@ -23,7 +23,29 @@ local config = {
     -- Add plugins, the packer syntax without the "use"
     init = {
       -- { "andweeb/presence.nvim" },
-      {"catppuccin/nvim", as = "catppuccin", config = function() require("catppuccin").setup {} end},
+      {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        run = ":CatppuccinCompile",
+        config = function()
+          local colors = require("catppuccin.palettes").get_palette()
+          colors.none = "NONE"
+          require("catppuccin").setup {
+            custom_highlights = {
+              Comment = {fg = colors.overlay1},
+              LineNr = {fg = colors.overlay1},
+              -- CursorLine = {bg = colors.none},
+              CursorLineNr = {fg = colors.lavender},
+              DiagnosticVirtualTextError = {bg = colors.none},
+              DiagnosticVirtualTextWarn = {bg = colors.none},
+              DiagnosticVirtualTextInfo = {bg = colors.none},
+              DiagnosticVirtualTextHint = {bg = colors.none}
+            },
+            compile = {enabled = true, path = vim.fn.stdpath "cache" .. "/catppuccin"},
+            integrations = {mini = true, which_key = true, ts_rainbow = true, aerial = false}
+          }
+        end
+      },
       {'anuvyklack/pretty-fold.nvim', config = function() require('pretty-fold').setup() end},
       {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
       {"vim-test/vim-test"},
@@ -128,7 +150,6 @@ local config = {
       -- end
       return config -- return final config table
     end,
-    -- feline = {theme = 'catppuccin'},
 
     -- All other entries override the setup() call for default plugins
     treesitter = {ensure_installed = {"lua"}},
@@ -264,8 +285,6 @@ local config = {
 
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
-    -- map("i", "<C-l>", "<Esc>A", opts)
-    -- map("i", "<C-s>", "<Esc>I", opts)
     map("n", "<c-l>", ":FocusSplitNicely<CR>", opts)
 
     local readline = require 'readline'
