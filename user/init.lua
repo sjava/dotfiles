@@ -11,7 +11,7 @@ local config = {
     g = {
       mapleader = " ", -- sets vim.g.mapleader
       python3_host_prog = "/usr/bin/python3",
-      matchup_matchparen_deferred = 1
+      matchup_matchparen_deferred = 1,
     }
   },
 
@@ -63,10 +63,6 @@ local config = {
           require('mini.jump2d').setup({allowed_windows = {not_current = false}})
           require('mini.misc').setup()
         end
-      },
-      {
-        "beauwilliams/focus.nvim",
-        config = function() require("focus").setup({width = 100, minwidth = 60}) end
       },
       {
         "tzachar/cmp-tabnine",
@@ -285,7 +281,6 @@ local config = {
 
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
-    map("n", "<c-l>", ":FocusSplitNicely<CR>", opts)
 
     local readline = require 'readline'
     vim.keymap.set('!', '<M-f>', readline.forward_word)
