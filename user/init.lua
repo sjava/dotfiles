@@ -55,6 +55,7 @@ local config = {
       {"chemzqm/wxapp.vim"},
       {"rainbowhxch/beacon.nvim"},
       {"linty-org/readline.nvim"},
+      {'nacro90/numb.nvim', config = function() require('numb').setup() end},
       {
         "echasnovski/mini.nvim",
         config = function()
