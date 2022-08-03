@@ -150,6 +150,21 @@ local config = {
 
     -- All other entries override the setup() call for default plugins
     treesitter = {ensure_installed = {"lua"}},
+    -- use mason-lspconfig to configure LSP installations
+    ["mason-lspconfig"] = {
+      ensure_installed = {
+        "sumneko_lua",
+        "pyright",
+        "tsserver",
+        "rust_analyzer",
+        "elixirls",
+        "css-lsp",
+        "html-lsp",
+        "json-lsp"
+      }
+    },
+    -- use mason-tool-installer to configure DAP/Formatters/Linter installation
+    ["mason-tool-installer"] = {ensure_installed = {"prettier", "stylua"}},
     packer = {compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"}
   },
 
@@ -210,19 +225,19 @@ local config = {
 
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
-      pyright = {
-        cmd = {
-          vim.fn.stdpath("data") .. "/lsp_servers/pyright/node_modules/.bin/pyright-langserver",
-          "--stdio"
-        }
-      },
-      tsserver = {
-        cmd = {
-          vim.fn.stdpath("data") ..
-            "/lsp_servers/tsserver/node_modules/.bin/typescript-language-server",
-          "--stdio"
-        }
-      }
+      -- pyright = {
+      --   cmd = {
+      --     vim.fn.stdpath("data") .. "/mason/packages/pyright/node_modules/.bin/pyright-langserver",
+      --     "--stdio"
+      --   }
+      -- },
+      -- tsserver = {
+      --   cmd = {
+      --     vim.fn.stdpath("data") ..
+      --       "/mason/packages/typescript-language-server/node_modules/.bin/typescript-language-server",
+      --     "--stdio"
+      --   }
+      -- }
       -- example for addings schemas to yamlls
       -- yamlls = {
       --   settings = {
