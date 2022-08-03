@@ -174,7 +174,7 @@ local config = {
         ["mason-lspconfig"] = {
             ensure_installed = {
                 "sumneko_lua", "pyright", "tsserver", "rust_analyzer",
-                "elixirls", "css-lsp", "html-lsp", "json-lsp"
+                "elixirls", "cssls", "html", "jsonls"
             }
         },
         -- use mason-tool-installer to configure DAP/Formatters/Linter installation
