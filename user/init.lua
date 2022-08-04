@@ -140,7 +140,8 @@ local config = {
         null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.prettier.with({
           extra_args = function(params) return {"--parser", parsers[params.ft]} end
-        }), -- Set a linter
+        }),
+        -- Set a linter
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.credo
       }
@@ -336,6 +337,11 @@ local config = {
     vim.api.nvim_create_autocmd("TermOpen", {
       pattern = "*",
       command = "lua vim.b.minicursorword_disable = true"
+    })
+
+    vim.api.nvim_create_autocmd({"FileType"}, {
+      pattern = "wxml",
+      command = "set ft=html"
     })
 
     -- Set commands
