@@ -21,19 +21,18 @@ local config = {
 
   -- Configure plugins
   plugins = {
-    ["hrsh7th/cmp-buffer"] = {
-      after = "nvim-cmp",
-      config = function()
-        astronvim.add_user_cmp_source {
-          name = "buffer",
-          option = {get_bufnrs = function() return vim.api.nvim_list_bufs() end}
-        }
-      end
-    },
 
     -- Add plugins, the packer syntax without the "use"
     init = {
       -- { "andweeb/presence.nvim" },
+      ["hrsh7th/cmp-buffer"] = {
+        config = function()
+          astronvim.add_user_cmp_source({
+            name = "buffer",
+            option = {get_bufnrs = function() return vim.api.nvim_list_bufs() end}
+          })
+        end
+      },
       {
         "catppuccin/nvim",
         as = "catppuccin",
