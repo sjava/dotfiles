@@ -56,6 +56,7 @@ local config = {
           }
         end
       },
+      {"Pocco81/true-zen.nvim", config = function() require("true-zen").setup {} end},
       {'anuvyklack/pretty-fold.nvim', config = function() require('pretty-fold').setup() end},
       {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
       {"vim-test/vim-test"},
@@ -275,6 +276,13 @@ local config = {
 
     vim.api.nvim_del_keymap("n", "<leader>w")
 
+    -- true-zen.nvim key map
+    map("n", "<leader>zn", ":TZNarrow<CR>", {})
+    map("v", "<leader>zn", ":'<,'>TZNarrow<CR>", {})
+    map("n", "<leader>zf", ":TZFocus<CR>", {})
+    map("n", "<leader>zm", ":TZMinimalist<CR>", {})
+    map("n", "<leader>za", ":TZAtaraxis<CR>", {})
+
     -- neoformat config
     vim.g['neoformat_javascript_prettier'] = {
       exe = "prettier",
@@ -339,10 +347,7 @@ local config = {
       command = "lua vim.b.minicursorword_disable = true"
     })
 
-    vim.api.nvim_create_autocmd({"FileType"}, {
-      pattern = "wxml",
-      command = "set ft=html"
-    })
+    vim.api.nvim_create_autocmd({"FileType"}, {pattern = "wxml", command = "set ft=html"})
 
     -- Set commands
     vim.cmd [[
