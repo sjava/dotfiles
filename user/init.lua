@@ -57,16 +57,8 @@ local config = {
         end
       },
       {
-        "folke/twilight.nvim",
-        config = function()
-          require("twilight").setup {
-            dimming = {
-              inactive = true -- when true, other windows will be fully dimmed (unless they contain the same buffer)
-            },
-            context = 40, -- amount of lines we will try to show around the current line
-            treesitter = true
-          }
-        end
+        "the-argus/twilight.nvim",
+        config = function() require("twilight").setup {expand = {"do_block"}} end
       },
       {"Pocco81/true-zen.nvim", config = function() require("true-zen").setup {} end},
       {'anuvyklack/pretty-fold.nvim', config = function() require('pretty-fold').setup() end},
