@@ -41,6 +41,7 @@ local config = {
           local colors = require("catppuccin.palettes").get_palette()
           colors.none = "NONE"
           require("catppuccin").setup {
+            dim_inactive = {enabled = true, shade = "dark", percentage = 0.15},
             custom_highlights = {
               Comment = {fg = colors.overlay1},
               LineNr = {fg = colors.overlay1},
@@ -52,7 +53,7 @@ local config = {
               DiagnosticVirtualTextHint = {bg = colors.none}
             },
             compile = {enabled = true, path = vim.fn.stdpath "cache" .. "/catppuccin"},
-            integrations = {mini = true, which_key = true, ts_rainbow = true, aerial = false}
+            integrations = {leap = true, which_key = true, ts_rainbow = true, aerial = false}
           }
         end
       },
@@ -71,14 +72,11 @@ local config = {
       {"rainbowhxch/beacon.nvim"},
       {"linty-org/readline.nvim"},
       {'nacro90/numb.nvim', config = function() require('numb').setup() end},
+      {'ggandor/leap.nvim', config = function() require('leap').set_default_keymaps() end},
       {
-        "echasnovski/mini.nvim",
-        config = function()
-          require('mini.cursorword').setup()
-          require('mini.surround').setup()
-          require('mini.jump2d').setup({allowed_windows = {not_current = false}})
-          require('mini.misc').setup()
-        end
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function() require("nvim-surround").setup({}) end
       },
       {
         "zbirenbaum/copilot.lua",
@@ -344,11 +342,6 @@ local config = {
       group = "packer_conf",
       pattern = "plugins.lua",
       command = "source <afile> | PackerSync"
-    })
-
-    vim.api.nvim_create_autocmd("TermOpen", {
-      pattern = "*",
-      command = "lua vim.b.minicursorword_disable = true"
     })
 
     vim.api.nvim_create_autocmd({"FileType"}, {pattern = "wxml", command = "set ft=html"})
