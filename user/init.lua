@@ -53,8 +53,21 @@ local config = {
               DiagnosticVirtualTextHint = {bg = colors.none}
             },
             compile = {enabled = true, path = vim.fn.stdpath "cache" .. "/catppuccin"},
-            integrations = {leap = true, which_key = true, ts_rainbow = true, aerial = false}
+            integrations = {
+              mini = true,
+              leap = true,
+              which_key = true,
+              ts_rainbow = true,
+              aerial = false
+            }
           }
+        end
+      },
+      {
+        "echasnovski/mini.nvim",
+        config = function()
+          require('mini.cursorword').setup()
+          require('mini.misc').setup()
         end
       },
       {
@@ -342,6 +355,11 @@ local config = {
       group = "packer_conf",
       pattern = "plugins.lua",
       command = "source <afile> | PackerSync"
+    })
+
+    vim.api.nvim_create_autocmd("TermOpen", {
+      pattern = "*",
+      command = "lua vim.b.minicursorword_disable = true"
     })
 
     vim.api.nvim_create_autocmd({"FileType"}, {pattern = "wxml", command = "set ft=html"})
