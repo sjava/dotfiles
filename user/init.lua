@@ -74,7 +74,23 @@ local config = {
         "the-argus/twilight.nvim",
         config = function() require("twilight").setup {expand = {"do_block"}} end
       },
-      {"Pocco81/true-zen.nvim", config = function() require("true-zen").setup {} end},
+      {
+        "Pocco81/true-zen.nvim",
+        config = function()
+          require("true-zen").setup {
+            modes = {
+              ataraxis = {
+                callbacks = {
+                  open_pos = function()
+                    vim.wo.number = true
+                    vim.wo.relativenumber = true
+                  end
+                }
+              }
+            }
+          }
+        end
+      },
       {'anuvyklack/pretty-fold.nvim', config = function() require('pretty-fold').setup() end},
       {"ten3roberts/window-picker.nvim", config = function() require("window-picker").setup({}) end},
       {"vim-test/vim-test"},
