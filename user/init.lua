@@ -106,7 +106,7 @@ local config = {
       {"wellle/targets.vim"},
       {
         "ray-x/lsp_signature.nvim",
-        event = "BufRead",
+        -- event = "BufRead",
         config = function() require("lsp_signature").setup() end
       },
       {
