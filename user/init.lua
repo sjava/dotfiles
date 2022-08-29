@@ -201,6 +201,8 @@ local config = {
         "tsserver",
         "rust_analyzer",
         "elixirls",
+        "volar",
+        "tailwindcss",
         "cssls",
         "html",
         "jsonls"
