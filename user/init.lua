@@ -63,6 +63,7 @@ local config = {
           }
         end
       },
+      {"hoschi/yode-nvim", config = function() require("yode-nvim").setup({}) end},
       {
         "echasnovski/mini.nvim",
         config = function()
