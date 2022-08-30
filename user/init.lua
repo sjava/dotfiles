@@ -380,6 +380,9 @@ local config = {
       command = "lua vim.b.minicursorword_disable = true"
     })
 
+    vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"},
+                                {pattern = {"*.mpx"}, command = "set ft=vue"})
+
     vim.api.nvim_create_autocmd({"FileType"}, {pattern = "wxml", command = "set ft=html"})
 
     -- Set commands
