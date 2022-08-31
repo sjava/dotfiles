@@ -118,7 +118,6 @@ local config = {
         module = "copilot_cmp",
         config = function() astronvim.add_cmp_source({name = "copilot", priority = 700}) end
       },
-      {"chrisbra/NrrwRgn"},
       {"sbdchd/neoformat"},
       {"wellle/targets.vim"},
       {
@@ -387,30 +386,12 @@ local config = {
 
     vim.api.nvim_create_autocmd({"FileType"}, {pattern = "wxml", command = "set ft=html"})
 
-    -- Set commands
     vim.cmd [[
       command! -nargs=* -bang -range -complete=filetype NN
-      \ :<line1>,<line2> call nrrwrgn#NrrwRgn('',<q-bang>)
+      \ call luaeval("require('yode-nvim').createSeditorReplace(_A[1], _A[2])", [<line1>, <line2>])
       \ | set filetype=<args>
     ]]
 
-    vim.api.nvim_create_user_command('SetYodeFt', function(opts)
-      local bufid = vim.fn.bufnr('%')
-      local bufname = vim.api.nvim_buf_get_name(bufid)
-      bufname = string.gsub(bufname, "yode://", "")
-      vim.api.nvim_buf_set_name(bufid, bufname)
-      vim.cmd('set ft=' .. opts.args)
-    end, {nargs = 1})
-
-    vim.api.nvim_create_user_command('WrYode', function()
-      local bufid = vim.fn.bufnr('%')
-      local ft = vim.api.nvim_buf_get_option(bufid, "filetype")
-      local bufname = vim.api.nvim_buf_get_name(bufid)
-      vim.api.nvim_buf_set_name(bufid, 'yode://' .. bufname)
-      vim.cmd('w')
-      vim.api.nvim_buf_set_name(bufid, bufname)
-      vim.cmd('set ft=' .. ft)
-    end, {nargs = 0})
   end
 }
 
