@@ -276,14 +276,14 @@ local config = {
       --     "--stdio"
       --   }
       -- },
-      tsserver = {
+      -- tsserver = {
         -- root_dir = function() return vim.loop.cwd() end
         -- cmd = {
         --   vim.fn.stdpath("data") ..
         --     "/mason/packages/typescript-language-server/node_modules/.bin/typescript-language-server",
         --   "--stdio"
         -- }
-      }
+      -- }
       -- example for addings schemas to yamlls
       -- yamlls = {
       --   settings = {
