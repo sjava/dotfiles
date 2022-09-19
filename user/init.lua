@@ -167,7 +167,7 @@ local config = {
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
       config.sources = {
         -- Set a formatter
-        null_ls.builtins.formatting.mix,
+        null_ls.builtins.formatting.mix.with({args = {"format", "-"}}),
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.lua_format,
         null_ls.builtins.formatting.rustfmt,
