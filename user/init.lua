@@ -99,7 +99,7 @@ local config = {
       {"mg979/vim-visual-multi", branch = "master"},
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
-      {"rainbowhxch/beacon.nvim"},
+      -- {"rainbowhxch/beacon.nvim"},
       {"linty-org/readline.nvim"},
       {'nacro90/numb.nvim', config = function() require('numb').setup() end},
       {'ggandor/leap.nvim', config = function() require('leap').set_default_keymaps() end},
