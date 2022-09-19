@@ -63,6 +63,7 @@ local config = {
           }
         end
       },
+      {"h-hg/fcitx.nvim"},
       {"sjava/yode-nvim", config = function() require("yode-nvim").setup({}) end},
       {
         "echasnovski/mini.nvim",
@@ -277,12 +278,12 @@ local config = {
       --   }
       -- },
       -- tsserver = {
-        -- root_dir = function() return vim.loop.cwd() end
-        -- cmd = {
-        --   vim.fn.stdpath("data") ..
-        --     "/mason/packages/typescript-language-server/node_modules/.bin/typescript-language-server",
-        --   "--stdio"
-        -- }
+      -- root_dir = function() return vim.loop.cwd() end
+      -- cmd = {
+      --   vim.fn.stdpath("data") ..
+      --     "/mason/packages/typescript-language-server/node_modules/.bin/typescript-language-server",
+      --   "--stdio"
+      -- }
       -- }
       -- example for addings schemas to yamlls
       -- yamlls = {
