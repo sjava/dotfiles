@@ -217,33 +217,28 @@ local config = {
   -- Add paths for including more VS Code style snippets in luasnip
   luasnip = {vscode_snippet_paths = {}},
 
+  mappings = {
+    n = {
+      ["<leader>ws"] = {"<C-w>s", desc = "horizontal split window"},
+      ["<leader>wv"] = {"<C-w>v", desc = "vertical split window"},
+      ["<leader>wh"] = {"<C-w>h", desc = "left window"},
+      ["<leader>wj"] = {"<C-w>j", desc = "below window"},
+      ["<leader>wl"] = {"<C-w>l", desc = "right window"},
+      ["<leader>wk"] = {"<C-w>k", desc = "up window"},
+      ["<leader>ww"] = {"<cmd>WindowPick<cr>", desc = "window pick"},
+
+      ["<leader>jn"] = {"<cmd>TestNearest<cr>", desc = "test near"},
+      ["<leader>jf"] = {"<cmd>TestFile<cr>", desc = "test file"},
+      ["<leader>ja"] = {"<cmd>TestSuite<cr>", desc = "test all"},
+      ["<leader>jl"] = {"<cmd>TestLast<cr>", desc = "test last"},
+      ["<leader>jv"] = {"<cmd>TestVisit<cr>", desc = "test visit"}
+
+    }
+  },
+
   -- Modify which-key registration
   ["which-key"] = {
-    -- Add bindings to the normal mode <leader> mappings
-    register_mappings = {
-      n = {
-        ["<leader>"] = {
-          ["w"] = {
-            name = "windows",
-            s = {"<C-w>s", "horizontal split window"},
-            v = {"<C-w>v", "vertical split window"},
-            h = {"<C-w>h", "left window"},
-            j = {"<C-w>j", "below window"},
-            l = {"<C-w>l", "right window"},
-            k = {"<C-w>k", "up window"},
-            w = {"<cmd>WindowPick<cr>", "window pick"}
-          },
-          ["j"] = {
-            name = "test",
-            n = {"<cmd>TestNearest<cr>", "test near"},
-            f = {"<cmd>TestFile<cr>", "test file"},
-            a = {"<cmd>TestSuite<cr>", "test all"},
-            l = {"<cmd>TestLast<cr>", "test last"},
-            v = {"<cmd>TestVisit<cr>", "test visit"}
-          }
-        }
-      }
-    }
+    register_mappings = {n = {["<leader>"] = {["w"] = {name = "Windows"}, ["j"] = {name = "test"}}}}
   },
   -- cmp = {source_priority = {nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250}},
 
