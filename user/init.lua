@@ -231,14 +231,38 @@ local config = {
       ["<leader>jf"] = {"<cmd>TestFile<cr>", desc = "test file"},
       ["<leader>ja"] = {"<cmd>TestSuite<cr>", desc = "test all"},
       ["<leader>jl"] = {"<cmd>TestLast<cr>", desc = "test last"},
-      ["<leader>jv"] = {"<cmd>TestVisit<cr>", desc = "test visit"}
+      ["<leader>jv"] = {"<cmd>TestVisit<cr>", desc = "test visit"},
 
-    }
+      ["<leader>zn"] = {"<cmd>TZNarrow<CR>", desc = "narrow"},
+      ["<leader>zf"] = {"<cmd>TZFocus<CR>", desc = "focus"},
+      ["<leader>zm"] = {"<cmd>TZMinimalist<CR>", desc = "minimal"},
+      ["<leader>za"] = {"<cmd>TZAtaraxis<CR>", desc = "ataraxis"},
+
+      ["<leader>fW"] = {
+        function()
+          require("telescope.builtin").live_grep {
+            additional_args = function(args) return vim.list_extend(args, {"--hidden"}) end
+          }
+        end,
+        desc = "Search words in all files"
+      },
+
+      ["<C-s>"] = {":w!<cr>", desc = "Save File"}
+    },
+    v = {["<leader>zn"] = {"<cmd>'<,'>TZNarrow<CR>", desc = "narrow"}}
   },
 
   -- Modify which-key registration
   ["which-key"] = {
-    register_mappings = {n = {["<leader>"] = {["w"] = {name = "Windows"}, ["j"] = {name = "test"}}}}
+    register_mappings = {
+      n = {
+        ["<leader>"] = {
+          ["w"] = {name = "Windows"},
+          ["z"] = {name = "Ture Zen"},
+          ["j"] = {name = "test"}
+        }
+      }
+    }
   },
   -- cmp = {source_priority = {nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250}},
 
@@ -306,13 +330,6 @@ local config = {
 
     vim.api.nvim_del_keymap("n", "<leader>w")
 
-    -- true-zen.nvim key map
-    map("n", "<leader>zn", ":TZNarrow<CR>", {})
-    map("v", "<leader>zn", ":'<,'>TZNarrow<CR>", {})
-    map("n", "<leader>zf", ":TZFocus<CR>", {})
-    map("n", "<leader>zm", ":TZMinimalist<CR>", {})
-    map("n", "<leader>za", ":TZAtaraxis<CR>", {})
-
     -- neoformat config
     vim.g['neoformat_javascript_prettier'] = {
       exe = "prettier",
@@ -343,9 +360,6 @@ local config = {
     -- set vim-test config
     vim.g['shtuff_receiver'] = "devrunner"
     vim.g['test#strategy'] = "shtuff"
-
-    -- Set key bindings
-    map("n", "<C-s>", ":w!<CR>", opts)
 
     local readline = require 'readline'
     vim.keymap.set('!', '<M-f>', readline.forward_word)
