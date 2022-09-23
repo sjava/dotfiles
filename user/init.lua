@@ -65,6 +65,7 @@ local config = {
       },
       {"h-hg/fcitx.nvim"},
       {"sjava/yode-nvim", config = function() require("yode-nvim").setup({}) end},
+      {'gen740/SmoothCursor.nvim', config = function() require('smoothcursor').setup() end},
       {
         "echasnovski/mini.nvim",
         config = function()
