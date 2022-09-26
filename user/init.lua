@@ -116,8 +116,11 @@ local config = {
       },
       {
         "zbirenbaum/copilot-cmp",
-        module = "copilot_cmp",
-        config = function() astronvim.add_cmp_source({name = "copilot", priority = 700}) end
+        after = {"copilot.lua"},
+        config = function()
+          require("copilot_cmp").setup()
+          astronvim.add_cmp_source({name = "copilot", priority = 1500, group_index = 1})
+        end
       },
       {"sbdchd/neoformat"},
       {"wellle/targets.vim"},
