@@ -77,20 +77,10 @@ local config = {
         config = function() require("twilight").setup {expand = {"do_block"}} end
       },
       {
-        "Pocco81/true-zen.nvim",
+        "anuvyklack/windows.nvim",
+        requires = {"anuvyklack/middleclass", "anuvyklack/animation.nvim"},
         config = function()
-          require("true-zen").setup {
-            modes = {
-              ataraxis = {
-                callbacks = {
-                  open_pos = function()
-                    vim.wo.number = true
-                    vim.wo.relativenumber = true
-                  end
-                }
-              }
-            }
-          }
+          require('windows').setup({autowidth = {enable = true, winwidth = 1.3}})
         end
       },
       {'anuvyklack/pretty-fold.nvim', config = function() require('pretty-fold').setup() end},
@@ -100,7 +90,6 @@ local config = {
       {"mg979/vim-visual-multi", branch = "master"},
       {"elixir-editors/vim-elixir"},
       {"chemzqm/wxapp.vim"},
-      -- {"rainbowhxch/beacon.nvim"},
       {"linty-org/readline.nvim"},
       {'nacro90/numb.nvim', config = function() require('numb').setup() end},
       {'ggandor/leap.nvim', config = function() require('leap').set_default_keymaps() end},
