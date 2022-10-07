@@ -135,6 +135,10 @@ local config = {
 		servers = {
 			-- "pyright"
 		},
+
+		-- skip lsp setup because rust-tools will do it itself
+		skip_setup = { "rust_analyzer", "tsserver" },
+
 		formatting = {
 			disabled = { -- disable formatting capabilities for the listed clients
 				"elixirls",
@@ -153,39 +157,15 @@ local config = {
 		},
 
 		-- add to the global LSP on_attach function
-		on_attach = function(client, bufnr)
-			-- if client.name == "elixirls" or client.name == "rust_analyzer" then
-			-- 	client.resolved_capabilities.document_formatting = false
-			-- end
-		end,
+		-- on_attach = function(client, bufnr)
+		-- end,
 
 		-- override the mason server-registration function
-		server_registration = function(server, opts)
-			if server == "rust_analyzer" then
-				require("rust-tools").setup({
-					server = vim.tbl_deep_extend("force", { standalone = true }, opts),
-				})
-			else
-				require("lspconfig")[server].setup(opts)
-			end
-		end,
+		-- server_registration = function(server, opts)
+		-- end,
 
 		-- Add overrides for LSP server settings, the keys are the name of the server
 		["server-settings"] = {
-			-- pyright = {
-			--   cmd = {
-			--     vim.fn.stdpath("data") .. "/mason/packages/pyright/node_modules/.bin/pyright-langserver",
-			--     "--stdio"
-			--   }
-			-- },
-			-- tsserver = {
-			-- root_dir = function() return vim.loop.cwd() end
-			-- cmd = {
-			--   vim.fn.stdpath("data") ..
-			--     "/mason/packages/typescript-language-server/node_modules/.bin/typescript-language-server",
-			--   "--stdio"
-			-- }
-			-- }
 			-- example for addings schemas to yamlls
 			-- yamlls = {
 			--   settings = {
@@ -202,7 +182,6 @@ local config = {
 	},
 
 	-- Mapping data with "desc" stored directly by vim.keymap.set().
-	--
 	-- Please use this mappings table to set keyboard mapping since this is the
 	-- lower level configuration and more robust one. (which-key will
 	-- automatically pick-up stored data by this setting.)
@@ -246,16 +225,6 @@ local config = {
 
 		-- Add plugins, the packer syntax without the "use"
 		init = {
-			-- { "andweeb/presence.nvim" },
-			-- cmp = {
-			-- 	enabled = function()
-			-- 		local buftype = vim.api.nvim_buf_get_option(0, "buftype")
-			-- 		if buftype == "prompt" then
-			-- 			return false
-			-- 		end
-			-- 		return true
-			-- 	end,
-			-- },
 			["hrsh7th/cmp-buffer"] = {
 				config = function()
 					astronvim.add_user_cmp_source({
@@ -265,6 +234,15 @@ local config = {
 								return vim.api.nvim_list_bufs()
 							end,
 						},
+					})
+				end,
+			},
+			{
+				"jose-elias-alvarez/typescript.nvim",
+				after = "mason-lspconfig.nvim",
+				config = function()
+					require("typescript").setup({
+						server = astronvim.lsp.server_settings("tsserver"),
 					})
 				end,
 			},
@@ -446,7 +424,15 @@ local config = {
 					cmp.setup(config)
 				end,
 			},
-			{ "simrat39/rust-tools.nvim" }, -- Text objects
+			{
+				"simrat39/rust-tools.nvim",
+				after = "mason-lspconfig.nvim", -- make sure to load after mason-lspconfig
+				config = function()
+					require("rust-tools").setup({
+						server = astronvim.lsp.server_settings("rust_analyzer"), -- get the server settings and built in capabilities/on_attach
+					})
+				end,
+			},
 			{ "bkad/CamelCaseMotion" },
 			{
 				"RRethy/nvim-treesitter-textsubjects",
