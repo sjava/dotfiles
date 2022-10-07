@@ -371,11 +371,14 @@ local config = {
 				"zbirenbaum/copilot-cmp",
 				after = { "copilot.lua" },
 				config = function()
-					require("copilot_cmp").setup()
+					require("copilot_cmp").setup({
+						method = "getCompletionsCycling",
+						clear_after_cursor = true,
+					})
 					astronvim.add_cmp_source({
 						name = "copilot",
 						priority = 1500,
-						group_index = 1,
+						group_index = 2,
 					})
 
 					local has_words_before = function()
@@ -513,7 +516,7 @@ local config = {
 		["mason-tool-installer"] = {
 			ensure_installed = { "prettier", "stylua", "black" },
 		},
-		-- packer = {compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"}
+		lspkind = { symbol_map = { Copilot = "" } },
 	},
 
 	-- LuaSnip Options
