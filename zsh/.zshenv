@@ -5,6 +5,7 @@ export EDITOR="nvim"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-# export PIPENV_VENV_IN_PROJECT=1
+export INPUT_METHOD  DEFAULT=fcitx
+export SDL_IM_MODULE DEFAULT=fcitx
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 . "$HOME/.cargo/env"
