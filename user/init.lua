@@ -408,6 +408,7 @@ local config = {
       --     })
       --   end
       -- end
+      -- config.debug=true
       return config -- return final config table
     end,
 
