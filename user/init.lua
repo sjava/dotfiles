@@ -268,10 +268,6 @@ local config = {
           })
         end
       },
-      {
-        "projekt0n/github-nvim-theme",
-        config = function() require("github-theme").setup({comment_style = "italic"}) end
-      },
       {"h-hg/fcitx.nvim"},
       {"sjava/yode-nvim", config = function() require("yode-nvim").setup({}) end},
       {
