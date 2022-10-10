@@ -47,11 +47,6 @@ local config = {
       python3_host_prog = "/usr/bin/python3",
       matchup_matchparen_deferred = 1,
       cmp_enabled = true,
-      -- cmp_enabled = function()
-      --   local buftype = vim.api.nvim_buf_get_option(0, "buftype")
-      --   if buftype == "prompt" then return false end
-      --   return true
-      -- end,
       autopairs_enabled = true, -- enable autopairs at start
       diagnostics_enabled = true, -- enable diagnostics at start
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
