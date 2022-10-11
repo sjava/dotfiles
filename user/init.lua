@@ -392,7 +392,9 @@ local config = {
         null_ls.builtins.formatting.lua_format,
         null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.prettier.with({
-          extra_args = function(params) return {"--parser", parsers[params.ft]} end
+          extra_args = function(params)
+            return {"--parser", parsers[params.ft], "--config", params.cwd .. "/.prettierrc"}
+          end
         }), -- Set a linter
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.credo
