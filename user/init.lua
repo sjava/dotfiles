@@ -136,9 +136,16 @@ local config = {
     formatting = {
       format_on_save = false, -- enable or disable auto formatting on save
       disabled = { -- disable formatting capabilities for the listed clients
+        "sumneko_lua",
+        "pyright",
+        "tsserver",
+        "rust_analyzer",
         "elixirls",
-        "rust_analyzer"
-        -- "sumneko_lua",
+        "volar",
+        "tailwindcss",
+        "cssls",
+        "html",
+        "jsonls"
       }
       -- filter = function(client) -- fully override the default formatting function
       --   return true
@@ -411,7 +418,7 @@ local config = {
       --     })
       --   end
       -- end
-      config.debug=true
+      -- config.debug=true
       return config -- return final config table
     end,
 
