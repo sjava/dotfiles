@@ -392,9 +392,7 @@ local config = {
         null_ls.builtins.formatting.lua_format,
         null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.prettier.with({
-          extra_args = function(params)
-            return {"--parser", parsers[params.ft], "--config", params.cwd .. "/.prettierrc"}
-          end
+          extra_args = function(params) return {"--parser", parsers[params.ft], "--write"} end
         }), -- Set a linter
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.credo
@@ -489,6 +487,7 @@ local config = {
       args = {"--stdin-filepath", '"%:p"', "--parser", "html"}
     }
     vim.g["neoformat_enabled_wxml"] = {"prettier"}
+    vim.g["neoformat_enabled_html"] = {"prettier"}
 
     -- set nrrw config
     vim.g["nrrw_rgn_vert"] = 1
