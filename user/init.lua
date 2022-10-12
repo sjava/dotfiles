@@ -462,7 +462,7 @@ local config = {
 				-- Set a formatter
 				null_ls.builtins.formatting.mix.with({ args = { "format", "-" } }),
 				null_ls.builtins.formatting.black,
-				null_ls.builtins.formatting.lua_format,
+				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.rustfmt,
 				null_ls.builtins.formatting.prettier.with({
 					extra_args = function(params)
