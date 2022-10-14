@@ -195,7 +195,14 @@ local config = {
 			["<leader>wj"] = { "<C-w>j", desc = "below window" },
 			["<leader>wl"] = { "<C-w>l", desc = "right window" },
 			["<leader>wk"] = { "<C-w>k", desc = "up window" },
-			["<leader>ww"] = { "<cmd>WindowPick<cr>", desc = "window pick" },
+			["<leader>ww"] = {
+				function()
+					local picker = require("window-picker")
+					local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
+					vim.api.nvim_set_current_win(picked_window_id)
+				end,
+				desc = "Pick a window",
+			},
 
 			["<leader>jn"] = { "<cmd>TestNearest<cr>", desc = "test near" },
 			["<leader>jf"] = { "<cmd>TestFile<cr>", desc = "test file" },
@@ -323,12 +330,6 @@ local config = {
 					require("pretty-fold").setup()
 				end,
 			},
-			{
-				"ten3roberts/window-picker.nvim",
-				config = function()
-					require("window-picker").setup({})
-				end,
-			},
 			{ "vim-test/vim-test" },
 			{ "andymass/vim-matchup" },
 			{ "mg979/vim-visual-multi", branch = "master" },
@@ -454,6 +455,7 @@ local config = {
 				scss = "scss",
 				json = "json",
 				html = "html",
+				vue = "vue",
 			}
 			-- Check supported formatters and linters
 			-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
