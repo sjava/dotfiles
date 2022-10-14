@@ -159,12 +159,22 @@ local config = {
 		},
 
 		-- add to the global LSP on_attach function
-		-- on_attach = function(client, bufnr)
-		-- end,
+		on_attach = function(client, bufnr)
+			if client.server_capabilities.colorProvider then
+				-- Attach document colour support
+				require("document-color").buf_attach(bufnr)
+			end
+		end,
 
 		-- override the mason server-registration function
-		-- server_registration = function(server, opts)
-		-- end,
+		server_registration = function(server, opts)
+			if server == "tailwindcss" then
+				opts.capabilities.textDocument.colorProvider = {
+					dynamicRegistration = true,
+				}
+				require("lspconfig")[server].setup(opts)
+			end
+		end,
 
 		-- Add overrides for LSP server settings, the keys are the name of the server
 		["server-settings"] = {
@@ -252,6 +262,14 @@ local config = {
 				config = function()
 					require("typescript").setup({
 						server = astronvim.lsp.server_settings("tsserver"),
+					})
+				end,
+			},
+			{
+				"mrshmllow/document-color.nvim",
+				config = function()
+					require("document-color").setup({
+						mode = "background", -- "background" | "foreground" | "single"
 					})
 				end,
 			},
@@ -447,7 +465,7 @@ local config = {
 				end,
 			},
 		},
-		colorizer = { { "*", "!toggleterm", "!packer" } },
+		colorizer = { { "*", "!toggleterm", "!packer", "!css", "!html", "!tsx", "!dart" } },
 		["null-ls"] = function(config)
 			local null_ls = require("null-ls")
 			local parsers = {
