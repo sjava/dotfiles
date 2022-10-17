@@ -599,6 +599,7 @@ local config = {
 		}
 		vim.g["neoformat_enabled_wxml"] = { "prettier" }
 		vim.g["neoformat_enabled_html"] = { "prettier" }
+		vim.g["neoformat_enabled_javascript"] = { "prettier" }
 
 		-- set vim-test config
 		vim.g["shtuff_receiver"] = "devrunner"
