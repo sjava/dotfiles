@@ -51,6 +51,7 @@ local config = {
 			diagnostics_enabled = true, -- enable diagnostics at start
 			status_diagnostics_enabled = true, -- enable diagnostics in statusline
 			catppuccin_flavour = "mocha",
+			icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
 		},
 	},
 	-- If you need more control, you can use the function()...end notation
@@ -100,6 +101,7 @@ local config = {
 			aerial = true,
 			beacon = false,
 			bufferline = true,
+			cmp = true,
 			dashboard = true,
 			highlighturl = true,
 			hop = false,
@@ -112,6 +114,7 @@ local config = {
 			rainbow = true,
 			symbols_outline = false,
 			telescope = true,
+			treesitter = true,
 			vimwiki = false,
 			["which-key"] = true,
 		},
@@ -134,7 +137,12 @@ local config = {
 		skip_setup = { "rust_analyzer", "tsserver" },
 
 		formatting = {
-			format_on_save = false, -- enable or disable auto formatting on save
+			format_on_save = {
+				enabled = false, -- enable or disable format on save globally
+				disable_filetypes = { -- disable format on save for specified filetypes
+					-- "python",
+				},
+			},
 			disabled = { -- disable formatting capabilities for the listed clients
 				"sumneko_lua",
 				"pyright",
@@ -147,6 +155,7 @@ local config = {
 				"html",
 				"jsonls",
 			},
+			timeout_ms = 1000, -- default format timeout
 			-- filter = function(client) -- fully override the default formatting function
 			--   return true
 			-- end
