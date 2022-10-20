@@ -181,8 +181,8 @@ local config = {
 				opts.capabilities.textDocument.colorProvider = {
 					dynamicRegistration = true,
 				}
-				require("lspconfig")[server].setup(opts)
 			end
+			require("lspconfig")[server].setup(opts)
 		end,
 
 		-- Add overrides for LSP server settings, the keys are the name of the server
@@ -214,12 +214,7 @@ local config = {
 			["<leader>wj"] = { "<C-w>j", desc = "below window" },
 			["<leader>wl"] = { "<C-w>l", desc = "right window" },
 			["<leader>wk"] = { "<C-w>k", desc = "up window" },
-			["<leader>wt"] = {
-				function()
-					require("true-zen").ataraxis()
-				end,
-				desc = "toggle true zen mode",
-			},
+			["<leader>wt"] = { "<cmd>ZenMode<cr>", desc = "toggle zen mode" },
 			["<leader>ww"] = {
 				function()
 					local picker = require("window-picker")
@@ -272,24 +267,11 @@ local config = {
 				end,
 			},
 			{
-				"Pocco81/true-zen.nvim",
+				"folke/zen-mode.nvim",
 				config = function()
-					require("true-zen").setup({
-						modes = {
-							ataraxis = {
-								callbacks = {
-									open_pre = function()
-										require("windows.autowidth").disable()
-									end,
-									open_pos = function()
-										vim.wo.number = true
-										vim.wo.relativenumber = true
-									end,
-									close_pos = function()
-										require("windows.autowidth").enable()
-									end,
-								},
-							},
+					require("zen-mode").setup({
+						window = {
+							width = 0.60, -- width will be 85% of the editor width
 						},
 					})
 				end,
