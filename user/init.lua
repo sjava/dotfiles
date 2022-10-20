@@ -214,6 +214,12 @@ local config = {
 			["<leader>wj"] = { "<C-w>j", desc = "below window" },
 			["<leader>wl"] = { "<C-w>l", desc = "right window" },
 			["<leader>wk"] = { "<C-w>k", desc = "up window" },
+			["<leader>wt"] = {
+				function()
+					require("true-zen").ataraxis()
+				end,
+				desc = "toggle true zen mode",
+			},
 			["<leader>ww"] = {
 				function()
 					local picker = require("window-picker")
