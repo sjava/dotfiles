@@ -266,6 +266,29 @@ local config = {
 				end,
 			},
 			{
+				"Pocco81/true-zen.nvim",
+				config = function()
+					require("true-zen").setup({
+						modes = {
+							ataraxis = {
+								callbacks = {
+									open_pre = function()
+										require("windows.autowidth").disable()
+									end,
+									open_pos = function()
+										vim.wo.number = true
+										vim.wo.relativenumber = true
+									end,
+									close_pos = function()
+										require("windows.autowidth").enable()
+									end,
+								},
+							},
+						},
+					})
+				end,
+			},
+			{
 				"jose-elias-alvarez/typescript.nvim",
 				after = "mason-lspconfig.nvim",
 				config = function()
