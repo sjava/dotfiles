@@ -187,6 +187,14 @@ local config = {
 
 		-- Add overrides for LSP server settings, the keys are the name of the server
 		["server-settings"] = {
+			tsserver = {
+				init_options = {
+					preferences = {
+						importModuleSpecifierPreference = "non-relative",
+					},
+				},
+			},
+
 			-- example for addings schemas to yamlls
 			-- yamlls = {
 			--   settings = {
