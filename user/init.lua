@@ -420,7 +420,7 @@ local config = {
 							insert_text = require("copilot_cmp.format").remove_existing,
 						},
 					})
-					astronvim.add_cmp_source({ name = "copilot", priority = 1500 })
+					astronvim.add_cmp_source({ name = "copilot", group_index = 2, priority = 1500 })
 
 					local has_words_before = function()
 						if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
