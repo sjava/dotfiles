@@ -1,3 +1,4 @@
+local on_file_open = { "BufRead", "BufWinEnter", "BufNewFile" }
 local config = {
 
 	-- Configure AstroNvim updates
@@ -52,6 +53,7 @@ local config = {
 			status_diagnostics_enabled = true, -- enable diagnostics in statusline
 			catppuccin_flavour = "mocha",
 			icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+			ui_notifications_enabled = true, -- disable notifications when toggling UI elements
 		},
 	},
 	-- If you need more control, you can use the function()...end notation
@@ -262,6 +264,7 @@ local config = {
 
 		-- Add plugins, the packer syntax without the "use"
 		init = {
+			["jose-elias-alvarez/null-ls.nvim"] = { disable = true },
 			["hrsh7th/cmp-buffer"] = {
 				config = function()
 					astronvim.add_user_cmp_source({
@@ -343,6 +346,13 @@ local config = {
 				"sjava/yode-nvim",
 				config = function()
 					require("yode-nvim").setup({})
+				end,
+			},
+			{
+				"sjava/null-ls.nvim",
+				event = on_file_open,
+				config = function()
+					require("configs.null-ls")
 				end,
 			},
 			{
@@ -559,7 +569,7 @@ local config = {
 			},
 		},
 		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
-		["mason-tool-installer"] = {
+		["mason-null-ls"] = {
 			ensure_installed = { "prettier", "stylua", "black" },
 		},
 		lspkind = { symbol_map = { Copilot = "" } },
