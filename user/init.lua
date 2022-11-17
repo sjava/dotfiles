@@ -578,7 +578,9 @@ local config = {
 	-- LuaSnip Options
 	luasnip = {
 		-- Add paths for including more VS Code style snippets in luasnip
-		vscode_snippet_paths = { "./lua/user/rusty-snippy" },
+		vscode = {
+			paths = { "./lua/user/rusty-snippy" },
+		},
 		-- Extend filetypes
 		filetype_extend = {
 			-- javascript = { "javascriptreact" },
