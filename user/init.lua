@@ -579,7 +579,7 @@ local config = {
 	luasnip = {
 		-- Add paths for including more VS Code style snippets in luasnip
 		vscode = {
-			paths = { "./lua/user/rusty-snippy" },
+			paths = { "./lua/user/my-snippets" },
 		},
 		-- Extend filetypes
 		filetype_extend = {

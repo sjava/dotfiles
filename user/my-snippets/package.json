@@ -1,0 +1,15 @@
+{
+  "name": "ex-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": ["elixir"],
+        "path": "./elixir.json"
+      },
+      {
+        "language": "rust",
+        "path": "./rust.json"
+      }
+    ]
+  }
+}
