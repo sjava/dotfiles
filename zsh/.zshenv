@@ -8,4 +8,5 @@ export XMODIFIERS=@im=fcitx
 export INPUT_METHOD  DEFAULT=fcitx
 export SDL_IM_MODULE DEFAULT=fcitx
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export KERL_BUILD_DOCS=yes
 . "$HOME/.cargo/env"
