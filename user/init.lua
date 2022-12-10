@@ -277,12 +277,16 @@ local config = {
 					})
 				end,
 			},
+			{ "rafcamlet/nvim-luapad" },
 			{
 				"folke/zen-mode.nvim",
 				config = function()
 					require("zen-mode").setup({
 						window = {
 							width = 0.60, -- width will be 85% of the editor width
+						},
+						plugins = {
+							twilight = { enabled = false },
 						},
 					})
 				end,
