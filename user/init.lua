@@ -459,6 +459,11 @@ local config = {
 								end
 							end),
 						},
+						["<CR>"] = cmp.mapping.confirm({
+							-- this is the important line
+							behavior = cmp.ConfirmBehavior.Replace,
+							select = false,
+						}),
 					})
 				end,
 			},
@@ -511,6 +516,8 @@ local config = {
 				end,
 			},
 		},
+		-- cmp = function(opts)
+		-- end,
 		colorizer = { { "*", "!toggleterm", "!packer", "!css", "!html", "!tsx", "!dart" } },
 		["null-ls"] = function(config)
 			local null_ls = require("null-ls")
