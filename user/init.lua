@@ -365,7 +365,6 @@ local config = {
 				config = function()
 					require("mini.cursorword").setup()
 					require("mini.misc").setup()
-					require('mini.ai').setup()
 				end,
 			},
 			{
@@ -566,7 +565,7 @@ local config = {
 		},
 		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
 		["mason-null-ls"] = {
-			ensure_installed = { "prettier", "stylua", "black" },
+			ensure_installed = { "prettier", "stylua", "black", "taplo" },
 		},
 		lspkind = { symbol_map = { Copilot = "" } },
 	},
