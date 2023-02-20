@@ -365,7 +365,6 @@ local config = {
 				config = function()
 					require("mini.cursorword").setup()
 					require("mini.misc").setup()
-					require('mini.ai').setup()
 				end,
 			},
 			{
