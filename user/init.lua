@@ -368,6 +368,12 @@ local config = {
 				end,
 			},
 			{
+				"chrisgrieser/nvim-various-textobjs",
+				config = function()
+					require("various-textobjs").setup({ useDefaultKeymaps = true })
+				end,
+			},
+			{
 				"the-argus/twilight.nvim",
 				config = function()
 					require("twilight").setup({ expand = { "do_block" } })
