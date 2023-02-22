@@ -253,6 +253,8 @@ local config = {
 			},
 
 			["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+			["]t"] = false,
+			["[t"] = false,
 		},
 		t = {
 			-- setting a mapping to false will disable it
@@ -365,12 +367,23 @@ local config = {
 				config = function()
 					require("mini.cursorword").setup()
 					require("mini.misc").setup()
+					require("mini.bracketed").setup({})
 				end,
 			},
 			{
-				"chrisgrieser/nvim-various-textobjs",
+				"RRethy/nvim-treesitter-textsubjects",
 				config = function()
-					require("various-textobjs").setup({ useDefaultKeymaps = true })
+					require("nvim-treesitter.configs").setup({
+						textsubjects = {
+							enable = true,
+							prev_selection = ",", -- (Optional) keymap to select the previous selection
+							keymaps = {
+								["."] = "textsubjects-smart",
+								[";"] = "textsubjects-container-outer",
+								["i;"] = "textsubjects-container-inner",
+							},
+						},
+					})
 				end,
 			},
 			{
