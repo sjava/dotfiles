@@ -584,7 +584,7 @@ local config = {
 		},
 		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
 		["mason-null-ls"] = {
-			ensure_installed = { "prettier", "stylua", "black", "taplo" },
+			ensure_installed = { "prettier", "stylua", "black", "taplo", "buf" },
 		},
 		lspkind = { symbol_map = { Copilot = "" } },
 	},
