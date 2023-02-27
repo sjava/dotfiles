@@ -566,7 +566,7 @@ local config = {
 		end,
 
 		-- All other entries override the setup() call for default plugins
-		treesitter = { ensure_installed = { "lua" } },
+		treesitter = { ensure_installed = { "lua","elixir","rust","javascript" } },
 		-- use mason-lspconfig to configure LSP installations
 		["mason-lspconfig"] = {
 			ensure_installed = {
