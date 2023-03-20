@@ -5,6 +5,5 @@ autoload/*.old
 **/undodir/**
 *.old
 fonts/**
-AstroVim/
-AstroNvim/
-AstroVim/**
+astronvim_config/**
+astronvim_config
