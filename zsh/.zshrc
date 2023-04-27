@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # alias nvim="$HOME/nvim.appimage"
 alias useproxy="export http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890"
 alias noproxy="unset http_proxy https_proxy"
-[[ $TMUX = "" ]] && export TERM="xterm-256color"
+# [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 DEFAULT_USER="zyb"
 
