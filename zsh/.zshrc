@@ -58,7 +58,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(pip git npm sudo asdf yarn archlinux mix z docker rust poetry vi-mode)
+plugins=(pip git npm sudo asdf yarn fzf archlinux mix z docker rust poetry vi-mode)
 zstyle ':omz:update' mode reminder
 source $ZSH/oh-my-zsh.sh
 
@@ -96,7 +96,5 @@ alias noproxy="unset http_proxy https_proxy"
 # [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 DEFAULT_USER="zyb"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
