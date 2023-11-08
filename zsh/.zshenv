@@ -6,5 +6,6 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export KERL_BUILD_DOCS=yes
 export RUSTUP_HOME="$HOME/.rustup"
 export CARGO_HOME="$HOME/.cargo"
+export KITTY_LISTEN_ON=unix:/tmp/mykitty
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.cargo/env"
