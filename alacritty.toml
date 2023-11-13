@@ -7,7 +7,7 @@ startup_mode = "Maximized"
 
 [font]
 normal.family = "Maple Mono SC NF"
-size = 12
+size = 12.5
 normal.style = "Regular"
 
 # github dark theme scheme for Alacritty
