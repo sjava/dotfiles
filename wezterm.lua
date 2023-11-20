@@ -7,9 +7,21 @@ wezterm.on("gui-startup", function()
 end)
 return {
 	-- font = wezterm.font("Maple Mono SC NF"),
-	font = wezterm.font({
-		family = "Monaspace Krypton",
-		harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
+	font = wezterm.font_with_fallback({
+		{ family = "Monaspace Krypton" },
+		{ family = "Maple Mono SC NF" },
+		harfbuzz_features = {
+				"ss01",
+				"ss02",
+				"ss03",
+				"ss04",
+				"ss05",
+				"ss06",
+				"ss07",
+				"ss08",
+				"calt",
+				"dlig",
+			},
 	}),
 	font_size = 13,
 	enable_tab_bar = false,
