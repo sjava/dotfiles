@@ -8,9 +8,9 @@ end)
 return {
 	-- font = wezterm.font("Maple Mono SC NF"),
 	font = wezterm.font_with_fallback({
-		{ family = "Monaspace Krypton" },
-		{ family = "Maple Mono SC NF" },
-		harfbuzz_features = {
+		{
+			family = "Monaspace Krypton Light",
+			harfbuzz_features = {
 				"ss01",
 				"ss02",
 				"ss03",
@@ -22,8 +22,10 @@ return {
 				"calt",
 				"dlig",
 			},
+		},
+		{ family = "Maple Mono SC NF" },
 	}),
-	font_size = 13,
+	font_size = 10.5,
 	enable_tab_bar = false,
 	window_decorations = "NONE",
 	use_ime = true,
