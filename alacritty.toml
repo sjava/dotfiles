@@ -6,7 +6,8 @@ decorations = "none"
 startup_mode = "Maximized"
 
 [font]
-normal.family = "Maple Mono SC NF"
+# normal.family = "Maple Mono SC NF"
+normal.family = "Monaspace Krypton Light"
 normal.style = "Regular"
 size = 11
 

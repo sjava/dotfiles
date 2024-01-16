@@ -25,7 +25,7 @@ return {
 		},
 		{ family = "Maple Mono SC NF" },
 	}),
-	font_size = 10.5,
+	font_size = 12.5,
 	enable_tab_bar = false,
 	window_decorations = "NONE",
 	use_ime = true,
