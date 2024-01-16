@@ -7,3 +7,6 @@ error_symbol = "[✗](bold red) "
 
 [directory]
 truncate_to_repo = false
+
+[git_branch]
+symbol = '🌱 '
