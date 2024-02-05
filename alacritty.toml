@@ -10,7 +10,7 @@ startup_mode = "Maximized"
 # normal.family = "Monaspace Krypton Light"
 normal.family = "Monaspace Krypton"
 normal.style = "Regular"
-size = 12
+size = 10.5
 
 # github dark theme scheme for Alacritty
 [colors.primary]
